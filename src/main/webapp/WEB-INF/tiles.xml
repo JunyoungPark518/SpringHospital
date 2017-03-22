@@ -7,7 +7,7 @@
 		<put-attribute name="body" value=""/>
 		<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp"/>
 	</definition>
-	<definition name="public:*/*.tiles" extends="public">
-		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}"/>
+	<definition name="public:*/*" extends="public">
+		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp"/>
 	</definition>
 </tiles-definitions>

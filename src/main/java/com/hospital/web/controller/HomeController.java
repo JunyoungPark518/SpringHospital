@@ -27,7 +27,7 @@ public class HomeController {
 	}
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public String home() {
-		logger.info("home 진입:", "OK");
-		return "common/main";
+		logger.info("home 진입: {}", "OK");
+		return "public:common/main";
 	}
 }
