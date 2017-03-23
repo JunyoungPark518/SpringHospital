@@ -1,7 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<jsp:include page="../common/top.jsp"/>
-<jsp:include page="../common/header.jsp"/>
-<jsp:include page="gnb.jsp"/>
 
 <div class="con_setting" style="position: relative; top: 150px; text-align:center; width:100%">
 	<div class="wtac">

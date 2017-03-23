@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<jsp:include page="../common/top.jsp"/>
-<jsp:include page="../common/header.jsp"/>
-<jsp:include page="../common/gnb.jsp"/>
+
 <div id="container" class="con_setting" style="position: relative; top:150px">
 	<div>
 		<table style="margin: 0 auto;">
@@ -31,8 +29,8 @@
 			<tr>
 				<td><input type="checkbox" name="saveid" value="save">
 					<span class="login_span">로그인 상태 유지</span>&nbsp;&nbsp;&nbsp; 
-					<a class="login_a" href="${context.path}/patient.do?action=move&page=register">회원가입</a>&nbsp; 
-					<a class="login_a" href="${context.path}/patient.do?action=move&page=register">ID/PW 찾기</a></td>
+					<a class="login_a" href="${context.path}/patient?action=move&page=register">회원가입</a>&nbsp; 
+					<a class="login_a" href="${context.path}/patient?action=move&page=register">ID/PW 찾기</a></td>
 				<td></td>
 			</tr>
 		</table>
@@ -156,7 +154,7 @@ $(function() {
 	var loginForm = $('#loginForm');
 	var tab = loginForm.find('table');
 	$('#loginForm input[type=submit]').click(function() {
-		loginForm.attr('action','${context}/patient.do');
+		loginForm.attr('action','${context}/patient');
 		loginForm.attr('method','post');
 		var idVal = tab.find('input[name=id]').val();
 		var pwVal = tab.find('input[name=pw]').val();

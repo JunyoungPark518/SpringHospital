@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<jsp:include page="../common/top.jsp"/>
 <jsp:include page="../common/header.jsp"/>
 <jsp:include page="gnb.jsp"/>
 <div style="position: relative; top: 150px">
@@ -38,10 +37,10 @@
 		<div>
 			<table>
 				<tr>
-					<td><a href="${context.path}/board.do?action=detail&page=articleChange&seq=${requestScope.art.seq}"><input type="button" value="게시글 수정"/></a>
+					<td><a href="${context.path}/board?action=detail&page=articleChange&seq=${requestScope.art.seq}"><input type="button" value="게시글 수정"/></a>
 					<input type="button" value="게시글 삭제"/></td>
 					<td>
-						<a href="${context.path}/board.do?action=list&page=articleList&pageNo=1"><input type="button" value="목록으로"/></a>
+						<a href="${context.path}/board?action=list&page=articleList&pageNo=1"><input type="button" value="목록으로"/></a>
 					</td>
 				</tr>
 			</table>

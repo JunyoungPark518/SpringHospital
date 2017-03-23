@@ -30,4 +30,9 @@ public class HomeController {
 		logger.info("home 진입: {}", "OK");
 		return "public:common/main";
 	}
+	@RequestMapping(value = "/patient", method = RequestMethod.GET)
+	public String patient() {
+		logger.info("patient 진입: {}", "OK");
+		return "public:patient/main";
+	}
 }
