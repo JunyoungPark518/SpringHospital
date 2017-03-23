@@ -9,33 +9,33 @@
 			<tr>
 				<td style="width: 60px" rowspan="5"><span style="font-size: 20px">내<br />정<br />보</span></td>
 				<td style="width: 100px; background-color: #bfcedd">이름</td>
-				<td style="width: 150px">${user.patName}</td>
+				<td style="width: 150px">${name}</td>
 				<td style="width: 100px; background-color: #bfcedd">직업</td>
-				<td style="width: 150px">${user.patJob}</td>
+				<td style="width: 150px">채워야댐</td>
 			</tr>
 			<tr>
 				<td style="background-color: #bfcedd;">생년월일</td>
-				<td>${requestScope.birth}</td>
+				<td>채워야댐</td>
 				<td style="background-color: #bfcedd;">키</td>
 				<td>180cm</td>
 			</tr>
 			<tr>
 				<td style="background-color: #bfcedd;">성별</td>
-				<td>${requestScope.gender}</td>
+				<td>채워야댐</td>
 				<td style="background-color: #bfcedd;">나이/몸무게</td>
-				<td>${requestScope.age} / 70kg</td>
+				<td>채워야댐 / 70kg</td>
 			</tr>
 			<tr>
 				<td style="background-color: #bfcedd;">전화번호</td>
-				<td>${user.patPhone}</td>
+				<td>채워야댐</td>
 				<td style="background-color: #bfcedd;">혈액형</td>
 				<td>B</td>
 			</tr>
 			<tr>
 				<td style="background-color: #bfcedd;">주소</td>
-				<td>${user.patAddr}</td>
+				<td>채워야댐</td>
 				<td style="background-color: #bfcedd;">주치의</td>
-				<td><a onclick="docDetail()">${user.docID}</a></td>
+				<td><a onclick="docDetail()">채워야댐</a></td>
 			</tr>
 		</table>
 	</div>
@@ -43,7 +43,7 @@
 <script>
 	function docDetail() {
 		alert('의사ID 클릭');
-		location.href="${context}/doctor.do?action=move&page=detail&doc=${user.docID}";
+		location.href="${context}/doctor?action=move&page=detail&doc=${user.docID}";
 	}
 </script>
 <jsp:include page="../common/footer.jsp"/>

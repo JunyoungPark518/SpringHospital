@@ -154,7 +154,7 @@ $(function() {
 	var loginForm = $('#loginForm');
 	var tab = loginForm.find('table');
 	$('#loginForm input[type=submit]').click(function() {
-		loginForm.attr('action','patLogin');
+		loginForm.attr('action','${context}/patient');
 		loginForm.attr('method','post');
 		var idVal = tab.find('input[name=id]').val();
 		var pwVal = tab.find('input[name=pw]').val();

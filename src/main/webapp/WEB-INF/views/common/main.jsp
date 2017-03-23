@@ -35,7 +35,7 @@
 									</tr>
 									<tr style="height: 150px;">
 										<td colspan="6">
-											<a class="login_input text_no_underline" href="html/bbs/bbs_list.html">게시판 페이지로 가기</a>
+											<a class="login_input text_no_underline" href="board">게시판 페이지로 가기</a>
 										</td>
 									</tr>
 									<tr>
@@ -87,67 +87,24 @@
 $(function() {
 	/* Create object variable */
 	var menu = $('#menu');
-	var context = '${context.path}/';
 	menu.find('a:nth-child(1)').click(function() {
-		goPage(context + 'patient','move','register'); 
+		goPage('patRegister'); 
 	});
 	menu.find('a:nth-child(2)').click(function() {
-		goPage(context + 'patient', 'move', 'loginForm');
+		goPage('patLoginForm');
 	});
 	menu.find('a:nth-child(3)').click(function() {
-		goPage(context + 'doctor', 'move', 'loginForm');
+		goPage('docLogin');
 	});
 	menu.find('a:nth-child(4)').click(function() {
-		goPage(context + 'admin', 'move', 'main');
+		goPage('adminLogin');
 	});
 	menu.find('a:nth-child(5)').click(function() {
-		/* goList(context + 'board.do', 'list', 'articleList', '1'); */
-		/* goBoardPage('1'); */
 		location.href = 'board?action=list&page=articleList&pageNo=1';
+		// goPage('board','list','articleList')
 	});
 	menu.find('a:nth-child(6)').click(function() {
-		goPage(context + 'util', 'move', 'findId');
+		goPage('util', 'move', 'findId');
 	});
 });
-
-	/* Using Child */
-	/* $('#menu a:nth-child(2)').click(function() {
-		location.href = "${context}/patient.do?action=move&page=loginForm";
-	});
-	$('#menu a:nth-child(3)').click(function() {
-		location.href = "${context}/patient.do?action=move&page=loginForm";
-	});
-	$('#menu a:nth-child(4)').click(function() {
-		location.href = "${context}/admin.do?action=move&page=main";
-	});
-	$('#menu a:nth-child(5)').click(function() {
-		location.href = "${context}/board.do?action=move&page=main";
-	});
-	$('#menu a:nth-child(6)').click(function() {
-		location.href = "${context}/util.do?action=move&page=findId";
-	}); */
-	
-	/* ID used Directly */
-	/* 	$('#aRegister').click(function() {
-		alert('jQuery Test');
-		location.href = "${context}/patient.do?action=move&page=register";
-	});  
-	 $('#aRegister').addClass('login_main'); 
-	/ $('#aPatLogin').click(function() {
-		location.href = "${context}/patient.do?action=move&page=loginForm";
-	}); 
-	 $('#menu a:nth-child(2)').addClass('login_main'); 
- 	$('#aPatLogin').addClass('login_main'); 
-	 document.getElementById('aStaffLogin').onclick=function() {
-		location.href = "${context}/patient.do?action=move&page=loginForm";
-	} 
-	 document.getElementById('aAdminLogin').onclick=function() {
-		location.href = "${context}/admin.do?action=move&page=main";
-	} 
-	 document.getElementById('aBoard').onclick=function() {
-		location.href = "${context}/board.do?action=move&page=main";
-	}
-	document.getElementById('aFindId').addEventHandler('click',function() {
-		location.href = "${context}/util.do?action=move&page=findId";
-	}); */
 </script>

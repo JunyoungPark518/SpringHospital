@@ -1,3 +1,6 @@
+function goPage(path) {
+	location.href = path;
+}
 function goPage(path,action,page) {
 	location.href = path + '?action=' + action + '&page=' + page;
 }

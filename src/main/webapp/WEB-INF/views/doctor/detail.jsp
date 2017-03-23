@@ -1,7 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<jsp:include page="../common/header.jsp"/>
-<jsp:include page="../common/gnb.jsp"/>
-<h1>의사 페이지 샘플 확인</h1>
 <div>
 	<div style="margin-top: 100px;">
 		<table class="detail_back">

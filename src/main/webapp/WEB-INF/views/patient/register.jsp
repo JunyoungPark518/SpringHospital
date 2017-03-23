@@ -194,7 +194,7 @@
 			</tr>
 			<tr style="text-align: center; height: 100px;">
 				<td colspan="2" class="reg_borderNone">
-					<%-- <a href="${context.path}/home.do?action=move&page=main">
+					<%-- <a href="${context.path}/home?action=move&page=main">
 						<input type="button" value="이전">
 					</a> &nbsp;&nbsp; --%>
 					<input type="submit" value="다음">
@@ -231,7 +231,7 @@ $(function() {
 	$reg.find('input[type=submit]').addClass('reg_btnCont');
 	
 	$('input[type=submit]').click(function() {
-		$reg.attr('action', '${context.path}/patient.do');
+		$reg.attr('action', 'patRegister2');
 		$reg.attr('method', 'post');
 		$reg.submit();
 	});

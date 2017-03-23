@@ -8,7 +8,7 @@
 		<a class="index_gnb_index" href="mypage">MY PAGE</a>
 	</li>
 	<li>
-		<a class="index_gnb_index" href="treatlist">나의 진료기록</a>
+		<a class="index_gnb_index" href="treatlist">진찰기록</a>
 	</li>
 	<li>
 		<a class="index_gnb_index" href="board">게시판</a>
@@ -17,7 +17,7 @@
 		<a class="index_gnb_index" href="customer">고객참여마당</a>
 	</li>
 	<li>
-		<a class="index_gnb_index" href="main">로그아웃</a>
+		<a class="index_gnb_index" href="home">로그아웃</a>
 	</li>
 </ul>
 </div>

@@ -21,18 +21,67 @@ public class HomeController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model, HttpSession session) {
-		logger.info("Welcome","home");
 		session.setAttribute("context", Complex.ContextFactory.create());
 		return "index";
 	}
-	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	
+	@RequestMapping(value="/home")
 	public String home() {
-		logger.info("home 진입: {}", "OK");
 		return "public:common/main";
 	}
-	@RequestMapping(value = "/patient", method = RequestMethod.GET)
-	public String patient() {
-		logger.info("patient 진입: {}", "OK");
-		return "public:patient/main";
+	
+	@RequestMapping("/patRegister")
+	public String patRegister() {
+		logger.info("PatientController - patRegister() {}","ENTER");
+		return "public:patient/register";
+	}
+	
+	@RequestMapping("/patRegister2")
+	public String patRegister2() {
+		logger.info("PatientController - patRegister2() {}","ENTER");
+		return "public:patient/register2";
+	}
+	
+	@RequestMapping("/docLogin")
+	public String docLogin() {
+		logger.info("PatientController - docLogin() {}","ENTER");
+		return "public:doctor/loginForm";
+	}
+
+	@RequestMapping("/mypage")
+	public String myPage() {
+		logger.info("PatientController - myPage() {}","ENTER");
+		return "public:patient/mypage";
+	}
+
+	@RequestMapping("/treatlist")
+	public String treatlist() {
+		logger.info("PatientController - patLogin() {}","ENTER");
+		return "public:patient/treatmentList";
+	}
+
+	@RequestMapping(value="/patLoginForm")
+	public String patLogin() {
+		logger.info("PatientController - patLogin() {}","ENTER");
+		return "public:patient/loginForm";
+	}
+	
+	@RequestMapping(value="/patLogin", method=RequestMethod.POST)
+	public String patLogin(Model model) {
+		logger.info("PatientController - patLogin(model) {}","POST");
+		model.addAttribute("name","홍길동");
+		return "public:patient/containerDetail";
+	}
+	
+	@RequestMapping(value="/board")
+	public String goBoard() {
+		logger.info("PatientController - patLogin() {}","ENTER");
+		return "public:board/articleList";
+	}
+	
+	@RequestMapping(value="/customer")
+	public String goCustomer() {
+		logger.info("PatientController - patLogin() {}","ENTER");
+		return "public:patient/loginForm";
 	}
 }
