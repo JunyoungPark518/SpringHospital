@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -60,7 +61,7 @@ public class HomeController {
 		return "public:patient/treatmentList";
 	}
 
-	@RequestMapping(value="/patLoginForm")
+	@RequestMapping("/patLoginForm")
 	public String patLogin() {
 		logger.info("PatientController - patLogin() {}","ENTER");
 		return "public:patient/loginForm";
@@ -70,7 +71,20 @@ public class HomeController {
 	public String patLogin(Model model) {
 		logger.info("PatientController - patLogin(model) {}","POST");
 		model.addAttribute("name","ȫ�浿");
-		return "public:patient/containerDetail";
+		return "public:patient/patDetail";
+	}
+	
+	@RequestMapping("/docDetail/{docID}")
+	public String goDocDetail(@PathVariable String docID, Model model) {
+		logger.info("PatientController - goDocDetail() {}","ENTER");
+		logger.info("PatientController - docID={}",docID);
+		return "public:patient/docDetail";
+	}
+	
+	@RequestMapping("")
+	public String goPatDoctorInfo() {
+		logger.info("PatientController - patLogin() {}","ENTER");
+		return "public:board/articleList";
 	}
 	
 	@RequestMapping(value="/board")

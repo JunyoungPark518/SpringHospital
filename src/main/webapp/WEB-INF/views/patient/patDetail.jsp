@@ -35,15 +35,15 @@
 				<td style="background-color: #bfcedd;">주소</td>
 				<td>채워야댐</td>
 				<td style="background-color: #bfcedd;">주치의</td>
-				<td><a onclick="docDetail()">채워야댐</a></td>
+				<td><a onclick="goDocDetail()">채워야댐</a></td>
 			</tr>
 		</table>
 	</div>
 </div>
 <script>
-	function docDetail() {
+	function goDocDetail() {
 		alert('의사ID 클릭');
-		location.href="${context}/doctor?action=move&page=detail&doc=${user.docID}";
+		location.href="${context.path}/docDetail/han";
 	}
 </script>
 <jsp:include page="../common/footer.jsp"/>
