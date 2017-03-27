@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import com.hospital.web.domain.ArticleDTO;
 
 @Component
-public interface BoardService {
+public interface IBoardService {
 		public int addArticle(ArticleDTO param) throws Exception;
 		public ArticleDTO findOne(ArticleDTO param) throws Exception;
 		public List<ArticleDTO> findSome(ArticleDTO param) throws Exception;

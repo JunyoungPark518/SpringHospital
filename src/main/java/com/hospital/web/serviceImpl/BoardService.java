@@ -6,10 +6,10 @@ import org.springframework.stereotype.Service;
 
 import com.hospital.web.dao.BoardDAO;
 import com.hospital.web.domain.ArticleDTO;
-import com.hospital.web.service.BoardService;
+import com.hospital.web.service.IBoardService;
 
 @Service
-public class BoardServiceImpl implements BoardService {
+public class BoardService implements IBoardService {
 	@Autowired BoardDAO dao;
 	@Override
 	public int addArticle(ArticleDTO param) throws Exception{

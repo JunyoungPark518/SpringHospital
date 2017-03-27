@@ -1,39 +1,48 @@
 package com.hospital.web.serviceImpl;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.hospital.web.controller.HomeController;
 import com.hospital.web.dao.PatientDAO;
 import com.hospital.web.domain.PatientDTO;
-import com.hospital.web.service.PatientService;
+import com.hospital.web.mapper.PatientMapper;
+import com.hospital.web.service.IPatientService;
 
 @Service
-public class PatientServiceImpl implements PatientService{
-	@Autowired PatientDAO dao;
-
+public class PatientService implements IPatientService{
+	private static final Logger logger = LoggerFactory.getLogger(PatientService.class);
+	@Autowired PatientMapper mapper;
 	@Override
 	public int join(PatientDTO member) throws Exception {
-		return dao.insert(member);
+		logger.info("PatientService - join() {}","ENTER");
+		return mapper.insert(member);
 	}
 
 	@Override
-	public PatientDTO findById(PatientDTO member) throws Exception {
-		return dao.selectById(member);
+	public PatientDTO findById(String id) throws Exception {
+		logger.info("PatientService - findById() {}","ENTER");
+		return (PatientDTO) mapper.selectById(id);
 	}
 
 	@Override
 	public PatientDTO login(PatientDTO member) throws Exception {
-		return findById(member);
+		logger.info("PatientService - login() {}","ENTER");
+		return findById(member.getPatID());
 	}
 	
 	@Override
 	public int change(PatientDTO member) throws Exception {
-		return dao.update(member);
+		logger.info("PatientService - change() {}","ENTER");
+		return mapper.update(member);
 	}
 
 	@Override
 	public int remove(PatientDTO member) throws Exception {
-		return dao.delete(member);		
+		logger.info("PatientService - remove() {}","ENTER");
+		return mapper.delete(member);		
 	}
 
 	@Override

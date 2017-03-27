@@ -10,15 +10,20 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.hospital.web.composite.Complex;
 import com.hospital.web.domain.ContextDTO;
+import com.hospital.web.domain.PatientDTO;
+import com.hospital.web.service.IPatientService;
 
 @Controller
 @SessionAttributes("context")
 public class HomeController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	@Autowired IPatientService patService;
+	@Autowired PatientDTO patient;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model, HttpSession session) {
@@ -68,8 +73,14 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value="/patLogin", method=RequestMethod.POST)
-	public String patLogin(Model model) {
+	public String patLogin(@RequestParam("id") String id, 
+			@RequestParam("pw") String pw, Model model) throws Exception {
 		logger.info("PatientController - patLogin(model) {}","POST");
+		logger.info("PatientController - id, pw: {}",id+","+pw);
+		patient.setPatID(id);
+		patient.setPatPass(pw);
+		patient=patService.login(patient);
+		logger.info("DB ´Ù³à¿Â °á°ú: {}",patient);
 		model.addAttribute("name","È«±æµ¿");
 		return "public:patient/patDetail";
 	}

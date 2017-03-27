@@ -5,10 +5,10 @@ import org.springframework.stereotype.Service;
 
 import com.hospital.web.dao.DoctorDAO;
 import com.hospital.web.domain.DoctorDTO;
-import com.hospital.web.service.DoctorService;
+import com.hospital.web.service.IDoctorService;
 
 @Service
-public class DoctorServiceImpl implements DoctorService {
+public class DoctorService implements IDoctorService {
 	@Autowired DoctorDAO dao;
 
 	@Override
