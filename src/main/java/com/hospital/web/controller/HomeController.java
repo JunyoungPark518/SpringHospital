@@ -20,6 +20,15 @@ import com.hospital.web.mapper.PatientMapper;
 import com.hospital.web.service.IExist;
 import com.hospital.web.service.IPatientService;
 
+/**
+ * ====================================
+ * @filename: Patient Controller
+ * @date: 2017-03-28
+ * @author: babungv@gmail.com
+ * @story: 
+ * @method: 
+ * ====================================
+ */
 @Controller
 @SessionAttributes("context")
 public class HomeController {
