@@ -11,29 +11,29 @@
 				<td style="width: 100px; background-color: #bfcedd">이름</td>
 				<td style="width: 150px">${name}</td>
 				<td style="width: 100px; background-color: #bfcedd">직업</td>
-				<td style="width: 150px">채워야댐</td>
+				<td style="width: 150px">${job}</td>
 			</tr>
 			<tr>
 				<td style="background-color: #bfcedd;">생년월일</td>
-				<td>채워야댐</td>
+				<td>${birth}</td>
 				<td style="background-color: #bfcedd;">키</td>
 				<td>180cm</td>
 			</tr>
 			<tr>
 				<td style="background-color: #bfcedd;">성별</td>
-				<td>채워야댐</td>
+				<td>${gender}</td>
 				<td style="background-color: #bfcedd;">나이/몸무게</td>
-				<td>채워야댐 / 70kg</td>
+				<td>${age} / 70kg</td>
 			</tr>
 			<tr>
 				<td style="background-color: #bfcedd;">전화번호</td>
-				<td>채워야댐</td>
+				<td>${phone}</td>
 				<td style="background-color: #bfcedd;">혈액형</td>
 				<td>B</td>
 			</tr>
 			<tr>
 				<td style="background-color: #bfcedd;">주소</td>
-				<td>채워야댐</td>
+				<td>${address}</td>
 				<td style="background-color: #bfcedd;">주치의</td>
 				<td><a onclick="goDocDetail()">채워야댐</a></td>
 			</tr>

@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.hospital.web.composite.Complex;
 import com.hospital.web.domain.ContextDTO;
 import com.hospital.web.domain.PatientDTO;
+import com.hospital.web.mapper.PatientMapper;
+import com.hospital.web.service.IExist;
 import com.hospital.web.service.IPatientService;
 
 @Controller
@@ -24,6 +26,7 @@ public class HomeController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	@Autowired IPatientService patService;
 	@Autowired PatientDTO patient;
+	@Autowired PatientMapper mapper;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model, HttpSession session) {
@@ -79,10 +82,42 @@ public class HomeController {
 		logger.info("PatientController - id, pw: {}",id+","+pw);
 		patient.setPatID(id);
 		patient.setPatPass(pw);
-		patient=patService.login(patient);
-		logger.info("DB ´Ù³à¿Â °á°ú: {}",patient);
-		model.addAttribute("name","È«±æµ¿");
-		return "public:patient/patDetail";
+		IExist ex = new IExist() {
+			@Override
+			public int exist(Object o) throws Exception {
+				logger.info("--------------ID ?  {} ---------", o);
+				return mapper.exist(id);
+			}
+		};
+		int count = ex.exist(patient.getPatID());
+		logger.info("ID Exist?  {}", count);
+		String movePosition = "";
+		if(count==0) {
+			logger.info("DB RESULT: {}", "ID not exist");
+			movePosition = "public:patient/loginForm";
+		} else {
+			logger.info("DB RESULT: {}", "ID exist");
+			patient=patService.login(patient);
+			if(patient.getPatPass().equals(pw)) {
+				logger.info("DB RESULT: {}", "Success");
+				String[] getInfo = patService.getBirth(patient);
+				model.addAttribute("patient", patient);
+				model.addAttribute("name",patient.getPatName());
+				model.addAttribute("address",patient.getPatAddr());
+				model.addAttribute("email",patient.getPatEmail());
+				model.addAttribute("phone",patient.getPatPhone());
+				model.addAttribute("job",patient.getPatJob());
+				model.addAttribute("birth",getInfo[0]);
+				model.addAttribute("age",getInfo[1]);
+				model.addAttribute("gender",getInfo[2]);
+				logger.info("DB RESULT: {}",patient);
+				movePosition = "public:patient/patDetail";
+			} else {
+				logger.info("DB RESULT: {}", "Password not match");
+				movePosition = "public:patient/loginForm";
+			}
+		}
+		return movePosition;
 	}
 	
 	@RequestMapping("/docDetail/{docID}")

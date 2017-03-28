@@ -8,4 +8,6 @@ public interface IPatientMapper {
 	public Object selectById(String id) throws Exception;
 	public int update(Object member) throws Exception;
 	public int delete(Object member) throws Exception;
+	public int count();
+	public int exist(String id) throws Exception;
 }

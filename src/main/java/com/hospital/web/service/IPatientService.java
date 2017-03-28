@@ -11,5 +11,6 @@ public interface IPatientService {
 	public PatientDTO login(PatientDTO member) throws Exception;
 	public int change(PatientDTO member) throws Exception;
 	public int remove(PatientDTO member) throws Exception;
+	public int count();
 	public String[] getBirth(PatientDTO member);
 }
