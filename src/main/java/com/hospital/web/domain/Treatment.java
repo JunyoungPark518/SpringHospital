@@ -1,11 +1,10 @@
 package com.hospital.web.domain;
 
 import org.springframework.stereotype.Component;
-
 import lombok.*;
 
 @Component @Data
-public class ContextDTO {
+public class Treatment {
 	@Getter @Setter
-	private String path, js, css, img;
+	private String treatId, patId, docId, treatContents, treatDate;
 }

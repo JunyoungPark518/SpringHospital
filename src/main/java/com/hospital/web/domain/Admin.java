@@ -4,7 +4,7 @@ import org.springframework.stereotype.Component;
 import lombok.*;
 
 @Component @Data
-public class NurseDTO {
+public class Admin {
 	@Getter @Setter
-	private String nurID, nurPass, majorJob, nurName, nurGen, nurPhone, nurEmail, nurPosition;
+	private String adminID, admPass, admName, admGen, admPhone, admEmail, admPermission;
 }

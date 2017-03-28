@@ -14,11 +14,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.hospital.web.composite.Complex;
-import com.hospital.web.domain.ContextDTO;
-import com.hospital.web.domain.PatientDTO;
+import com.hospital.web.domain.Patient;
 import com.hospital.web.mapper.PatientMapper;
-import com.hospital.web.service.IExist;
-import com.hospital.web.service.IPatientService;
+import com.hospital.web.service.CRUD;
+import com.hospital.web.util.Util;
 
 /**
  * ====================================
@@ -33,8 +32,7 @@ import com.hospital.web.service.IPatientService;
 @SessionAttributes("context")
 public class HomeController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	@Autowired IPatientService patService;
-	@Autowired PatientDTO patient;
+	@Autowired Patient patient;
 	@Autowired PatientMapper mapper;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
@@ -87,35 +85,31 @@ public class HomeController {
 	@RequestMapping(value="/patLogin", method=RequestMethod.POST)
 	public String patLogin(@RequestParam("id") String id, 
 			@RequestParam("pw") String pw, Model model) throws Exception {
+		String movePosition = "";
 		logger.info("PatientController - patLogin(model) {}","POST");
 		logger.info("PatientController - id, pw: {}",id+","+pw);
 		patient.setPatID(id);
 		patient.setPatPass(pw);
-		IExist ex = new IExist() {
-			@Override
-			public int exist(Object o) throws Exception {
+		if((Integer) new CRUD.Service() {
+			@Override public Object execute(Object o) throws Exception { 
 				logger.info("--------------ID ?  {} ---------", o);
 				return mapper.exist(id);
 			}
-		};
-		int count = ex.exist(patient.getPatID());
-		logger.info("ID Exist?  {}", count);
-		String movePosition = "";
-		if(count==0) {
+		}.execute(patient.getPatID())==0) {
 			logger.info("DB RESULT: {}", "ID not exist");
 			movePosition = "public:patient/loginForm";
 		} else {
 			logger.info("DB RESULT: {}", "ID exist");
-			patient=patService.login(patient);
+			patient = (Patient) new CRUD.Service() { 
+				@Override 
+				public Object execute(Object o) throws Exception { 
+					return (Patient) mapper.selectById(id);
+					}
+				}.execute(patient);
 			if(patient.getPatPass().equals(pw)) {
 				logger.info("DB RESULT: {}", "Success");
-				String[] getInfo = patService.getBirth(patient);
+				String[] getInfo = Util.defineInfo(patient);
 				model.addAttribute("patient", patient);
-				model.addAttribute("name",patient.getPatName());
-				model.addAttribute("address",patient.getPatAddr());
-				model.addAttribute("email",patient.getPatEmail());
-				model.addAttribute("phone",patient.getPatPhone());
-				model.addAttribute("job",patient.getPatJob());
 				model.addAttribute("birth",getInfo[0]);
 				model.addAttribute("age",getInfo[1]);
 				model.addAttribute("gender",getInfo[2]);

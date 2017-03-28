@@ -1,10 +1,11 @@
 package com.hospital.web.domain;
 
 import org.springframework.stereotype.Component;
+
 import lombok.*;
 
 @Component @Data
-public class ChartDTO {
+public class Doctor {
 	@Getter @Setter
-	private String chartID, treatID, docID, nurID, patID, chartContent;
+	private String docID, docPass, majorTreat, docName, docGen, docPhone, docEmail, docPosition;
 }
