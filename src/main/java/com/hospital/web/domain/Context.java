@@ -1,4 +1,4 @@
-package com.hospital.web.composite;
+package com.hospital.web.domain;
 
 import org.springframework.stereotype.Component;
 

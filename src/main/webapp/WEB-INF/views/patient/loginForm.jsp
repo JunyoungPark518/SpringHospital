@@ -18,12 +18,19 @@
 						</tr>
 					</table>
 				<input type="hidden" name="page" value="main"/>
-				<input type="hidden" name="action" value="login"/>
 				</form>
 				</div>
 				</td>
 				<td style="width: 500px; text-align: right;">
 					<div class="tooltip"><a href="#">병원소개</a><span class="tooltiptext">구현되지 않은 기능입니다.</span></div><br/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="radio" name="permission" value="patient" checked> 고객
+					<input type="radio" name="permission" value="doctor"> 의사
+					<input type="radio" name="permission" value="nurse"> 간호사
+					<input type="radio" name="permission" value="admin"> 관리자
 				</td>
 			</tr>
 			<tr>
@@ -34,6 +41,7 @@
 				<td></td>
 			</tr>
 		</table>
+		  
 	</div>
 	<div style="margin-top: 50px;">
 		<table class="index_menutb">
@@ -151,18 +159,20 @@
 <jsp:include page="../common/footer.jsp"/>
 <script>
 $(function() {
-	var loginForm = $('#loginForm');
-	var tab = loginForm.find('table');
+	var $loginForm = $('#loginForm');
+	var tab = $loginForm.find('table');
 	$('#loginForm input[type=submit]').click(function() {
-		loginForm.attr('action','patLogin');
-		loginForm.attr('method','post');
+		var permission = $('#container').find(':radio[name="permission"]:checked').val();
+		$loginForm.attr('action',permission+'/login');
+		$loginForm.attr('method','post');
+		alert('Permission:'+permission);
 		var idVal = tab.find('input[name=id]').val();
 		var pwVal = tab.find('input[name=pw]').val();
 		if(idVal=='' || pwVal=='') {
 			alert('아이디 및 비밀번호를 입력해주세요.');
 		} else {
 			alert('로그인하기 위해 입력한 ID 값: '+idVal + '\n비밀번호:' + pwVal);
-			loginForm.submit();
+			$loginForm.submit();
 		}
 	});
 /* 	loginForm.find('input[type=submit]').submit(function(){

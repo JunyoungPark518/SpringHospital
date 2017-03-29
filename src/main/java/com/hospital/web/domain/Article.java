@@ -5,7 +5,6 @@ import lombok.*;
 
 @Component @Data
 public class Article {
-	@Getter @Setter
 	private String seq, id, title, content, regdate, readCount;
 	@Override
 	public String toString() {

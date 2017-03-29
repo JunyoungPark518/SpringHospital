@@ -5,6 +5,5 @@ import lombok.*;
 
 @Component @Data
 public class Chart {
-	@Getter @Setter
 	private String chartID, treatID, docID, nurID, patID, chartContent;
 }

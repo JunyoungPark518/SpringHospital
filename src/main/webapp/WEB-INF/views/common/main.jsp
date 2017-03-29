@@ -5,9 +5,7 @@
 			<tr>
 				<td id="menu">
 					<a>고객 회원가입</a>&nbsp; | &nbsp;
-					<a>고객 로그인</a>&nbsp; | &nbsp;
-					<a>스탭 로그인</a>&nbsp; | &nbsp;
-					<a>관리자 아이디로 로그인</a>&nbsp; | &nbsp;
+					<a>로그인</a>&nbsp; | &nbsp;
 					<a>게시판으로 이동</a>&nbsp; | &nbsp;
 					<a>ID/PW 찾기</a>
 				</td>
@@ -91,19 +89,13 @@ $(function() {
 		goPage('patRegister'); 
 	});
 	menu.find('a:nth-child(2)').click(function() {
-		goPage('patLoginForm');
+		goPage('loginForm');
 	});
 	menu.find('a:nth-child(3)').click(function() {
-		goPage('docLogin');
-	});
-	menu.find('a:nth-child(4)').click(function() {
-		goPage('adminLogin');
-	});
-	menu.find('a:nth-child(5)').click(function() {
 		location.href = 'board?action=list&page=articleList&pageNo=1';
 		// goPage('board','list','articleList')
 	});
-	menu.find('a:nth-child(6)').click(function() {
+	menu.find('a:nth-child(4)').click(function() {
 		goPage('util', 'move', 'findId');
 	});
 });

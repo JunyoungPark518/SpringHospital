@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.hospital.web.composite.Complex;
+import com.hospital.web.domain.Info;
 import com.hospital.web.domain.Patient;
-import com.hospital.web.mapper.PatientMapper;
+import com.hospital.web.domain.Person;
+import com.hospital.web.mapper.Mapper;
 import com.hospital.web.service.CRUD;
 import com.hospital.web.util.Util;
 
@@ -32,8 +34,7 @@ import com.hospital.web.util.Util;
 @SessionAttributes("context")
 public class HomeController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	@Autowired Patient patient;
-	@Autowired PatientMapper mapper;
+	@Autowired Mapper mapper;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model, HttpSession session) {
@@ -76,53 +77,6 @@ public class HomeController {
 		return "public:patient/treatmentList";
 	}
 
-	@RequestMapping("/patLoginForm")
-	public String patLogin() {
-		logger.info("PatientController - patLogin() {}","ENTER");
-		return "public:patient/loginForm";
-	}
-	
-	@RequestMapping(value="/patLogin", method=RequestMethod.POST)
-	public String patLogin(@RequestParam("id") String id, 
-			@RequestParam("pw") String pw, Model model) throws Exception {
-		String movePosition = "";
-		logger.info("PatientController - patLogin(model) {}","POST");
-		logger.info("PatientController - id, pw: {}",id+","+pw);
-		patient.setPatID(id);
-		patient.setPatPass(pw);
-		if((Integer) new CRUD.Service() {
-			@Override public Object execute(Object o) throws Exception { 
-				logger.info("--------------ID ?  {} ---------", o);
-				return mapper.exist(id);
-			}
-		}.execute(patient.getPatID())==0) {
-			logger.info("DB RESULT: {}", "ID not exist");
-			movePosition = "public:patient/loginForm";
-		} else {
-			logger.info("DB RESULT: {}", "ID exist");
-			patient = (Patient) new CRUD.Service() { 
-				@Override 
-				public Object execute(Object o) throws Exception { 
-					return (Patient) mapper.selectById(id);
-					}
-				}.execute(patient);
-			if(patient.getPatPass().equals(pw)) {
-				logger.info("DB RESULT: {}", "Success");
-				String[] getInfo = Util.defineInfo(patient);
-				model.addAttribute("patient", patient);
-				model.addAttribute("birth",getInfo[0]);
-				model.addAttribute("age",getInfo[1]);
-				model.addAttribute("gender",getInfo[2]);
-				logger.info("DB RESULT: {}",patient);
-				movePosition = "public:patient/patDetail";
-			} else {
-				logger.info("DB RESULT: {}", "Password not match");
-				movePosition = "public:patient/loginForm";
-			}
-		}
-		return movePosition;
-	}
-	
 	@RequestMapping("/docDetail/{docID}")
 	public String goDocDetail(@PathVariable String docID, Model model) {
 		logger.info("PatientController - goDocDetail() {}","ENTER");

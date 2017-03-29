@@ -9,9 +9,9 @@
 			<tr>
 				<td style="width: 60px" rowspan="5"><span style="font-size: 20px">내<br />정<br />보</span></td>
 				<td style="width: 100px; background-color: #bfcedd">이름</td>
-				<td style="width: 150px">${patient.patName}</td>
+				<td style="width: 150px">${patient.name}</td>
 				<td style="width: 100px; background-color: #bfcedd">직업</td>
-				<td style="width: 150px">${patient.patJob}</td>
+				<td style="width: 150px">${patient.job}</td>
 			</tr>
 			<tr>
 				<td style="background-color: #bfcedd;">생년월일</td>
@@ -27,13 +27,13 @@
 			</tr>
 			<tr>
 				<td style="background-color: #bfcedd;">전화번호</td>
-				<td>${patient.patPhone}</td>
+				<td>${patient.phone}</td>
 				<td style="background-color: #bfcedd;">혈액형</td>
 				<td>B</td>
 			</tr>
 			<tr>
 				<td style="background-color: #bfcedd;">주소</td>
-				<td>${patient.patAddr}</td>
+				<td>${patient.addr}</td>
 				<td style="background-color: #bfcedd;">주치의</td>
 				<td><a onclick="goDocDetail()">채워야댐</a></td>
 			</tr>

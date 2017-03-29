@@ -1,10 +1,14 @@
 package com.hospital.web.domain;
 
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Lazy;
 import lombok.*;
 
-@Component @Data
-public class Admin {
-	@Getter @Setter
-	private String adminID, admPass, admName, admGen, admPhone, admEmail, admPermission;
+@Data @Lazy @Qualifier("admin")
+public class Admin extends Info {
+	private String permission;
+	@Override
+	public String getGroup() {
+		return "Admin";
+	}
 }
