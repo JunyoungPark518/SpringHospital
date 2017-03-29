@@ -6,7 +6,7 @@
 	<div>
 		<table id="articleList">
 			<tr>
-				<th>총 게시글 수: ${requestScope.count} 건</th>
+				<th>총 게시글 수: <%-- ${requestScope.count} --%> 건</th>
 			</tr>
 			<tr>
 				<th><span>No</span></th>
@@ -15,7 +15,7 @@
 				<th><span>작성일</span></th>
 				<th><span>조회수</span></th>
 			</tr>
-			<c:forEach var="article" items="${requestScope.list}" >
+			<%-- <c:forEach var="article" items="${requestScope.list}" >
 				<tr>
 					<td><span>${article.seq}</span></td>
 					<td><span><a id="link" href="${context.path}/board.do?action=detail&page=article&seq=${article.seq}">${article.title}</a></span></td>
@@ -23,7 +23,7 @@
 					<td><span>${article.regdate}</span></td>
 					<td><span>${article.readCount}</span></td>
 				</tr>
-			</c:forEach>
+			</c:forEach> --%>
 			<%-- <tr>
 				<td colspan="5">
 				<c:forEach var="pageNo" items="${requestScope.block}">
@@ -33,7 +33,7 @@
 			</tr> --%>
 		</table>
 		<div id="pagination">
-		<table id="tab_page">
+		<%-- <table id="tab_page">
 			<tr>
 			<td>
 			<c:if test="${requestScope.prevBlock gt 0}">
@@ -56,7 +56,7 @@
 			</c:if>
 			</td>
 			</tr>
-		</table>
+		</table> --%>
 		</div>
 	</div>
 	<div>

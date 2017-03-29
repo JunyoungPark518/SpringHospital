@@ -37,23 +37,115 @@
 		<result property="position" column="nur_position"/>
 	</resultMap>
 	
+	<insert id="insertPatient">
+		INSERT INTO ${group}(pat_id, nur_id, doc_id, pat_pass, pat_name, pat_gen, pat_jumin, pat_addr, pat_phone, pat_email, pat_job) 
+		             VALUES (#{id},  #{nurID},  #{docID},  #{pass},  #{name},  #{gen},  #{jumin},  #{addr},  #{phone},  #{email},  #{job})
+	</insert>
+	<insert id="insertDoctor">
+		INSERT INTO ${group}(doc_id, doc_pass, major_treat, doc_name, doc_gen, doc_phone, doc_email, doc_position) 
+		             VALUES (#{id},  #{pass},  #{major},  #{name},  #{gen},  #{phone},  #{email},  #{position})
+	</insert>
+	<insert id="insertNurse">
+		INSERT INTO ${group}(nur_id, nur_pass, major_job, nur_name, nur_gen, nur_phone, nur_email, nur_position) 
+		             VALUES (#{id},  #{pass},  #{major},  #{name},  #{gen},  #{phone},  #{email},  #{position})
+	</insert>
+	
+	<!-- <select id="find" resultMap="hashMap" parameterType="hashMap">
+		SELECT * FROM ${group} WHERE ${key} = #{value}
+	</select> 
+	나중에 이 방식으로 사용 -->
 	<select id="findPatient" resultMap="Patient" parameterType="hashMap">
-		SELECT * FROM ${group} WHERE ${key} = #{id}
+		SELECT * FROM ${group} WHERE ${key} = #{value}
 	</select>
 	<select id="findDoctor" resultMap="Doctor" parameterType="hashMap">
-		SELECT * FROM ${group} WHERE ${key} = #{id}
+		SELECT * FROM ${group} WHERE ${key} = #{value}
 	</select>
 	<select id="findNurse" resultMap="Nurse" parameterType="hashMap">
-		SELECT * FROM ${group} WHERE ${key} = #{id}
+		SELECT * FROM ${group} WHERE ${key} = #{value}
 	</select>
-	
+	<select id="findPatients" resultMap="Patient" parameterType="hashMap">
+		SELECT * FROM ${group} 
+		WHERE
+		<if test="name != null">
+			pat_name like #{name}
+		</if>
+		<if test="gen != null">
+			pat_gen = #{gen}
+		</if>
+	</select>
+	<select id="findDoctors" resultMap="Doctor" parameterType="hashMap">
+		SELECT * FROM ${group} 
+		WHERE
+		<if test="major != null">
+			major_treat like #{major}
+		</if>
+		<if test="gen != null">
+			doc_gen = #{gen}
+		</if>
+		<if test="position != null">
+			doc_position = #{position}
+		</if>
+	</select>
+	<select id="findNurses" resultMap="Nurse" parameterType="hashMap">
+		SELECT * FROM ${group} 
+		WHERE
+		<if test="major != null">
+			major_job like #{major}
+		</if>
+		<if test="gen != null">
+			nur_gen = #{gen}
+		</if>
+		<if test="position != null">
+			nur_position = #{position}
+		</if>
+	</select>
+	<update id="updatePatient">
+		UPDATE ${group}
+		<set>
+			<if test="nurID != null">nur_id=#{nurID},</if>
+			<if test="docID != null">doc_id=#{docID},</if>
+			<if test="pass != null">pat_pass=#{pass},</if>
+			<if test="name != null">pat_name=#{name},</if>
+			<if test="addr != null">pat_addr=#{addr},</if>
+			<if test="phone != null">pat_phone=#{phone},</if>
+			<if test="email != null">pat_email=#{email},</if>
+			<if test="job != null">pat_job=#{job}</if>
+		</set>
+		WHERE pat_id = #{id}
+	</update>
+	<update id="updateDoctor">
+		UPDATE ${group}
+		<set>
+			<if test="pass != null">doc_pass=#{pass},</if>
+			<if test="major != null">major_treat=#{major},</if>
+			<if test="name != null">doc_name=#{name},</if>
+			<if test="gen != null">doc_gen=#{gen},</if>
+			<if test="phone != null">doc_phone=#{phone},</if>
+			<if test="email != null">doc_email=#{email},</if>
+			<if test="position != null">doc_position=#{position}</if>
+		</set>
+		WHERE doc_id=#{id}
+	</update>
+	<update id="updateNurse">
+		UPDATE ${group}
+		<set>
+			<if test="pass != null">nur_pass=#{pass},</if>
+			<if test="major != null">major_job=#{major},</if>
+			<if test="name != null">nur_name=#{name},</if>
+			<if test="gen != null">nur_gen=#{gen},</if>
+			<if test="phone != null">nur_phone=#{phone},</if>
+			<if test="email != null">nur_email=#{email},</if>
+			<if test="position != null">nur_position=#{position}</if>
+		</set>
+		WHERE nur_id=#{id}
+	</update>
 	<select id="count" resultType="int">
 		SELECT COUNT(*) FROM ${group}
 	</select>
 	<select id="exist" resultType="int" parameterType="hashMap">
 		SELECT COUNT(*) FROM ${group} WHERE ${key} = #{value}
 	</select>
-	<select id="find" resultType="com.hospital.web.domain.Patient">
+	<select id="find1" resultType="com.hospital.web.domain.Patient">
 		SELECT
 		pat_id AS patId,
 		nur_id AS nurId,
@@ -172,16 +264,6 @@
 			</if>
 		</where>
 	</select>
-	<update id="updateAuthorIfNecessary">
-		update Patient
-		<set>
-			<if test="username != null">username=#{username},</if>
-			<if test="password != null">password=#{password},</if>
-			<if test="email != null">email=#{email},</if>
-			<if test="bio != null">bio=#{bio}</if>
-		</set>
-		where id=#{id}
-	</update>
 	<select id="find6" resultType="com.hospital.web.domain.Patient">
 		SELECT
 		pat_id AS patId,
@@ -203,15 +285,4 @@
 			#{item}
 		</foreach>
 	</select>
-	<insert id="insert">
-		<selectKey keyProperty="id" resultType="int" order="BEFORE">
-			<if test="_databaseId == 'oracle'">
-				select seq_users.nextval from dual
-			</if>
-			<if test="_databaseId == 'db2'">
-				select nextval for seq_users from sysibm.sysdummy1"
-			</if>
-		</selectKey>
-		INSERT INTO Patient VALUES (#{id}, #{name})
-	</insert>
 </mapper>

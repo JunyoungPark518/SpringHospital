@@ -90,8 +90,8 @@ public class HomeController {
 		return "public:board/articleList";
 	}
 	
-	@RequestMapping(value="/board")
-	public String goBoard() {
+	@RequestMapping(value="/board/{num}")
+	public String goBoard(@PathVariable String num, Model model) {
 		logger.info("PatientController - patLogin() {}","ENTER");
 		return "public:board/articleList";
 	}

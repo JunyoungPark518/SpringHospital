@@ -92,8 +92,7 @@ $(function() {
 		goPage('loginForm');
 	});
 	menu.find('a:nth-child(3)').click(function() {
-		location.href = 'board?action=list&page=articleList&pageNo=1';
-		// goPage('board','list','articleList')
+		goPage('board/1');
 	});
 	menu.find('a:nth-child(4)').click(function() {
 		goPage('util', 'move', 'findId');
