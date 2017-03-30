@@ -86,7 +86,7 @@ $(function() {
 	/* Create object variable */
 	var menu = $('#menu');
 	menu.find('a:nth-child(1)').click(function() {
-		goPage('patRegister'); 
+		goPage('register'); 
 	});
 	menu.find('a:nth-child(2)').click(function() {
 		goPage('loginForm');

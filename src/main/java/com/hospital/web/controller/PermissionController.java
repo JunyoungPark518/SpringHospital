@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.hospital.web.domain.Info;
 import com.hospital.web.domain.Patient;
 import com.hospital.web.domain.Person;
-import com.hospital.web.domain.Schema;
+import com.hospital.web.domain.Enums;
 import com.hospital.web.mapper.Mapper;
 import com.hospital.web.service.CRUD;
 import com.hospital.web.util.Util;
@@ -38,7 +38,7 @@ public class PermissionController {
 	
 	@RequestMapping(value="/{permission}/login", method=RequestMethod.POST)
 	public String patLogin(@RequestParam("id") String id, 
-			@RequestParam("pw") String pw, @PathVariable String permission, HttpSession session,Model model) throws Exception {
+			@RequestParam("pw") String pw, @PathVariable String permission, HttpSession session, Model model) throws Exception {
 		String movePosition = "";
 		logger.info("Permission - patLogin(model) PathVarialbe: {}",permission);
 		logger.info("Permission - id, pw: {}",id+","+pw);
@@ -50,7 +50,7 @@ public class PermissionController {
 			patient.setPass(pw);
 			Map<String, Object> map = new HashMap<>();
 			map.put("group", patient.getGroup());
-			map.put("key", Schema.PATIENT.getName());
+			map.put("key", Enums.PATIENT.val());
 			map.put("value", id);
 			if((Integer) new CRUD.Service() {
 				@Override public Object execute(Object o) throws Exception { 
@@ -72,7 +72,7 @@ public class PermissionController {
 					logger.info("DB RESULT: {}", "Success");
 					session.setAttribute("permission", patient);
 					String[] getInfo = Util.defineInfo(patient);
-					model.addAttribute("patient", patient);
+					model.addAttribute("user", patient);
 					model.addAttribute("birth",getInfo[0]);
 					model.addAttribute("age",getInfo[1]);
 					model.addAttribute("gender",getInfo[2]);

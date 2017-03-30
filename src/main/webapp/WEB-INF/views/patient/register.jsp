@@ -165,9 +165,10 @@
 			<tr style="font-size: 12px;">
 				<td class="reg_borderR"></td>
 				<td style="border: none;">
-					<input type="checkbox" name="job" value="doctor" />의사
-					<input type="checkbox" name="job" value="nurse" />간호사
-					<input type="checkbox" name="job" value="admin" />관리자
+					<input type="radio" name="type" value="patient" checked/>환자
+					<input type="radio" name="type" value="doctor" />의사
+					<input type="radio" name="type" value="nurse" />간호사
+					<input type="radio" name="type" value="admin" />관리자
 					</td>
 			</tr>
 			<tr>
@@ -231,7 +232,8 @@ $(function() {
 	$reg.find('input[type=submit]').addClass('reg_btnCont');
 	
 	$('input[type=submit]').click(function() {
-		$reg.attr('action', 'patRegister2');
+		var type = $('#container').find(':radio[name="type"]:checked').val();
+		$reg.attr('action', '${context.path}/register/'+type);
 		$reg.attr('method', 'post');
 		$reg.submit();
 	});

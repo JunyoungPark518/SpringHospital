@@ -36,7 +36,7 @@
 		<result property="email" column="nur_email"/>
 		<result property="position" column="nur_position"/>
 	</resultMap>
-	
+	<!-- C(insert) -->
 	<insert id="insertPatient">
 		INSERT INTO ${group}(pat_id, nur_id, doc_id, pat_pass, pat_name, pat_gen, pat_jumin, pat_addr, pat_phone, pat_email, pat_job) 
 		             VALUES (#{id},  #{nurID},  #{docID},  #{pass},  #{name},  #{gen},  #{jumin},  #{addr},  #{phone},  #{email},  #{job})
@@ -49,7 +49,7 @@
 		INSERT INTO ${group}(nur_id, nur_pass, major_job, nur_name, nur_gen, nur_phone, nur_email, nur_position) 
 		             VALUES (#{id},  #{pass},  #{major},  #{name},  #{gen},  #{phone},  #{email},  #{position})
 	</insert>
-	
+	<!-- R(select) -->
 	<!-- <select id="find" resultMap="hashMap" parameterType="hashMap">
 		SELECT * FROM ${group} WHERE ${key} = #{value}
 	</select> 
@@ -99,6 +99,7 @@
 			nur_position = #{position}
 		</if>
 	</select>
+	<!-- U(update) -->
 	<update id="updatePatient">
 		UPDATE ${group}
 		<set>
@@ -139,6 +140,11 @@
 		</set>
 		WHERE nur_id=#{id}
 	</update>
+	<!-- D(delete) -->
+	<delete id="delete" parameterType="hashMap">
+		DELETE FROM ${group} WHERE ${key} = #{value}
+	</delete>
+	
 	<select id="count" resultType="int">
 		SELECT COUNT(*) FROM ${group}
 	</select>

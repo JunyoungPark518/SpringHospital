@@ -46,19 +46,7 @@ public class HomeController {
 	public String home() {
 		return "public:common/main";
 	}
-	
-	@RequestMapping("/patRegister")
-	public String patRegister() {
-		logger.info("PatientController - patRegister() {}","ENTER");
-		return "public:patient/register";
-	}
-	
-	@RequestMapping("/patRegister2")
-	public String patRegister2() {
-		logger.info("PatientController - patRegister2() {}","ENTER");
-		return "public:patient/register2";
-	}
-	
+		
 	@RequestMapping("/docLogin")
 	public String docLogin() {
 		logger.info("PatientController - docLogin() {}","ENTER");
@@ -77,19 +65,6 @@ public class HomeController {
 		return "public:patient/treatmentList";
 	}
 
-	@RequestMapping("/docDetail/{docID}")
-	public String goDocDetail(@PathVariable String docID, Model model) {
-		logger.info("PatientController - goDocDetail() {}","ENTER");
-		logger.info("PatientController - docID={}",docID);
-		return "public:patient/docDetail";
-	}
-	
-	@RequestMapping("")
-	public String goPatDoctorInfo() {
-		logger.info("PatientController - patLogin() {}","ENTER");
-		return "public:board/articleList";
-	}
-	
 	@RequestMapping(value="/board/{num}")
 	public String goBoard(@PathVariable String num, Model model) {
 		logger.info("PatientController - patLogin() {}","ENTER");

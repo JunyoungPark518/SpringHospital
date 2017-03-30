@@ -11,9 +11,9 @@ import com.hospital.web.domain.Patient;
 
 @Repository
 public interface Mapper {
-	public int insertPatient(Patient person) throws Exception;
-	public int insertDoctor(Doctor person) throws Exception;
-	public int insertNurse(Nurse person) throws Exception;
+	public int insertPatient(Object person) throws Exception;
+	public int insertDoctor(Object person) throws Exception;
+	public int insertNurse(Object person) throws Exception;
 	public Patient findPatient(Map<?,?> person) throws Exception;
 	public Doctor findDoctor(Map<?,?> person) throws Exception;
 	public Nurse findNurse(Map<?,?> person) throws Exception;
