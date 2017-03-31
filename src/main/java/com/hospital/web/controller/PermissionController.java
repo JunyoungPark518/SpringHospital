@@ -21,7 +21,7 @@ import com.hospital.web.domain.Patient;
 import com.hospital.web.domain.Person;
 import com.hospital.web.domain.Enums;
 import com.hospital.web.mapper.Mapper;
-import com.hospital.web.service.CRUD;
+import com.hospital.web.service.ReadService;
 import com.hospital.web.util.Util;
 
 @Controller
@@ -52,22 +52,14 @@ public class PermissionController {
 			map.put("group", patient.getGroup());
 			map.put("key", Enums.PATIENT.val());
 			map.put("value", id);
-			if((Integer) new CRUD.Service() {
-				@Override public Object execute(Object o) throws Exception { 
-					logger.info("--------------ID ?  {} ---------", o);
-					return mapper.exist(map);
-				}
-			}.execute(patient.getId())==0) {
+			ReadService rs = (o) -> mapper.exist(o);
+			if((Integer) rs.execute(map)==0) {
 				logger.info("DB RESULT: {}", "ID not exist");
 				movePosition = "public:patient/loginForm";
 			} else {
 				logger.info("DB RESULT: {}", "ID exist");
-					patient = (Patient) new CRUD.Service() { 
-						@Override 
-						public Object execute(Object o) throws Exception { 
-							return mapper.findPatient(map);
-						}}.execute(patient);
-						
+				rs = (o) -> mapper.findPatient(o);
+				patient = (Patient) rs.execute(map);
 				if(patient.getPass().equals(pw)) {
 					logger.info("DB RESULT: {}", "Success");
 					session.setAttribute("permission", patient);

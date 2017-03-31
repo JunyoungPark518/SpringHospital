@@ -23,9 +23,7 @@ public interface Mapper {
 	public int updatePatient(Patient person) throws Exception;
 	public int updateDoctor(Doctor person) throws Exception;
 	public int updateNurse(Nurse person) throws Exception;
-	public int deletePatient(Patient person) throws Exception;
-	public int deleteDoctor(Doctor person) throws Exception;
-	public int deleteNurse(Nurse person) throws Exception;
+	public int delete(Patient person) throws Exception;
 	public int count();
 	public int exist(Map<?,?> person) throws Exception;
 }

@@ -18,7 +18,6 @@ import com.hospital.web.domain.Info;
 import com.hospital.web.domain.Patient;
 import com.hospital.web.domain.Person;
 import com.hospital.web.mapper.Mapper;
-import com.hospital.web.service.CRUD;
 import com.hospital.web.util.Util;
 
 /**
