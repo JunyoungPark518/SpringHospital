@@ -13,21 +13,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.hospital.web.domain.Admin;
 import com.hospital.web.domain.Command;
-import com.hospital.web.domain.Doctor;
-import com.hospital.web.domain.Info;
-import com.hospital.web.domain.Nurse;
-import com.hospital.web.domain.Patient;
 import com.hospital.web.domain.Person;
 import com.hospital.web.mapper.Mapper;
-import com.hospital.web.service.CRUD;
 
 @Controller
 @SessionAttributes("person")
 public class PersonController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	Command command;
 	@Autowired Mapper mapper;
 	
 	@RequestMapping("/docDetail/{docID}")
@@ -45,7 +38,7 @@ public class PersonController {
 	}
 	
 	@RequestMapping(value="/register/{type}", method=RequestMethod.POST)
-	public String register(@PathVariable String type, @RequestBody Map<String, Object> map) throws Exception {
+	public String register(@PathVariable String type, @RequestBody Map<String, Object> map, Command command) throws Exception {
 		logger.info("PersonController - register2() {}","ENTER");
 		Person<?> person = command.process(map).getPersonInfo();
 		if(type.equals("")) { type = "patient";}
@@ -67,3 +60,5 @@ public class PersonController {
 		return (result==1) ? "public:patient/register2" : "redirect:/{" + type + "}/register";
 	}
 }
+
+
