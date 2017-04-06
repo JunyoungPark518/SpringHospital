@@ -10,15 +10,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.hospital.web.composite.Complex;
-import com.hospital.web.domain.Info;
-import com.hospital.web.domain.Patient;
-import com.hospital.web.domain.Person;
 import com.hospital.web.mapper.Mapper;
-import com.hospital.web.util.Util;
 
 /**
  * ====================================
@@ -36,8 +31,8 @@ public class HomeController {
 	@Autowired Mapper mapper;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Model model, HttpSession session) {
-		session.setAttribute("context", Complex.ContextFactory.create());
+	public String home(Model model) {
+		model.addAttribute("context",Complex.ContextFactory.create());
 		return "index";
 	}
 	
