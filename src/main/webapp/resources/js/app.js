@@ -125,15 +125,10 @@ app.algorithm = (function(){
 		return sum;
 	};
 		/* Algorithm DDL 배열 function */
-	var selectSort = function(input, cycle) {
-		var arr = [];
+	var selectSort = function(arr, cycle) {
 		var temp = 0;
-		var result = "";
-		for(i=0; i<6; i++) {
-			arr[i] = input.split(",")[i]*1;
-		}
 		for(i=0; i<cycle; i++) {
-			for(j=i+1; j<arr.length; j++) {
+			for(j=i+1; j<6; j++) {
 				if(arr[i]>arr[j]) {
 					temp = arr[i];
 					arr[i] = arr[j];
@@ -141,20 +136,12 @@ app.algorithm = (function(){
 				}
 			}
 		}
-		for(i=0; i<=arr.length; i++) {
-			result += arr[i] + " ";
-		}
-		return result;
+		return arr;
 	};
-	var bubbleSort = function(input, cycle) {
-		var arr = [];
+	var bubbleSort = function(arr, cycle) {
 		var temp = 0;
-		var result = "";
-		for(i=0; i<6; i++) {
-			arr[i] = input.split(",")[i]*1;
-		}
 		for(i=0; i<cycle; i++) {
-			for(j=0;j<arr.length-1;j++){
+			for(j=0;j<5;j++){
 				if(arr[i]>arr[i+1]){
 					temp = arr[i];
 					arr[i] = arr[i+1];
@@ -162,20 +149,12 @@ app.algorithm = (function(){
 				}
 			}
 		}
-		for(i=0; i<=arr.length; i++) {
-			result += arr[i] + " ";
-		}
-		return result;
+		return arr;
 	};
-	var insertSort = function(input, cycle) {
-		var arr = [];
+	var insertSort = function(arr, cycle) {
 		var temp = 0;
-		var result = "";
-		for(i=0; i<6; i++) {
-			arr[i] = input.split(",")[i]*1;
-		}
-		for (i = 1; i < 10; i++) {
-			for (j = 0; j <= i; j++) {
+		for (i=1; i<cycle; i++) {
+			for (j=0; j<=i; j++) {
 				if (arr[i] < arr[j]) {
 					temp = arr[i];
 					arr[i] = arr[j];
@@ -183,11 +162,38 @@ app.algorithm = (function(){
 				}
 			}
 		}
-		for(i=0; i<=arr.length; i++) {
-			result += arr[i] + " ";
-		}
-		return result;
+		return arr;
 	};
+	var ranking = function(arr){
+		var rarr = [1, 1, 1, 1, 1, 1];
+		for(i=0;i<6;i++){
+			for(k=0;k<6;k++){
+				rarr[k] += (arr[i]>arr[k]) ? 1 : 0;
+			}
+		}
+		return rarr;
+	};
+	var binSearch = function(){};
+	var merge = function(){};
+	var stack = function(){};
+	var randomGen = function(){
+		var arr=[];
+		for(i=0;i<6;i++){
+			arr.push(Math.floor(Math.random()*45)+1);
+		}
+		return arr;
+	};
+	var horizontalTable = function(arr){
+		var table='';
+		table += '<table style="width:210px; height:280px; border-collapse: collapse; border: 1px solid black; margin: 0 auto"><tbody><tr><td>';
+		$.each(arr, function(i,j){
+			table += '<td>' + arr[i] + '</td>';
+		});
+		table += '</tr></tbody></table>';
+		$('#table td').css('border', '1px solid black');
+		return table;
+	};
+		/* Algorithm Matrix function */
 	var matrix1 = function(){
 		var arr = [];
 		for(i=0; i<5; i++){
@@ -217,9 +223,18 @@ app.algorithm = (function(){
 		$('#series').on('click', function() {
 			wrapper.empty();
 			wrapper.append(app.algorithm.TABLE);
+			var arr = [{id:'aSeries', txt:'등차수열'},
+				{id:'swSeries', txt:'스위치수열'},
+				{id:'dSeries', txt:'계차수열'},
+				{id:'factorial', txt:'팩토리얼'},
+				{id:'fibonacci', txt:'피보나치'}];
+			var str = '';
+			$.each(arr, function(i,j){
+				str+='<li id="' + j.id + '" class="list-group-item"><a href="#">' + j.txt + '</a></li>';
+			});
 			var tableLeft = $('#tableLeft');
 			tableLeft.empty();
-			tableLeft.append(app.algorithm.SERIES_MENU);
+			tableLeft.html(str);
 			var tableRight = $('#tableRight');	
 			$('#tableRight').empty();
 		    app.component.inputText('in1').attr('placeholder', '시작값,끝값,공차 입력').appendTo($('#tableRight'));
@@ -285,64 +300,84 @@ app.algorithm = (function(){
 		$('#arr').on('click', function() {
 			wrapper.empty();
 			wrapper.append(app.algorithm.TABLE);
+			var arr = [{id: 'selectSort', txt:'선택정렬'},
+				{id: 'bubbleSort', txt:'버블정렬'},
+				{id: 'insertSort', txt:'삽입정렬'},
+				{id: 'ranking', txt:'석차구하기'},
+				{id: 'binSearch', txt:'이분검색'},
+				{id: 'merge', txt:'병합'},
+				{id: 'stack', txt:'스택'}];
+			var str = '';
+			$.each(arr, function(i,j){
+				str+='<li id="' + j.id + '" class="list-group-item"><a href="#">' + j.txt + '</a></li>';
+			});
 			var tableLeft = $('#tableLeft');
 			tableLeft.empty();
-			tableLeft.append(app.algorithm.ARR_MENU);
+			tableLeft.html(str);
 			var tableRight = $('#tableRight');	
 			tableRight.empty();
-			app.component.inputText('in1').attr('placeholder','선택 정렬(,로 구분)').appendTo(tableRight);
-			app.component.inputText('in2').attr('placeholder','회전수').appendTo(tableRight);
-			app.component.aButton('aButton','btn-primary').html('선택 정렬').appendTo(tableRight).on('click', function() {
-				var in1 = $('#in1').val(), in2 = $('#in2').val();
-				console.log('in1:  '+in1+'    in2:  '+in2)
-				tableRight.empty();
-				console.log('결과<br> ' + app.algorithm.selectSort(in1, in2));
-				app.component.divAlert('alert-danger').html('결과<br> ' + app.algorithm.selectSort(in1, in2)).appendTo(tableRight);
+			$('#selectSort').on('click', function(){
+				var arr = randomGen();
+				tableRight.html('<span><h2 style="color: red; ">기준</h2></span>'+app.component.horList(arr, 'default'));
+				for(i=1;i<6;i++) {
+					tableRight.append('<br/>'+i+'회전');
+					tableRight.append(app.component.horList(app.algorithm.selectSort(arr, i), 'default'));
+				}
 			});
-			$('#selectSort').on('click', function() {
-				var tableRight = $('#tableRight');	
-				tableRight.empty();
-				app.component.inputText('in1').attr('placeholder','선택 정렬(,로 구분)').appendTo(tableRight);
-				app.component.inputText('in2').attr('placeholder','회전수').appendTo(tableRight);
-				app.component.aButton('aButton','btn-primary').html('선택 정렬').appendTo(tableRight).on('click', function() {
-					var in1 = $('#in1').val(), in2 = $('#in2').val();
-					tableRight.empty();
-					app.component.divAlert('alert-danger').html('결과<br> ' + app.algorithm.selectSort(in1, in2)).appendTo(tableRight);
-				});
+			$('#bubbleSort').on('click', function(){
+				var arr = randomGen();
+				tableRight.html('<span><h2 style="color: red; ">기준</h2></span>'+app.component.horList(arr, 'default'));
+				for(i=1;i<6;i++) {
+					tableRight.append('<br/>'+i+'회전');
+					tableRight.append(app.component.horList(app.algorithm.bubbleSort(arr, i), 'default'));
+				}
 			});
-			$('#bubbleSort').on('click', function() {
-				var tableRight = $('#tableRight');	
-				tableRight.empty();
-				app.component.inputText('in1').attr('placeholder','버블 정렬(,로 구분)').appendTo(tableRight);
-				app.component.inputText('in2').attr('placeholder','회전수').appendTo(tableRight);
-				app.component.aButton('aButton','btn-success').html('버블 정렬').appendTo(tableRight).on('click', function() {
-					var in1 = $('#in1').val(), in2 = $('#in2').val();
-					tableRight.empty();
-					app.component.divAlert('alert-success').html('결과<br> ' + app.algorithm.bubbleSort(in1, in2)).appendTo(tableRight);
-				});
+			$('#insertSort').on('click', function(){
+				var arr = randomGen();
+				tableRight.html('<span><h2 style="color: red; ">기준</h2></span>'+app.component.horList(arr, 'default'));
+				for(i=1;i<6;i++) {
+					tableRight.append('<br/>'+i+'회전');
+					tableRight.append(app.component.horList(app.algorithm.insertSort(arr, i), 'default'));
+				}
 			});
-			$('#insertSort').on('click', function() {
-				var tableRight = $('#tableRight');	
-				tableRight.empty();
-				app.component.inputText('in1').attr('placeholder','삽입 정렬(,로 구분)').appendTo(tableRight);
-				app.component.inputText('in2').attr('placeholder','회전수').appendTo(tableRight);
-				app.component.aButton('aButton','btn-warning').html('삽입 정렬').appendTo(tableRight).on('click', function() {
-					var in1 = $('#in1').val(), in2 = $('#in2').val();
-					tableRight.empty();
-					app.component.divAlert('alert-warning').html('결과<br> ' + app.algorithm.insertSort(in1, in2)).appendTo(tableRight);
-				});
+			$('#ranking').on('click', function(){
+				var arr = randomGen();
+				tableRight.html('<h2 style="color:red;">점수</h2> ');
+				tableRight.append(app.component.horList(arr, 'default'));
+				tableRight.append('<br/><h2 style="color:red;">석차</h2>')
+				tableRight.append(app.component.horList(app.algorithm.ranking(arr), 'default'));
 			});
 		});
 	};
+
 	/* 알고리즘행렬 */
 	var matrix = function(){
 		var wrapper = app.component.getWrapper();
 		$('#matrix').on('click', function() {
 			wrapper.empty();
 			wrapper.append(app.algorithm.TABLE);
+			var arr = [
+				{id:'matrix1', txt:'직각 삼각형'},
+				{id:'matrix2', txt:'직각삼각형(뒤로부터)'},
+				{id:'matrix3', txt:'ㄹ자 채우기'},
+				{id:'matrix4', txt:'◆'},
+				{id:'matrix5', txt:'◇'},
+				{id:'matrix6', txt:'모래시계'},
+				{id:'matrix7', txt:'■-◀'},
+				{id:'matrix8', txt:'◀'},
+				{id:'matrix9', txt:'90도 회전'},
+				{id:'matrix10', txt:'달팽이'},
+				{id:'matrix11', txt:'대각선 채우기(▨)'},
+				{id:'matrix12', txt:'대각선 채우기(▧)'},
+				{id:'matrix13', txt:'마방진'},
+			];
+			var str = '';
+			$.each(arr, function(i,j){
+				str+='<li id="' + j.id + '" class="list-group-item"><a href="#">' + j.txt + '</a></li>';
+			});
 			var tableLeft = $('#tableLeft');
 			tableLeft.empty();
-			tableLeft.append(app.algorithm.MATRIX_MENU);
+			tableLeft.html(str);
 			var tableRight = $('#tableRight');
 			tableRight.empty();
 			app.component.divAlert('alert-warning').html(app.algorithm.matrix1()).appendTo(tableRight);
@@ -393,6 +428,12 @@ app.algorithm = (function(){
 		selectSort : selectSort,
 		bubbleSort : bubbleSort,
 		insertSort : insertSort,
+		ranking : ranking,
+		binSearch : binSearch,
+		merge : merge,
+		stack : stack,
+		randomGen : randomGen,
+		horizontalTable : horizontalTable,
 		/* Matrix */
 		matrix : matrix,
 		matrix1 : matrix1,
@@ -424,11 +465,20 @@ app.oop = (function(){
 		$('#encap').on('click', function() {
 			wrapper.empty();
 			wrapper.append(app.algorithm.TABLE);
+			var arr = [
+				{id: 'encap1', txt:'캡슐화'},
+				{id: 'inher1', txt:'상속성'},
+				{id: 'polym1', txt:'다형성'}				
+			];
+			var str = '';
+			$.each(arr, function(i,j){
+				str+='<li id="' + j.id + '" class="list-group-item"><a href="#">' + j.txt + '</a></li>';
+			});
 			var tableLeft = $('#tableLeft');
 			tableLeft.empty();
+			tableLeft.html(str);
 			var tableRight = $('#tableRight');
 			tableRight.empty();
-			tableLeft.append(app.oop.OOP_MENU);
 			app.component.inputText('in1').attr('placeholder','이름').appendTo(tableRight);
 			app.component.inputText('in2').attr('placeholder','나이').appendTo(tableRight);
 			app.component.inputText('in3').attr('placeholder','성별').appendTo(tableRight);
@@ -551,6 +601,18 @@ app.component = (function(){
 		},
 		divAlert : function(type){
 			return $('<div class="alert '+type+'" role="alert">example</div>');
+		},
+		horList : function(arr, i) {
+			var type='';
+			switch(i){
+				case 'default' : type='btn-default';break;
+			}
+			var list = '<div class="btn-group" role="group" aria-label="...">';
+			$.each(arr, function(i,j){
+				list+='<button id="list-button-"'+i+' type="button" class="btn '+type+'">'+arr[i]+'</button>';
+			});
+			list+='</div>';
+			return list;
 		}
 	};
 })();
@@ -566,10 +628,7 @@ app.patient = (function(){
 })();
 
 app.algorithm.TABLE = '<div style="width:100%"><table style="margin: 0 auto; width:500px; height:300px; border-collapse: collapse; border: 1px solid black;"><tr><td id="tableLeft" style="width:50%; border: 1px solid black;"></td><td id="tableRight"></td></tr></table></div>';
-app.algorithm.SERIES_MENU = '<ul class="list-group"><li id="aSeries" class="list-group-item"><a href="#">등차수열</a></li><li id="swSeries" class="list-group-item"><a href="#">스위치수열</a></li><li id="dSeries" class="list-group-item"><a href="#">계차수열</a></li><li id="factorial" class="list-group-item"><a href="#">팩토리얼</a></li><li id="fibonacci" class="list-group-item"><a href="#">피보나치수열</a></li></ul>';
-app.algorithm.ARR_MENU = '<ul class="list-group"><li id="selectSort" class="list-group-item"><a href="#">선택정렬</a></li><li id="bubbleSort" class="list-group-item"><a href="#">버블정렬</a></li><li id="insertSort" class="list-group-item"><a href="#">삽입정렬</a></li></ul>';
 app.algorithm.MATRIX_MENU = '<ul class="list-group"><li id="matrix1" class="list-group-item"><a href="#">직각 삼각형</a></li><li id="matrix2" class="list-group-item"><a href="#">직각삼각형(뒤로부터)</a></li><li id="matrix3" class="list-group-item"><a href="#">ㄹ자 채우기</a></li><li id="matrix4" class="list-group-item"><a href="#">◆</a></li><li id="matrix5" class="list-group-item"><a href="#">◇</a></li><li id="matrix6" class="list-group-item"><a href="#">모래시계</a></li><li id="matrix7" class="list-group-item"><a href="#">■-◀</a></li><li id="matrix8" class="list-group-item"><a href="#">◀</a></li><li id="matrix9" class="list-group-item"><a href="#">90도 회전</a></li><li id="matrix10" class="list-group-item"><a href="#">달팽이</a></li><li id="matrix11" class="list-group-item"><a href="#">대각선 채우기(▨)</a></li><li id="matrix12" class="list-group-item"><a href="#">대각선 채우기(▧)</a></li><li id="matrix13" class="list-group-item"><a href="#">마방진</a></li></ul>';
-app.oop.OOP_MENU = '<ul class="list-group"><li id="encap1" class="list-group-item"><a href="#">캡슐화</a></li><li id="inher1" class="list-group-item"><a href="#">상속성</a></li><li id="polym1" class="list-group-item"><a href="#">다형성</a></li></ul>';
 
 
 /* OOP Practice */
