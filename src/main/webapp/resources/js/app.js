@@ -176,9 +176,9 @@ app.algorithm = (function(){
 	var binSearch = function(){};
 	var merge = function(){};
 	var stack = function(){};
-	var randomGen = function(){
+	var randomGen = function(num){
 		var arr=[];
-		for(i=0;i<6;i++){
+		for(i=0;i<num;i++){
 			arr.push(Math.floor(Math.random()*45)+1);
 		}
 		return arr;
@@ -194,29 +194,253 @@ app.algorithm = (function(){
 		return table;
 	};
 		/* Algorithm Matrix function */
-	var matrix1 = function(){
-		var arr = [];
-		for(i=0; i<5; i++){
-			arr[i] = new Array[5];
-		}
-		var val = 0;
-		var arrStr = "";
-		for(i=0; i<5; i++){
-			for(j=0; j<5; j++){
-				val++;
-				arr[i][j] = val;
-				arrStr += arr + "<br>";
-			}
-		}
-		return arrStr;
+	var basic = function(){
+		$('#basic').on('click', function() {
+			var mtx = new Array(new Array(5), new Array(5), new Array(5), new Array(5), new Array(5));
+			var jason = [
+				{
+					a : 1,
+					b : 2,
+					c : 3,
+					d : 4,
+					e : 5
+				},
+				{
+					a : 6,
+					b : 7,
+					c : 8,
+					d : 9,
+					e : 10
+				},
+				{
+					a : 11,
+					b : 12,
+					c : 13,
+					d : 14,
+					e : 15
+				},
+				{
+					a : 16,
+					b : 17,
+					c : 18,
+					d : 19,
+					e : 20
+				},
+				{
+					a : 21,
+					b : 22,
+					c : 23,
+					d : 24,
+					e : 25
+				}
+			];
+			$('#tableRight').html(app.component.panelTable(jason, 'Basic', 'default'));
+		});
 	};
-	var matrix2 = function(){};
-	var matrix3 = function(){};
-	var matrix4 = function(){};
-	var matrix5 = function(){};
-	var matrix6 = function(){};
-	var matrix7 = function(){};
-	var matrix8 = function(){};
+	var zigzag = function(){
+		$('#zigzag').on('click', function(){
+			var a = [[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]];
+			var k = 0; // 1씩 증가되는 숫자가 저장될 변수
+			var i = 0; // 배열의 행 위치를 지정
+			var j = 0; // 배열의 열 위치를 지정
+			var s = 2; // 열의 시작 위치가 저장될 변수
+			var e = 2; // 열의 끝 위치가 저장될 변수
+			for(i=0;i<5;i++){
+				for(j=s;j<=e;j++){
+					k++;
+					a[i][j] = k;
+					if(i>=2){
+						s++;
+						e--;
+					} else {
+						s--;
+						e++;
+					}
+				}
+			}
+			var tb = [{a:a[0][0],b:a[0][1],c:a[0][2],d:a[0][3],e:a[0][4]},
+				{a:a[1][0],b:a[1][1],c:a[1][2],d:a[1][3],e:a[1][4]},
+				{a:a[2][0],b:a[2][1],c:a[2][2],d:a[2][3],e:a[2][4]},
+				{a:a[3][0],b:a[3][1],c:a[3][2],d:a[3][3],e:a[3][4]},
+				{a:a[4][0],b:a[4][1],c:a[4][2],d:a[4][3],e:a[4][4]}];
+			$('#tableRight').html(app.component.panelTable(tb, 'Basic', 'default'));
+		});
+	};
+	var diamond = function(){};
+	var sandGlass = function(){};
+	var snail = function(){};
+	var magicSquare = function(){};
+	
+		/* Algorithm Math function */
+	var determinePrime = function(){
+		$('#determinePrime').on('click', function(){
+			$('#tableRight').empty();
+			var a = randomGen(1);
+			var result = '소수';
+			for(var i=2; i<a; i++) {
+				if(a%i==0) {
+					result='소수 아님';
+					break;
+				} 
+			}
+			app.component.divAlert('alert-primary').html('판별하는 수: '+ a + '<br>결과:' + result).appendTo($('#tableRight'));
+		});
+	};
+	var primeSum = function(){
+		$('#primeSum').on('click', function(){
+			var right = $('#tableRight');
+			right.empty();
+			app.component.inputText('in1').attr('placeholder', '2 이상의 자연수 입력').appendTo(right);
+			app.component.aButton('aButton','btn-primary').html('합 구하기').appendTo(right).on('click', function(){
+				var input = $('#in1').val()*1;
+				right.empty();
+				var sum = 0;
+				var prime = 1;
+				for(var i=2; i<=input; i++){
+					for(var j=2; j<i; j++) {
+						if(i%j==0){
+							prime = 0;
+							break;
+						}
+					}
+					if(prime==1){
+						sum+=i;
+					}
+					prime=1;
+				}
+				app.component.divAlert('alert-primary').html(input +'까지의 소수들의 합은 ' + sum).appendTo(right);
+			});
+			
+		});
+	};
+	var primeCount = function(){
+		$('#primeCount').on('click', function(){
+			var right = $('#tableRight');
+			right.empty();
+			app.component.inputText('in1').attr('placeholder', '2 이상의 자연수 입력').appendTo(right);
+			app.component.aButton('aButton','btn-primary').html('합 구하기').appendTo(right).on('click', function(){
+				var input = $('#in1').val()*1;
+				right.empty();
+				var count = 0;
+				var prime = 1;
+				for(var i=2; i<=input; i++){
+					for(var j=2; j<i; j++) {
+						if(i%j==0){
+							prime = 0;
+							break;
+						}
+					}
+					if(prime==1){
+						count++;
+					}
+					prime=1;
+				}
+				app.component.divAlert('alert-primary').html(input +'까지의 소수 개수는 ' + count).appendTo(right);
+			});
+			
+		});
+	};
+	var lcmGcm = function(){
+		$('#lcmGcm').on('click',function(){
+			var right = $('#tableRight');
+			right.empty();
+			app.component.inputText('in1').attr('placeholder', '첫번째 숫자').appendTo(right);
+			app.component.inputText('in2').attr('placeholder', '두번째 숫자').appendTo(right);
+			app.component.aButton('aButton','btn-primary').html('최대/최소 구하기').appendTo(right).on('click', function(){
+				var in1 = $('#in1').val()*1, in2 = $('#in2').val()*1;
+				var big = (in1>in2) ? in1 : in2, small = (in1>in2) ? in2 : in1, gcm = 0, lcm = 0, temp = 0;
+				right.empty();
+				while(true){
+					if(big%small==0){
+						gcm = small;
+						break;
+					} else {
+						temp = big;
+						big = small;
+						small = temp%small;
+					}
+				}
+				lcm = in1 * in2 / gcm;
+				app.component.divAlert('alert-primary').html('입력한 수: ' + in1 + ', ' + in2 +'<br>최대공약수: ' + gcm + '<br>최소공배수: ' + lcm).appendTo(right);
+			});
+		});
+	};
+	var euclid = function(){};
+	// 약수 구하기
+	var factorization = function(){
+		$('#factorization').on('click',function(){
+			var right = $('#tableRight');
+			right.empty();
+			app.component.inputText('input').attr('placeholder', '숫자 입력').appendTo(right);
+			app.component.aButton('aButton','btn-primary').html('약수 구하기').appendTo(right).on('click', function(){
+				var input = $('#input').val()*1;
+				var a = [];
+				right.empty();
+				for(var i=1;i<=input;i++){
+					if(input%i==0){
+						a.push(i);
+					}
+				}
+				app.component.divAlert('alert-primary').html('입력한 수: ' + input +'<br>약수: '+a).appendTo(right);
+			});
+		});
+	};
+	// 소인수 분해
+	var primefactor = function(){
+		$('#primefactor').on('click',function(){
+			var right = $('#tableRight');
+			right.empty();
+			app.component.inputText('input').attr('placeholder', '숫자 입력').appendTo(right);
+			app.component.aButton('aButton','btn-primary').html('소인수분해 하기').appendTo(right).on('click', function(){
+				var input = $('#input').val()*1;
+				var prime = 2, result = '';
+				var val = input;
+				right.empty();
+				for(var i=2;i<=input;i++){
+					if(val%prime!=0) {
+						prime++;
+					} else {
+						val/=prime;
+						result += prime + '*';
+					}
+				}
+				app.component.divAlert('alert-primary').html('입력한 수: '+ input+ '<br>소인수분해 결과: '+ result.substr(0, result.lastIndexOf('*'))).appendTo(right);
+			});
+		});
+	};
+	// 배수의 합
+	var multiSum = function(){
+		$('#multiSum').on('click',function(){
+			var right = $('#tableRight');
+			right.empty();
+			app.component.inputText('mul').attr('placeholder', '숫자 입력').appendTo(right);
+			app.component.inputText('scope').attr('placeholder', '범위 입력').appendTo(right);
+			app.component.aButton('aButton','btn-primary').html('배수의 합 구하기').appendTo(right).on('click', function(){
+				var mul = $('#mul').val()*1, scope = $('#scope').val()*1;
+				var cnt = 0, sum = 0;
+				var result = '';
+				for(var i=1; i<=scope; i++){
+					if(i%mul==0){
+						sum+=i;
+						result+=i+'+';
+						cnt++;
+					}
+					if(cnt>4) {
+						result += '<br>';
+						cnt = 0;
+					}
+				}
+				app.component.divAlert('alert-primary').html('입력한 배수: '+ mul + '<br>범위: 1~' + scope + '<br>배수의 합 결과: '+ result.substr(0, result.lastIndexOf('+')) + '=' + sum).appendTo(right);
+			});
+		});
+	};
+	// 근사값 구하기
+	var approx = function(){
+		$('#approx').on('click',function(){
+			var right = $('#tableRight');
+			right.empty();
+		});
+	};
 	/* 알고리즘등차수열 */
 	var series = function(){
 		var wrapper = app.component.getWrapper();
@@ -229,7 +453,7 @@ app.algorithm = (function(){
 				{id:'factorial', txt:'팩토리얼'},
 				{id:'fibonacci', txt:'피보나치'}];
 			var str = '';
-			$.each(arr, function(i,j){
+			$.each(arr, function(i,j){ // i: index값, j: 객체값 / jsp는 오버라이딩해서 안쓰는 파라미터가 있더라도 그 자리는 채워줘야 한다.
 				str+='<li id="' + j.id + '" class="list-group-item"><a href="#">' + j.txt + '</a></li>';
 			});
 			var tableLeft = $('#tableLeft');
@@ -317,7 +541,7 @@ app.algorithm = (function(){
 			var tableRight = $('#tableRight');	
 			tableRight.empty();
 			$('#selectSort').on('click', function(){
-				var arr = randomGen();
+				var arr = randomGen(6);
 				tableRight.html('<span><h2 style="color: red; ">기준</h2></span>'+app.component.horList(arr, 'default'));
 				for(i=1;i<6;i++) {
 					tableRight.append('<br/>'+i+'회전');
@@ -325,7 +549,7 @@ app.algorithm = (function(){
 				}
 			});
 			$('#bubbleSort').on('click', function(){
-				var arr = randomGen();
+				var arr = randomGen(6);
 				tableRight.html('<span><h2 style="color: red; ">기준</h2></span>'+app.component.horList(arr, 'default'));
 				for(i=1;i<6;i++) {
 					tableRight.append('<br/>'+i+'회전');
@@ -333,7 +557,7 @@ app.algorithm = (function(){
 				}
 			});
 			$('#insertSort').on('click', function(){
-				var arr = randomGen();
+				var arr = randomGen(6);
 				tableRight.html('<span><h2 style="color: red; ">기준</h2></span>'+app.component.horList(arr, 'default'));
 				for(i=1;i<6;i++) {
 					tableRight.append('<br/>'+i+'회전');
@@ -341,7 +565,7 @@ app.algorithm = (function(){
 				}
 			});
 			$('#ranking').on('click', function(){
-				var arr = randomGen();
+				var arr = randomGen(6);
 				tableRight.html('<h2 style="color:red;">점수</h2> ');
 				tableRight.append(app.component.horList(arr, 'default'));
 				tableRight.append('<br/><h2 style="color:red;">석차</h2>')
@@ -349,7 +573,6 @@ app.algorithm = (function(){
 			});
 		});
 	};
-
 	/* 알고리즘행렬 */
 	var matrix = function(){
 		var wrapper = app.component.getWrapper();
@@ -357,19 +580,12 @@ app.algorithm = (function(){
 			wrapper.empty();
 			wrapper.append(app.algorithm.TABLE);
 			var arr = [
-				{id:'matrix1', txt:'직각 삼각형'},
-				{id:'matrix2', txt:'직각삼각형(뒤로부터)'},
-				{id:'matrix3', txt:'ㄹ자 채우기'},
-				{id:'matrix4', txt:'◆'},
-				{id:'matrix5', txt:'◇'},
-				{id:'matrix6', txt:'모래시계'},
-				{id:'matrix7', txt:'■-◀'},
-				{id:'matrix8', txt:'◀'},
-				{id:'matrix9', txt:'90도 회전'},
-				{id:'matrix10', txt:'달팽이'},
-				{id:'matrix11', txt:'대각선 채우기(▨)'},
-				{id:'matrix12', txt:'대각선 채우기(▧)'},
-				{id:'matrix13', txt:'마방진'},
+				{id:'basic', txt:'기본 5x5'},
+				{id:'zigzag', txt:'지그재그'},
+				{id:'diamond', txt:'◆'},
+				{id:'sandGlass', txt:'모래시계'},
+				{id:'snail', txt:'달팽이'},
+				{id:'magicSquare', txt:'마방진'}
 			];
 			var str = '';
 			$.each(arr, function(i,j){
@@ -380,7 +596,12 @@ app.algorithm = (function(){
 			tableLeft.html(str);
 			var tableRight = $('#tableRight');
 			tableRight.empty();
-			app.component.divAlert('alert-warning').html(app.algorithm.matrix1()).appendTo(tableRight);
+			basic();
+			zigzag();
+			diamond();
+			sandGlass();
+			snail();
+			magicSquare();
 		});
 	};
 	/* 알고리즘수학 */
@@ -388,13 +609,33 @@ app.algorithm = (function(){
 		var wrapper = app.component.getWrapper();
 		$('#math').on('click', function() {
 			wrapper.empty();
-			wrapper.append(app.algorithm.TABLE);
-			var tableRight = $('#tableRight');
-			app.component.inputText('inputText').attr('placeholder','수학').appendTo(tableRight);
-			app.component.aButton('aButton','btn-primary').html('CLICK').appendTo(app.component.wrapper).on('click', function() {
-				tableRight.empty();
-				aSeries(app.component.inputText('inputText').val());
+			wrapper.append(app.algorithm.TABLE);var arr = [
+				{id:'determinePrime', txt:'소수 판별'},
+				{id:'primeSum', txt:'소수의 합'},
+				{id:'primeCount', txt:'소수의 개수'},
+				{id:'lcmGcm', txt:'최대공약수/최소공배수'},
+				{id:'euclid', txt:'유클리드'},
+				{id:'factorization', txt:'약수구하기'},
+				{id:'primefactor', txt:'소인수분해'},
+				{id:'multiSum', txt:'배수의 합'},
+				{id:'approx', txt:'근사값 구하기'}
+			];
+			var str = '';
+			$.each(arr, function(i,j){
+				str+='<li id="' + j.id + '" class="list-group-item"><a href="#">' + j.txt + '</a></li>';
 			});
+			var tableLeft = $('#tableLeft');
+			tableLeft.empty();
+			tableLeft.html(str);
+			determinePrime();
+			primeSum();
+			primeCount();
+			lcmGcm();
+			euclid();
+			factorization();
+			primefactor();
+			multiSum();
+			approx();
 		});
 	};
 	/* 알고리즘응용 */
@@ -436,16 +677,23 @@ app.algorithm = (function(){
 		horizontalTable : horizontalTable,
 		/* Matrix */
 		matrix : matrix,
-		matrix1 : matrix1,
-		matrix2 : matrix2,
-		matrix3 : matrix3,
-		matrix4 : matrix4,
-		matrix5 : matrix5,
-		matrix6 : matrix6,
-		matrix7 : matrix7,
-		matrix8 : matrix8,
+		basic : basic,
+		zigzag : zigzag,
+		diamond : diamond,
+		sandGlass : sandGlass,
+		snail : snail,
+		magicSquare : magicSquare,
 		/* Math */
 		math : math,
+		determinePrime : determinePrime,
+		primeSum : primeSum,
+		primeCount : primeCount,
+		lcmGcm : lcmGcm,
+		euclid : euclid,
+		factorization : factorization,
+		primefactor : primefactor,
+		multiSum : multiSum,
+		approx : approx,
 		/* Application */
 		appl : appl
 	};
@@ -613,7 +861,22 @@ app.component = (function(){
 			});
 			list+='</div>';
 			return list;
-		}
+		},
+		panelTable: function(json,txt,type){
+	          var table=
+	             '<div class="panel panel-'+type+'">'
+	             +'<div class="panel-heading">행렬</div>'
+	             +'<table id="table">'
+	             +'<tr>'
+	             +'<th colspan="5">'+txt+'</th>'
+	             +'</tr>'
+	             +'<tbody>';
+	          $.each(json, function(i,j){
+	             table+='<tr><td style="width:20%">'+j.a+'</td><td style="width:20%">'+j.b+'</td><td style="width:20%">'+j.c+'</td><td style="width:20%">'+j.d+'</td><td style="width:20%">'+j.e+'</td></tr>';
+	          });
+	          table+='</tbody></table>';
+	          return table;
+	       }
 	};
 })();
 
