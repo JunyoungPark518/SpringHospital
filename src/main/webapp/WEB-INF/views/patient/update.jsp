@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <div style="height: 150px;"> </div>
+<h1>UPDATE PAGE</h1>
 <div id="container">
 		<div style="width: 100%;">
 		<form id="registerForm">

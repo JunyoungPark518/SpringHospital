@@ -2,7 +2,7 @@
 <div id="header" class="wtac" style="height: 100px;">
 	<table style="margin: 0 auto; width: 1000px;">
 		<tr>
-			<td style="width: 230px;"><a href="${context.path}/home?action=move&page=main"><img src="${context.img}/common/logo.png" alt="병원 로고" width="200px"
+			<td style="width: 230px;"><a href="${context}/home?action=move&page=main"><img src="${context}/resources/img/common/logo.png" alt="병원 로고" width="200px"
 					height="75px" /></a></td>
 			<td class="index_main"><span class="index_mainlogo"><b>한빛병원</b></span></td>
 			<td><input class="index_search" type="search" name="search"

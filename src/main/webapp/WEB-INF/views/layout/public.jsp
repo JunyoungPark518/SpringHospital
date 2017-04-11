@@ -10,9 +10,9 @@
 <head>
 	<meta charset="UTF-8" />
 	<title><tiles:getAsString name="title"/></title>
-	<link rel="stylesheet" type="text/css" href="${context.css}/hanbit.css" />
+	<link rel="stylesheet" type="text/css" href="${context}/resources/css/hanbit.css" />
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script src="${context.js}/hospital.js"></script>
+	<script src="${context}/resources/js/hospital.js"></script>
 </head>
 <body>
 	<header>

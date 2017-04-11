@@ -375,7 +375,7 @@ app.algorithm = (function(){
 			var nmg = 0; // k가 5의 배수인지를 확인하기 위해 계산한 후 나머지가 저장될 변수
 			for(k=1;k<=25;k++){
 				a[i][j]=k;
-				nmg = k-k/5*5;
+				nmg = k-(k/5)*5;
 				if(nmg==0){
 					i++;
 					continue;

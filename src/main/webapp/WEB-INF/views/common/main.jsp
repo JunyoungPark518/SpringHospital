@@ -37,11 +37,11 @@
 										</td>
 									</tr>
 									<tr>
-										<td colspan="3" style="margin-right: 5px;"><a href=""><img src="${context.img}/common/bbs_btn01.png" alt="" /></a></td>
-										<td colspan="3"><a href=""><img src="${context.img}/common/bbs_btn02.png" alt="" /></a></td>
+										<td colspan="3" style="margin-right: 5px;"><a href=""><img src="${context}/resources/img/common/bbs_btn01.png" alt="" /></a></td>
+										<td colspan="3"><a href=""><img src="${context}/resources/img/common/bbs_btn02.png" alt="" /></a></td>
 									</tr>
 									<tr style="margin-top: 5px;">
-										<td colspan="6"><a href=""><img src="${context.img}/common/bbs_btn03.png" alt="" /></a></td>
+										<td colspan="6"><a href=""><img src="${context}/resources/img/common/bbs_btn03.png" alt="" /></a></td>
 									</tr>
 								</table>
 							</div>

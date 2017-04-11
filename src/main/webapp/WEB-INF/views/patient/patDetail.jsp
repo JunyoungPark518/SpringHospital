@@ -4,7 +4,7 @@
 	<div class="wtac">
 		<table class="pat_detail">
 		<tr style="text-align: left;">
-				<td colspan="5"><div><img src="${context.img}/common/defaultimg.jpg" alt="" width="160px"/></div></td>
+				<td colspan="5"><div><img src="${context}/resources/img/common/defaultimg.jpg" alt="" width="160px"/></div></td>
 			</tr>
 			<tr>
 				<td style="width: 60px" rowspan="5"><span style="font-size: 20px">내<br />정<br />보</span></td>
@@ -39,11 +39,14 @@
 			</tr>
 		</table>
 	</div>
+	<div>
+	<a href="update"><input type="button" value="업데이트"/></a>
+	</div>
 </div>
 <script>
 	function goDocDetail() {
 		alert('의사ID 클릭');
-		location.href="${context.path}/docDetail/han";
+		location.href="${context}/docDetail/han";
 	}
 </script>
 <jsp:include page="../common/footer.jsp"/>

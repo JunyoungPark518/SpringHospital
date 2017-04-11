@@ -86,4 +86,9 @@ public class PermissionController {
 		session.invalidate();
 		return "redirect:/";
 	}
+	@RequestMapping("/patient/update")
+	public String update(){
+		logger.info("Permission - update(model) {}","ENTER");
+		return "public:patient/update";
+	}
 }

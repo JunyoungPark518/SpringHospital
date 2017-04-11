@@ -57,14 +57,14 @@
 				<td>
 				<div class="index_mtb_contents">
 					<ul>
-						<li><a href=""><img src="${context.img}/common/index_icon01.png" alt="인터넷확인" /></a></li>
-						<li><a href=""><img src="${context.img}/common/index_icon02.png" alt="예약확인" /></a></li>
-						<li><a href=""><img src="${context.img}/common/index_icon03.png" alt="위임장/동의서" /></a></li>
-						<li><a href=""><img src="${context.img}/common/index_icon04.png" alt="진료안내" /></a></li>
-						<li><a href=""><img src="${context.img}/common/index_icon05.png" alt="의학백과사전" /></a></li>
-						<li><a href=""><img src="${context.img}/common/index_icon06.png" alt="홈페이지도우미" /></a></li>
-						<li><a href=""><img src="${context.img}/common/index_icon07.png" alt="병원로고" /></a></li>
-						<li><a href=""><img src="${context.img}/common/index_icon08.png" alt="찾아오시는길" /></a></li>
+						<li><a href=""><img src="${context}/resources/img/common/index_icon01.png" alt="인터넷확인" /></a></li>
+						<li><a href=""><img src="${context}/resources/img/common/index_icon02.png" alt="예약확인" /></a></li>
+						<li><a href=""><img src="${context}/resources/img/common/index_icon03.png" alt="위임장/동의서" /></a></li>
+						<li><a href=""><img src="${context}/resources/img/common/index_icon04.png" alt="진료안내" /></a></li>
+						<li><a href=""><img src="${context}/resources/img/common/index_icon05.png" alt="의학백과사전" /></a></li>
+						<li><a href=""><img src="${context}/resources/img/common/index_icon06.png" alt="홈페이지도우미" /></a></li>
+						<li><a href=""><img src="${context}/resources/img/common/index_icon07.png" alt="병원로고" /></a></li>
+						<li><a href=""><img src="${context}/resources/img/common/index_icon08.png" alt="찾아오시는길" /></a></li>
 					</ul>
 				</div>
 				</td>
@@ -73,14 +73,14 @@
 				<td>
 				<div class="index_mtb_contents">
 					<ul>
-						<li><a href=""><img src="${context.img}/common/index_icon09.png" alt="인터넷확인" /></a></li>
-						<li><a href=""><img src="${context.img}/common/index_icon10.png" alt="예약확인" /></a></li>
-						<li><a href=""><img src="${context.img}/common/index_icon11.png" alt="위임장/동의서" /></a></li>
-						<li><a href=""><img src="${context.img}/common/index_icon12.png" alt="진료안내" /></a></li>
-						<li><a href=""><img src="${context.img}/common/index_icon13.png" alt="의학백과사전" /></a></li>
-						<li><a href=""><img src="${context.img}/common/index_icon14.png" alt="홈페이지도우미" /></a></li>
-						<li><a href=""><img src="${context.img}/common/index_icon15.png" alt="병원로고" /></a></li>
-						<li><a href=""><img src="${context.img}/common/index_icon16.png" alt="찾아오시는길" /></a></li>
+						<li><a href=""><img src="${context}/resources/img/common/index_icon09.png" alt="인터넷확인" /></a></li>
+						<li><a href=""><img src="${context}/resources/img/common/index_icon10.png" alt="예약확인" /></a></li>
+						<li><a href=""><img src="${context}/resources/img/common/index_icon11.png" alt="위임장/동의서" /></a></li>
+						<li><a href=""><img src="${context}/resources/img/common/index_icon12.png" alt="진료안내" /></a></li>
+						<li><a href=""><img src="${context}/resources/img/common/index_icon13.png" alt="의학백과사전" /></a></li>
+						<li><a href=""><img src="${context}/resources/img/common/index_icon14.png" alt="홈페이지도우미" /></a></li>
+						<li><a href=""><img src="${context}/resources/img/common/index_icon15.png" alt="병원로고" /></a></li>
+						<li><a href=""><img src="${context}/resources/img/common/index_icon16.png" alt="찾아오시는길" /></a></li>
 					</ul>
 				</div>
 				</td>
@@ -112,11 +112,11 @@
 										</td>
 									</tr>
 									<tr>
-										<td colspan="3" style="margin-right: 5px;"><a href=""><img src="${context.img}/common/bbs_btn01.png" alt="" /></a></td>
-										<td colspan="3"><a href=""><img src="${context.img}/common/bbs_btn02.png" alt="" /></a></td>
+										<td colspan="3" style="margin-right: 5px;"><a href=""><img src="${context}/resources/img/common/bbs_btn01.png" alt="" /></a></td>
+										<td colspan="3"><a href=""><img src="${context}/resources/img/common/bbs_btn02.png" alt="" /></a></td>
 									</tr>
 									<tr style="margin-top: 5px;">
-										<td colspan="6"><a href=""><img src="${context.img}/common/bbs_btn03.png" alt="" /></a></td>
+										<td colspan="6"><a href=""><img src="${context}/resources/img/common/bbs_btn03.png" alt="" /></a></td>
 									</tr>
 								</table>
 							</div>
