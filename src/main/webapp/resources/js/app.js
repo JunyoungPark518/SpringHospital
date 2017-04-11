@@ -241,6 +241,36 @@ app.algorithm = (function(){
 		$('#zigzag').on('click', function(){
 			var a = [[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]];
 			var k = 0; // 1씩 증가되는 숫자가 저장될 변수
+			var i = 0; // 배열의 행 위치를 지정해 주는 변수
+			var j = 0; // 배열의 열 위치를 지정해 주는 변수
+			var l = 0; // 배열의 열 시작 위치를 지정해 주는 변수
+			var m = 4; // 배열의 열 끝 위치를 지정해 주는 변수
+			var n = 1; // 증가 값을 지정해 주는 스위치 변수
+			var p = 0; // 열의 시작 위치(l)과 끝 위치(m)의 값을 바꿀 때 사용하는 임시 변수
+			for(i=0;i<5;i++){
+				for(j=l;j!=m+n;j+=n){
+					k++;
+					a[i][j] = k;
+				}
+				p=l;
+				l=m;
+				m=p;
+				n*=-1;
+			}
+			var jason = [
+				{a:a[0][0],b:a[0][1],c:a[0][2],d:a[0][3],e:a[0][4]},
+				{a:a[1][0],b:a[1][1],c:a[1][2],d:a[1][3],e:a[1][4]},
+				{a:a[2][0],b:a[2][1],c:a[2][2],d:a[2][3],e:a[2][4]},
+				{a:a[3][0],b:a[3][1],c:a[3][2],d:a[3][3],e:a[3][4]},
+				{a:a[4][0],b:a[4][1],c:a[4][2],d:a[4][3],e:a[4][4]}
+				];
+			$('#tableRight').html(app.component.panelTable(jason, 'Basic', 'default'));
+		});
+	};
+	var diamond = function(){
+		$('#diamond').on('click', function(){
+			var a=[[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]];
+			var k = 0; // 1씩 증가되는 숫자가 저장될 변수
 			var i = 0; // 배열의 행 위치를 지정
 			var j = 0; // 배열의 열 위치를 지정
 			var s = 2; // 열의 시작 위치가 저장될 변수
@@ -249,27 +279,124 @@ app.algorithm = (function(){
 				for(j=s;j<=e;j++){
 					k++;
 					a[i][j] = k;
-					if(i>=2){
-						s++;
-						e--;
-					} else {
-						s--;
-						e++;
-					}
+				}
+				if(i>1){
+					s++;
+					e--;
+				} else {
+					s--;
+					e++;
 				}
 			}
-			var tb = [{a:a[0][0],b:a[0][1],c:a[0][2],d:a[0][3],e:a[0][4]},
+			var jason = [
+				{a:a[0][0],b:a[0][1],c:a[0][2],d:a[0][3],e:a[0][4]},
 				{a:a[1][0],b:a[1][1],c:a[1][2],d:a[1][3],e:a[1][4]},
 				{a:a[2][0],b:a[2][1],c:a[2][2],d:a[2][3],e:a[2][4]},
 				{a:a[3][0],b:a[3][1],c:a[3][2],d:a[3][3],e:a[3][4]},
-				{a:a[4][0],b:a[4][1],c:a[4][2],d:a[4][3],e:a[4][4]}];
-			$('#tableRight').html(app.component.panelTable(tb, 'Basic', 'default'));
+				{a:a[4][0],b:a[4][1],c:a[4][2],d:a[4][3],e:a[4][4]}
+				];
+			$('#tableRight').html(app.component.panelTable(jason,'Basic','default'));
 		});
 	};
-	var diamond = function(){};
-	var sandGlass = function(){};
-	var snail = function(){};
-	var magicSquare = function(){};
+	var sandGlass = function(){
+		$('#sandGlass').on('click', function(){
+			var a = [[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]];
+			var x = 5; // 입력 받은 배열의 크기가 저장될 변수, 즉 x가 5면 배열의 크기는 5행 5열
+			var m = 2; // 배열의 중간 행 번호가 저장될 변수, 즉 5행 5열의 배열인 경우 m은 3
+			var l = 2; // 행에서 열의 시작 위치 또는 끝 위치를 지정해 주는 변수
+			var i = 0; // 배열의 행 위치를 지정해 주는 변수
+			var j = 0; // 배열의 열 위치를 지정해 주는 변수
+			var k = 0; // 1씩 증가되는 숫자가 저장될 변수
+			for(i=0;i<x;i++){
+				for(j=m-l;j<=m+l;j++){
+					k++;
+					a[i][j]=k;
+				}
+				if(i<=m-1){
+					l--;
+				} else {
+					l++;
+				}
+			}
+			
+			var jason = [
+				{a:a[0][0],b:a[0][1],c:a[0][2],d:a[0][3],e:a[0][4]},
+				{a:a[1][0],b:a[1][1],c:a[1][2],d:a[1][3],e:a[1][4]},
+				{a:a[2][0],b:a[2][1],c:a[2][2],d:a[2][3],e:a[2][4]},
+				{a:a[3][0],b:a[3][1],c:a[3][2],d:a[3][3],e:a[3][4]},
+				{a:a[4][0],b:a[4][1],c:a[4][2],d:a[4][3],e:a[4][4]}
+				];
+			$('#tableRight').html(app.component.panelTable(jason, 'Basic', 'default'));
+		});
+	};
+	var snail = function(){
+		$('#snail').on('click', function(){
+			var a = [[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]];
+			var k = 0; // 1씩 증가되는 숫자가 저장될 변수
+			var i = 0; // 배열의 행 위치를 지정해 주는 변수
+			var n = 0; // 반복문의 반복 변수
+			var j = -1; // 배열의 열 위치를 지정해 주는 변수
+			var c = 1; // 행과 열의 증가 혹은 감소 여부가 지정될 변수, 즉 C가 -1이면 행이나 열을 감소하고, 1이면 행이나 열을 증가
+			var f = 5; // 각 회전에서 수행할 수행 횟수가 지정될 변수
+			while(1){
+				for(n=0;n<f;n++){
+					k++;
+					j+=c;
+					a[i][j]=k;
+				}
+				f--;
+				if(f>0){
+					for(n=0;n<f;n++){
+						k++;
+						i+=c;
+						a[i][j]=k;
+					}
+					c*=-1;
+				} else {
+					break;
+				}
+			}
+			var jason = [
+				{a:a[0][0],b:a[0][1],c:a[0][2],d:a[0][3],e:a[0][4]},
+				{a:a[1][0],b:a[1][1],c:a[1][2],d:a[1][3],e:a[1][4]},
+				{a:a[2][0],b:a[2][1],c:a[2][2],d:a[2][3],e:a[2][4]},
+				{a:a[3][0],b:a[3][1],c:a[3][2],d:a[3][3],e:a[3][4]},
+				{a:a[4][0],b:a[4][1],c:a[4][2],d:a[4][3],e:a[4][4]}
+				];
+			$('#tableRight').html(app.component.panelTable(jason, 'Basic', 'default'));
+		});
+	};
+	var magicSquare = function(){
+		$('#magicSquare').on('click', function(){
+			var a = [[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]];
+			var i = 0; // 배열의 행 위치를 지정해 주는 변수
+			var j = 2; // 배열의 열 위치를 지정해 주는 변수
+			var k = 0; // 1에서 25까지 1씩 증가되는 숫자가 저장될 변수
+			var nmg = 0; // k가 5의 배수인지를 확인하기 위해 계산한 후 나머지가 저장될 변수
+			for(k=1;k<=25;k++){
+				a[i][j]=k;
+				nmg = k-k/5*5;
+				if(nmg==0){
+					i++;
+					continue;
+				}
+				i--;
+				j++;
+				if(i<0)
+					i=4;
+				if(j>4)
+					j=0;
+			}
+			var jason = [
+				{a:a[0][0],b:a[0][1],c:a[0][2],d:a[0][3],e:a[0][4]},
+				{a:a[1][0],b:a[1][1],c:a[1][2],d:a[1][3],e:a[1][4]},
+				{a:a[2][0],b:a[2][1],c:a[2][2],d:a[2][3],e:a[2][4]},
+				{a:a[3][0],b:a[3][1],c:a[3][2],d:a[3][3],e:a[3][4]},
+				{a:a[4][0],b:a[4][1],c:a[4][2],d:a[4][3],e:a[4][4]}
+				];
+			$('#tableRight').html(app.component.panelTable(jason, 'Basic', 'default'));
+		});
+	};
 	
 		/* Algorithm Math function */
 	var determinePrime = function(){
