@@ -375,7 +375,7 @@ app.algorithm = (function(){
 			var nmg = 0; // k가 5의 배수인지를 확인하기 위해 계산한 후 나머지가 저장될 변수
 			for(k=1;k<=25;k++){
 				a[i][j]=k;
-				nmg = k-(k/5)*5;
+				nmg = k%5;
 				if(nmg==0){
 					i++;
 					continue;
@@ -492,7 +492,31 @@ app.algorithm = (function(){
 			});
 		});
 	};
-	var euclid = function(){};
+	// 유클리드 호제법
+	var euclid = function(){
+		$('#euclid').on('click',function(){
+			var right = $('#tableRight');
+			right.empty();
+			app.component.inputText('in1').attr('placeholder', '첫번째 숫자 입력').appendTo(right);
+			app.component.inputText('in2').attr('placeholder', '두번째 숫자 입력').appendTo(right);
+			app.component.aButton('aButton','btn-primary').html('약수 구하기').appendTo(right).on('click', function(){
+				var in1 = $('#in1').val()*1, in2 = $('#in2').val()*1;
+				var big = (in1>in2) ? in1 : in2, small = (in1>in2) ? in2 : in1, mok = 0, nmg = 0;
+				var result = '';
+				while(true){
+					mok = big/small;
+					nmg = big%small;
+					result += big + ' = ' + small + ' * ' + mok + ' + ' + nmg + '<br>';
+					big = small;
+					small = nmg;
+					if(nmg==0){
+						break;
+					}
+				}
+				app.component.divAlert('alert-primary').html('입력한 두 수: ' + in1 +',' + in2 +'<br>결과: '+result).appendTo(right);
+			});
+		});
+	};
 	// 약수 구하기
 	var factorization = function(){
 		$('#factorization').on('click',function(){
@@ -741,7 +765,7 @@ app.algorithm = (function(){
 				{id:'primeSum', txt:'소수의 합'},
 				{id:'primeCount', txt:'소수의 개수'},
 				{id:'lcmGcm', txt:'최대공약수/최소공배수'},
-				{id:'euclid', txt:'유클리드'},
+				{id:'euclid', txt:'유클리드 호제법'},
 				{id:'factorization', txt:'약수구하기'},
 				{id:'primefactor', txt:'소인수분해'},
 				{id:'multiSum', txt:'배수의 합'},

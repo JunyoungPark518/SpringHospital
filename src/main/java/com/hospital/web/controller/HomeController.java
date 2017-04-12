@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.hospital.web.composite.Complex;
@@ -67,5 +68,19 @@ public class HomeController {
 	public String goCustomer() {
 		logger.info("PatientController - patLogin() {}","ENTER");
 		return "public:patient/loginForm";
+	}
+	
+	@RequestMapping("/docDetail/{docID}")
+	public String goDocDetail(@PathVariable String docID, Model model) {
+		logger.info("PersonController - goDocDetail() {}","ENTER");
+		logger.info("PersonController - docID={}",docID);
+		if(docID.equals("")) { 	return "redirect:/{permission}/login";	}
+		return "public:patient/docDetail";
+	}
+	
+	@RequestMapping("/register")
+	public String register() throws Exception {
+		logger.info("PersonController - register() {}","ENTER");
+		return "public:patient/register";
 	}
 }

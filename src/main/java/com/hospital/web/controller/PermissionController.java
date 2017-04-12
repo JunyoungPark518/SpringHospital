@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.hospital.web.domain.Info;
@@ -85,10 +86,5 @@ public class PermissionController {
 	public String logout(HttpSession session) {
 		session.invalidate();
 		return "redirect:/";
-	}
-	@RequestMapping("/patient/update")
-	public String update(){
-		logger.info("Permission - update(model) {}","ENTER");
-		return "public:patient/update";
 	}
 }
