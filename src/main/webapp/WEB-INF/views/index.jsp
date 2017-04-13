@@ -35,7 +35,7 @@ $(function() {
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Brand</a>
+				<a id="brand" class="navbar-brand" href="#"><img src="${context}/resources/img/common/hospital_icon.png" alt="" width="30px" height="30px"/></a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->

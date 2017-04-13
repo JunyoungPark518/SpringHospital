@@ -21,6 +21,7 @@ app.context = (function(){
 		app.component.init();
 		app.algorithm.init();
 		app.oop.init();
+		app.person.init();
 	};
 	var setContentView = function(){
 		
@@ -1030,7 +1031,9 @@ app.component = (function(){
 	       }
 	};
 })();
+app.login=(function(){
 
+})();
 	// Navigator
 app.navi=(function(){
 	
@@ -1043,10 +1046,46 @@ app.patient = (function(){
 
 app.algorithm.TABLE = '<div style="width:100%"><table style="margin: 0 auto; width:500px; height:300px; border-collapse: collapse; border: 1px solid black;"><tr><td id="tableLeft" style="width:50%; border: 1px solid black;"></td><td id="tableRight"></td></tr></table></div>';
 app.algorithm.MATRIX_MENU = '<ul class="list-group"><li id="matrix1" class="list-group-item"><a href="#">직각 삼각형</a></li><li id="matrix2" class="list-group-item"><a href="#">직각삼각형(뒤로부터)</a></li><li id="matrix3" class="list-group-item"><a href="#">ㄹ자 채우기</a></li><li id="matrix4" class="list-group-item"><a href="#">◆</a></li><li id="matrix5" class="list-group-item"><a href="#">◇</a></li><li id="matrix6" class="list-group-item"><a href="#">모래시계</a></li><li id="matrix7" class="list-group-item"><a href="#">■-◀</a></li><li id="matrix8" class="list-group-item"><a href="#">◀</a></li><li id="matrix9" class="list-group-item"><a href="#">90도 회전</a></li><li id="matrix10" class="list-group-item"><a href="#">달팽이</a></li><li id="matrix11" class="list-group-item"><a href="#">대각선 채우기(▨)</a></li><li id="matrix12" class="list-group-item"><a href="#">대각선 채우기(▧)</a></li><li id="matrix13" class="list-group-item"><a href="#">마방진</a></li></ul>';
-
+app.person = (function(){
+	var wrapper, ctx, img, js, css;
+	var init = function(){
+		wrapper = app.component.getWrapper();
+		ctx = app.session.getContextPath();
+		img = app.session.getImagePath();
+		js = app.session.getJavascriptPath();
+		css = app.session.getStylePath();
+		$('#brand').on('click',function(){
+			alert('brand click!');
+		});
+		$('#wrapper').load(ctx+'/login/form');
+		login();
+	};
+	var login = function() {
+	    $('#login-form-link').on('click', function(e) {
+	    	alert('login-form-link clicked');
+			$("#login-form").delay(100).fadeIn(100);
+	 		$("#register-form").fadeOut(100);
+			$('#register-form-link').removeClass('active');
+			$(this).addClass('active');
+			e.preventDefault();
+		});
+		$('#register-form-link').on('click', function(e) {
+			alert('register-form-link clicked');
+			$("#register-form").delay(100).fadeIn(100);
+	 		$("#login-form").fadeOut(100);
+			$('#login-form-link').removeClass('active');
+			$(this).addClass('active');
+			e.preventDefault();
+		});
+	};
+	return {
+		init : init,
+		login : login
+	};
+})();
 
 /* OOP Practice */
-app.person = (function() { // var를 쓴 것과 같음
+app.info = (function() { // var를 쓴 것과 같음
 	var _name, _age, _gender, _job;
 	return {
 		setName : function(name) { this._name = name;},

@@ -22,7 +22,7 @@ import com.hospital.web.domain.Patient;
 import com.hospital.web.domain.Person;
 import com.hospital.web.domain.Enums;
 import com.hospital.web.mapper.Mapper;
-import com.hospital.web.service.ReadService;
+import com.hospital.web.service.IGetService;
 import com.hospital.web.util.Util;
 
 @Controller
@@ -31,13 +31,13 @@ public class PermissionController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	@Autowired Mapper mapper;
 	
-	@RequestMapping("/loginForm")
+	@RequestMapping("/test/loginForm")
 	public String patLogin() {
 		logger.info("Permission - patLogin() {}","ENTER");
 		return "public:patient/loginForm";
 	}
 	
-	@RequestMapping(value="/{permission}/login", method=RequestMethod.POST)
+	@RequestMapping(value="/test/{permission}/login", method=RequestMethod.POST)
 	public String patLogin(@RequestParam("id") String id, 
 			@RequestParam("pw") String pw, @PathVariable String permission, HttpSession session, Model model) throws Exception {
 		String movePosition = "";
@@ -53,7 +53,7 @@ public class PermissionController {
 			map.put("group", patient.getGroup());
 			map.put("key", Enums.PATIENT.val());
 			map.put("value", id);
-			ReadService rs = (o) -> mapper.exist(o);
+			IGetService rs = (o) -> mapper.exist(o);
 			if((Integer) rs.execute(map)==0) {
 				logger.info("DB RESULT: {}", "ID not exist");
 				movePosition = "public:patient/loginForm";
@@ -82,7 +82,7 @@ public class PermissionController {
 		}
 		return movePosition;
 	}
-	@RequestMapping("/logout")
+	@RequestMapping("/test/logout")
 	public String logout(HttpSession session) {
 		session.invalidate();
 		return "redirect:/";

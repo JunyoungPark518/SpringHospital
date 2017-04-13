@@ -83,4 +83,9 @@ public class HomeController {
 		logger.info("PersonController - register() {}","ENTER");
 		return "public:patient/register";
 	}
+	
+	@RequestMapping("/login/form")
+	public String login(){
+		return "common/login.jsp";
+	}
 }
