@@ -84,8 +84,8 @@ public class HomeController {
 		return "public:patient/register";
 	}
 	
-	@RequestMapping("/login/form")
+	@RequestMapping("/permission/form")
 	public String login(){
-		return "common/login.jsp";
+		return "common/permission.jsp";
 	}
 }

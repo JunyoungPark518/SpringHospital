@@ -11,10 +11,12 @@ var app = app || {};
 		 ***********************/
 	// Context(META-INF)
 app.context = (function(){
-	// Android에서 항상 Parameter를 Context context로 받았던 것과 같은 이치
 	var init = function(context){ 
-		app.session.init(context); // Template Method Pattern(Hook)
+		app.session.init(context);
 		onCreate();
+	};
+	var setContentView = function(){
+		
 	};
 	var onCreate = function(){
 		setContentView();
@@ -23,15 +25,13 @@ app.context = (function(){
 		app.oop.init();
 		app.person.init();
 	};
-	var setContentView = function(){
-		
-	};
 	return {
 		init : init,
 		setContentView : setContentView,
 		onCreate : onCreate
 	};
-})(); // NameSpace Pattern
+})();
+
 	// Session
 app.session = (function(){ 
 	var init = function(context) { 
@@ -964,6 +964,7 @@ app.oop = (function(){
 		/************************
 		 * View
 		 * app.component
+		 * app.permission
 		 * app.navi
 		 * app.patient
 		 ***********************/
@@ -1028,17 +1029,188 @@ app.component = (function(){
 	          });
 	          table+='</tbody></table>';
 	          return table;
-	       }
+       },
+       radioButton: function(id,name,value,html){
+    	   var btn = '<label class="radio-inline">'+
+				'<input type="radio" id="'+ id +'" name="'+name+'" value="'+value+'">'+html
+				'</label>';
+    	   return btn;
+       },
+       registerInputtext: function(id,name,type,placeholder){
+    	   var input = '<div class="form-group">'+
+				'<input type="'+type+'" name="'+name+'" id="'+id+'" tabindex="2" class="form-control" placeholder="'+placeholder+'">'+
+				'</div>';
+    	   return input;
+       },
+       registerSubmit: function(id){
+    	   var btn = '<div class="form-group"><div class="row"><div class="col-sm-6 col-sm-offset-3"><input type="submit" name="register-submit" id="register-'+id+'" tabindex="4" class="form-control btn btn-register" value="Register Now"></div></div></div>';
+    	   return btn;
+       },
+       patientGnb: function(){
+    	   var gnb = '<div class="index_gnbtab wtac" style="position: relative; top: 125px;"><ul class="index_gnb">';
+    	   var arr = ['home/홈으로','mypage/MY PAGE','treatlist/나의 진료기록','board/게시판','customer/고객참여마당','main/로그아웃'];
+    	   for(var i=0; i<6; i++){
+    		   gnb+='<li><a class="index_gnb_index" href="'+arr[i].split("/")[0]+'">'+arr[i].split("/")[1]+'</a></li>'   
+    	   }
+		   gnb += '</ul></div>';
+    	   return gnb;
+       },
+       patientDetail: function(){
+    	   var detail = '<div class="con_setting"style="position: relative; top: 150px; text-align:center; width:100%"><div class="wtac"><table class="pat_detail"><tr style="text-align: left;"><td colspan="5"><div><img src="${context}/resources/img/common/defaultimg.jpg"alt=""width="160px"/></div></td></tr><tr><td style="width: 60px"rowspan="5"><span style="font-size: 20px">내<br/>정<br/>보</span></td><td style="width: 100px; background-color: #bfcedd">이름</td><td style="width: 150px">${user.name}</td><td style="width: 100px; background-color: #bfcedd">직업</td><td style="width: 150px">${user.job}</td></tr><tr><td style="background-color: #bfcedd;">생년월일</td><td>${birth}</td><td style="background-color: #bfcedd;">키</td><td>180cm</td></tr><tr><td style="background-color: #bfcedd;">성별</td><td>${gender}</td><td style="background-color: #bfcedd;">나이/몸무게</td><td>${age}/ 70kg</td></tr><tr><td style="background-color: #bfcedd;">전화번호</td><td>${user.phone}</td><td style="background-color: #bfcedd;">혈액형</td><td>B</td></tr><tr><td style="background-color: #bfcedd;">주소</td><td>${user.addr}</td><td style="background-color: #bfcedd;">주치의</td><td><a onclick="goDocDetail()">채워야댐</a></td></tr></table></div><div><a href="update"><input type="button"value="업데이트"/></a></div></div>';
+    	   return detail;
+       }
 	};
 })();
-app.login=(function(){
-
+app.permission=(function(){
+	var execute = function(){
+		var ctx = app.session.getContextPath();
+		$('#login-submit').on('click',function(e){
+			e.preventDefault();
+			$.ajax({
+				  url: ctx + "/login",
+				  method: "POST",
+				  data: JSON.stringify({ 
+					  id : $('#username').val(), 
+					  pw : $('#password').val() 
+				  }),
+				  dataType: "json",
+				  contentType : "application/json",
+				  success : function(data) {
+					  if(data.result==='success'){
+						  var wrapper = $('#wrapper');
+						  wrapper.html(app.component.patientGnb());
+						  wrapper.append(app.component.patientDetail());
+					  } else {
+						  alert('Please confirm your ID/PW.');
+					  }
+				  },
+				  error : function(xhr, status, msg) {
+					  alert('로그인 실패이유: ' + msg);
+				  }
+			});
+		});
+	    $('#login-form-link').on('click', function(e) {
+			$("#login-form").delay(100).fadeIn(100);
+	 		$("#register-form").fadeOut(100);
+			$('#register-form-link').removeClass('active');
+			$(this).addClass('active');
+			e.preventDefault();
+		});
+		$('#register-form-link').on('click', function(e) {
+			$("#register-form").delay(100).fadeIn(100);
+	 		$("#login-form").fadeOut(100);
+			$('#login-form-link').removeClass('active');
+			$(this).addClass('active');
+			e.preventDefault();
+			var registerInfo = $('#register-info');
+			registerInfo.empty();
+			$('#radio_patient').on('click',function(){
+				registerInfo.empty();
+				registerInfo.append(app.component.registerInputtext('id','id','text','ID'));
+				registerInfo.append(app.component.registerInputtext('pass','pass','password','Password'));
+				registerInfo.append(app.component.registerInputtext('confirm-password','confirm-password','password','Confirm Password'));
+				registerInfo.append(app.component.registerInputtext('name','name','text','Username'));
+				registerInfo.append(app.component.radioButton('male','gen','M','남'));
+				registerInfo.append(app.component.radioButton('female','gen','F','여'));
+				registerInfo.append(app.component.registerInputtext('phone','phone','text','Phone'));
+				registerInfo.append(app.component.registerInputtext('email','email','email','Email Address'));
+				registerInfo.append(app.component.registerInputtext('position','position','text','Position'));
+				registerInfo.append(app.component.registerInputtext('major','major','text','Major'));
+				registerInfo.append(app.component.registerInputtext('birth','birth','text','Birth(ex:910101-1)'));
+				registerInfo.append(app.component.registerSubmit('patient'));
+			});
+			$('#radio_doctor').on('click',function(){
+				registerInfo.empty();
+				registerInfo.append(app.component.registerInputtext('id','id','text','ID'));
+				registerInfo.append(app.component.registerInputtext('pass','pass','password','Password'));
+				registerInfo.append(app.component.registerInputtext('confirm-password','confirm-password','password','Confirm Password'));
+				registerInfo.append(app.component.registerInputtext('name','name','text','Username'));
+				registerInfo.append(app.component.radioButton('male','gen','M','남'));
+				registerInfo.append(app.component.radioButton('female','gen','F','여'));
+				registerInfo.append(app.component.registerInputtext('phone','phone','text','Phone'));
+				registerInfo.append(app.component.registerInputtext('email','email','email','Email Address'));
+				registerInfo.append(app.component.registerInputtext('position','position','text','Position'));
+				registerInfo.append(app.component.registerInputtext('major','major','text','Major'));
+				registerInfo.append(app.component.registerInputtext('birth','birth','text','Birth(ex:910101-1)'));
+				registerInfo.append(app.component.registerSubmit('doctor'));
+				$('#register-doctor').on('click',function(e){
+					e.preventDefault();
+					var _id = $('#id').val();
+					var _pass = $('#pass').val();
+					var _name = $('#name').val();
+					var _phone = $('#phone').val();
+					var _email = $('#email').val();
+					var _position = $('#position').val();
+					var _major = $('#major').val();
+					var _birth = $('#birth').val();
+					var _gen = $('input[name=gen]').val();
+					if(app.util.validation(_id) && app.util.validation(_pass) && app.util.validation(_name) && app.util.validation(_phone)
+							){
+						var json = {
+							'id' : _id,
+							'pass' : _pass,
+							'name' : _name,
+							'phone' : _phone,
+							'email' : _email,
+							'position' : _position,
+							'major' : _major,
+							'birth' : _birth,
+							'gen' : _gen
+						};
+						$.ajax({
+							url: ctx+"/post/doctor",
+							method: "POST",
+							data: JSON.stringify(json),
+							dataType: "json",
+							contentType: "application/json",
+							success : function(data){
+								alert(data.result +",  "+ data.name);
+							},
+							error : function(xhr,status,msg){
+								alert(msg);
+							}
+						});
+					}else{
+						alert('값이 모두 입력되지 않았습니다.');
+					}
+					
+				});
+			});
+			$('#radio_nurse').on('click',function(){
+				registerInfo.append(app.component.registerSubmit('nurse'));
+				$('#register-nurse').on('click',function(e){
+					e.preventDefault();
+				});
+			});
+			$('#radio_admin').on('click',function(){
+				registerInfo.append(app.component.registerSubmit('admin'));
+				$('#register-admin').on('click',function(e){
+					e.preventDefault();
+				});
+			});
+		});
+	};
+	var emailCheck = function(str){
+		var regExp = /[0-9a-zA-Z][_0-9a-zA-Z-]*@[_0-9a-zA-Z-]+(\.[0_9a-zA-Z-]+){1,3}$/;
+		if(str.length == 0) {
+			return false;
+		}
+		if(!str.match(regExp)){
+			return false;
+		}
+		return true;
+	};
+	return { execute : execute, emailCheck : emailCheck };
 })();
 	// Navigator
 app.navi=(function(){
 	
 })();
-
+app.util={
+	validation : function(x) {
+		return (x != "");
+	}	
+};
 	// Patient
 app.patient = (function(){
 	
@@ -1057,30 +1229,10 @@ app.person = (function(){
 		$('#brand').on('click',function(){
 			alert('brand click!');
 		});
-		$('#wrapper').load(ctx+'/login/form');
-		login();
-	};
-	var login = function() {
-	    $('#login-form-link').on('click', function(e) {
-	    	alert('login-form-link clicked');
-			$("#login-form").delay(100).fadeIn(100);
-	 		$("#register-form").fadeOut(100);
-			$('#register-form-link').removeClass('active');
-			$(this).addClass('active');
-			e.preventDefault();
-		});
-		$('#register-form-link').on('click', function(e) {
-			alert('register-form-link clicked');
-			$("#register-form").delay(100).fadeIn(100);
-	 		$("#login-form").fadeOut(100);
-			$('#login-form-link').removeClass('active');
-			$(this).addClass('active');
-			e.preventDefault();
-		});
+		$('#wrapper').load(ctx+'/permission/form');
 	};
 	return {
-		init : init,
-		login : login
+		init : init
 	};
 })();
 

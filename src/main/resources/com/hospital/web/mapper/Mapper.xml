@@ -38,15 +38,15 @@
 	</resultMap>
 	<!-- C(insert) -->
 	<insert id="insertPatient">
-		INSERT INTO ${group}(pat_id, nur_id, doc_id, pat_pass, pat_name, pat_gen, pat_jumin, pat_addr, pat_phone, pat_email, pat_job) 
+		INSERT INTO Patient(pat_id, nur_id, doc_id, pat_pass, pat_name, pat_gen, pat_jumin, pat_addr, pat_phone, pat_email, pat_job) 
 		             VALUES (#{id},  #{nurID},  #{docID},  #{pass},  #{name},  #{gen},  #{jumin},  #{addr},  #{phone},  #{email},  #{job})
 	</insert>
 	<insert id="insertDoctor">
-		INSERT INTO ${group}(doc_id, doc_pass, major_treat, doc_name, doc_gen, doc_phone, doc_email, doc_position) 
+		INSERT INTO Doctor(doc_id, doc_pass, major_treat, doc_name, doc_gen, doc_phone, doc_email, doc_position) 
 		             VALUES (#{id},  #{pass},  #{major},  #{name},  #{gen},  #{phone},  #{email},  #{position})
 	</insert>
 	<insert id="insertNurse">
-		INSERT INTO ${group}(nur_id, nur_pass, major_job, nur_name, nur_gen, nur_phone, nur_email, nur_position) 
+		INSERT INTO Nurse(nur_id, nur_pass, major_job, nur_name, nur_gen, nur_phone, nur_email, nur_position) 
 		             VALUES (#{id},  #{pass},  #{major},  #{name},  #{gen},  #{phone},  #{email},  #{position})
 	</insert>
 	<!-- R(select) -->
@@ -55,13 +55,13 @@
 	</select> 
 	나중에 이 방식으로 사용 -->
 	<select id="findPatient" resultMap="Patient" parameterType="hashMap">
-		SELECT * FROM ${group} WHERE ${key} = #{value}
+		SELECT * FROM ${group} WHERE ${idType} = #{id}
 	</select>
 	<select id="findDoctor" resultMap="Doctor" parameterType="hashMap">
-		SELECT * FROM ${group} WHERE ${key} = #{value}
+		SELECT * FROM ${group} WHERE ${idType} = #{id}
 	</select>
 	<select id="findNurse" resultMap="Nurse" parameterType="hashMap">
-		SELECT * FROM ${group} WHERE ${key} = #{value}
+		SELECT * FROM ${group} WHERE ${idType} = #{id}
 	</select>
 	<select id="findPatients" resultMap="Patient" parameterType="hashMap">
 		SELECT * FROM ${group} 
@@ -149,7 +149,7 @@
 		SELECT COUNT(*) FROM ${group}
 	</select>
 	<select id="exist" resultType="int" parameterType="hashMap">
-		SELECT COUNT(*) FROM ${group} WHERE ${key} = #{value}
+		SELECT COUNT(*) FROM ${group} WHERE ${idType} = #{id}
 	</select>
 	<select id="find1" resultType="com.hospital.web.domain.Patient">
 		SELECT
