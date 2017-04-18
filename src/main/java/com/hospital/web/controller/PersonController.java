@@ -31,7 +31,7 @@ public class PersonController {
 	@Autowired Admin admin;
 	@RequestMapping(value="/login", method=RequestMethod.POST, consumes="application/json")
 	public @ResponseBody Map<?,?> login(@RequestBody Map<String, String> paramMap) throws Exception{
-		Map<String, String> map = new HashMap<>();
+		Map<String, Object> map = new HashMap<>();
 		logger.info("PersonController login {}", "ENTER");
 		String id = paramMap.get("id");
 		String pw = paramMap.get("pw");
@@ -51,7 +51,7 @@ public class PersonController {
 			if(patient.getPass().equals(pw)){
 				logger.info("비밀번호 일치");
 				map.put("group", "환자");
-				map.put("name",patient.getName());
+				map.put("user", patient);
 				map.put("result", "success");
 				map.put("source", "/patient/main");
 			} else {
@@ -64,7 +64,7 @@ public class PersonController {
 			if(doctor.getPass().equals(pw)){
 				logger.info("비밀번호 일치");
 				map.put("group", "의사");
-				map.put("name",doctor.getName());
+				map.put("user",doctor);
 				map.put("result", "success");
 				map.put("source", "/dcotor/main");
 			} else {
@@ -77,7 +77,7 @@ public class PersonController {
 			if(nurse.getPass().equals(pw)){
 				logger.info("비밀번호 일치");
 				map.put("group", "간호사");
-				map.put("name",nurse.getName());
+				map.put("user",nurse);
 				map.put("result", "success");
 				map.put("source", "/nurse/main");
 			} else {
@@ -89,7 +89,7 @@ public class PersonController {
 			admin = personService.getAdmin(paramMap);
 			if(admin.getPass().equals(pw)){
 				map.put("group", "관리자");
-				map.put("name", admin.getName());
+				map.put("user", admin);
 				map.put("result", "success");
 				map.put("source", "/admin/main");
 			} else {

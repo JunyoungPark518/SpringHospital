@@ -1047,7 +1047,7 @@ app.component = (function(){
     	   return btn;
        },
        patientGnb: function(){
-    	   var gnb = '<div class="index_gnbtab wtac" style="position: relative; top: 125px;"><ul class="index_gnb">';
+    	   var gnb = '<div class="index_gnbtab wtac" style="position: relative;"><ul class="index_gnb">';
     	   var arr = ['home/홈으로','mypage/MY PAGE','treatlist/나의 진료기록','board/게시판','customer/고객참여마당','main/로그아웃'];
     	   for(var i=0; i<6; i++){
     		   gnb+='<li><a class="index_gnb_index" href="'+arr[i].split("/")[0]+'">'+arr[i].split("/")[1]+'</a></li>'   
@@ -1056,7 +1056,11 @@ app.component = (function(){
     	   return gnb;
        },
        patientDetail: function(){
-    	   var detail = '<div class="con_setting"style="position: relative; top: 150px; text-align:center; width:100%"><div class="wtac"><table class="pat_detail"><tr style="text-align: left;"><td colspan="5"><div><img src="${context}/resources/img/common/defaultimg.jpg"alt=""width="160px"/></div></td></tr><tr><td style="width: 60px"rowspan="5"><span style="font-size: 20px">내<br/>정<br/>보</span></td><td style="width: 100px; background-color: #bfcedd">이름</td><td style="width: 150px">${user.name}</td><td style="width: 100px; background-color: #bfcedd">직업</td><td style="width: 150px">${user.job}</td></tr><tr><td style="background-color: #bfcedd;">생년월일</td><td>${birth}</td><td style="background-color: #bfcedd;">키</td><td>180cm</td></tr><tr><td style="background-color: #bfcedd;">성별</td><td>${gender}</td><td style="background-color: #bfcedd;">나이/몸무게</td><td>${age}/ 70kg</td></tr><tr><td style="background-color: #bfcedd;">전화번호</td><td>${user.phone}</td><td style="background-color: #bfcedd;">혈액형</td><td>B</td></tr><tr><td style="background-color: #bfcedd;">주소</td><td>${user.addr}</td><td style="background-color: #bfcedd;">주치의</td><td><a onclick="goDocDetail()">채워야댐</a></td></tr></table></div><div><a href="update"><input type="button"value="업데이트"/></a></div></div>';
+    	   var ctx = app.session.getContextPath();
+    	   var detail = '<div class="con_setting" style="position: relative; top: 20px; text-align:center; width:100%"><div class="wtac"><table class="pat_detail"><tr style="text-align: left;"><td colspan="5"><div><img src="'+ctx+'/resources/img/common/defaultimg.jpg"alt=""width="160px"/></div></td></tr><tr><td style="width: 60px"rowspan="5"><span style="font-size: 20px">내<br/>정<br/>보</span></td>'
+    	   +'<td style="width: 100px; background-color: #bfcedd">이름</td><td id="name" style="width: 150px"></td>'
+    	   +'<td style="width: 100px; background-color: #bfcedd">직업</td><td id="job" style="width: 150px"></td>'
+    	   +'</tr><tr><td style="background-color: #bfcedd;">생년월일</td><td id="birth"></td><td style="background-color: #bfcedd;">키</td><td>180cm</td></tr><tr><td style="background-color: #bfcedd;">성별</td><td id="gender"></td><td style="background-color: #bfcedd;">나이/몸무게</td><td id="age"> / 70kg</td></tr><tr><td style="background-color: #bfcedd;">전화번호</td><td id="phone"></td><td style="background-color: #bfcedd;">혈액형</td><td>B</td></tr><tr><td style="background-color: #bfcedd;">주소</td><td id="addr"></td><td style="background-color: #bfcedd;">주치의</td><td><a onclick="goDocDetail()">채워야댐</a></td></tr></table></div><div><a href="update"><input type="button"value="업데이트"/></a></div></div>';
     	   return detail;
        }
 	};
@@ -1080,6 +1084,13 @@ app.permission=(function(){
 						  var wrapper = $('#wrapper');
 						  wrapper.html(app.component.patientGnb());
 						  wrapper.append(app.component.patientDetail());
+						  alert(data.user.name);
+						  $('#name').text(data.user.name);
+						  $('#job').text(data.user.job);
+						  $('#birth').text(data.user.jumin);
+						  $('#gender').text(data.user.gen);
+						  $('#phone').text(data.user.phone);
+						  $('#addr').text(data.user.addr);
 					  } else {
 						  alert('Please confirm your ID/PW.');
 					  }
