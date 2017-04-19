@@ -23,9 +23,10 @@ $(function() {
 <script src="${context}/resources/js/app.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <link rel="stylesheet" href="${context}/resources/css/hanbit.css" type="text/css"/>
+<link rel="stylesheet" href="${context}/resources/css/app.css" type="text/css"/>
 </head>
 <body>
-	<nav class="navbar navbar-inverse">
+	<nav id="boot-nav" class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
@@ -38,7 +39,7 @@ $(function() {
 				</button>
 				<a id="brand" class="navbar-brand" href="#"><img src="${context}/resources/img/common/hospital_icon.png" alt="" width="30px" height="30px"/></a>
 			</div>
-
+	
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">

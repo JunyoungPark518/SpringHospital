@@ -1,78 +1,97 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<style>
-.pat_detail {text-align: center; margin:0 auto;}
-.pat_detail tr td{border: 1px solid #bbbbbb}
-</style>
+<!DOCTYPE html>
 
-<div class="con_setting" style="position: relative; top: 150px; text-align:center; width:100%">
-	<h1>진료기록부</h1>
-	<div class="wtac">
-		<table class="pat_detail">
-			<tr>
-				<td style="width: 60px" rowspan="5"><span style="font-size: 20px">환<br />자<br />정<br />보</span></td>
-				<td style="width: 100px">이름</td>
-				<td style="width: 150px"></td>
-				<td style="width: 100px">직업</td>
-				<td style="width: 150px"></td>
-			</tr>
-			<tr>
-				<td>생년월일</td>
-				<td></td>
-				<td>키</td>
-				<td></td>
-			</tr>
-			<tr>
-				<td>성별</td>
-				<td></td>
-				<td>나이/몸무게</td>
-				<td></td>
-			</tr>
-			<tr>
-				<td>전화번호</td>
-				<td></td>
-				<td>혈액형</td>
-				<td></td>
-			</tr>
-			<tr>
-				<td>주소</td>
-				<td></td>
-				<td>주치의</td>
-				<td></td>
-			</tr>
-			<tr>
-				<td style="height: 50px">처방전</td>
-				<td colspan="4" style="height: 50px"> 처방전 상세내용 </td>
-			</tr>
-			<tr style="text-align: left;">
-				<td colspan="5"><div><img src="${context.img}/common/defaultimg.jpg" alt="" width="160px"/></div></td>
-			</tr>
-			<tr>
-				<td colspan="5" style="height: 200px">상세 내용</td>
-			</tr>
-		</table>
-		</div>
-		<div class="wtac">
-		<table class="pat_detail" style="width: 560px">
-			<tr>
-				<th style="width:80px">순서</th>
-				<th style="width:80px">진료일</th>
-				<th style="width:80px">진료NO</th>
-				<th style="width:80px">담당의사</th>
-				<th style="width:80px">직책</th>
-				<th style="width:80px">진료과목</th>
-				<th style="width:80px">병명</th>
-				<th style="width:80px">처방내역</th>
-			</tr>
-			<tr>
-				<td>for문 돌릴곳</td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-		</table>
-	</div>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+.top{height:auto; width:800px; border:1px solid black;padding:0;}
+.center{height:300px; width:800px;  border:1px solid black; }
+.center-center{height:290px; width:780px;  border:1px solid black; margin: auto; }
+.bottom{height:auto; width:800px;  border:1px solid black;}
+.bottom-table{border:1px solid black; width: 200px; height: 30px;}
+.top-table{border:1px solid black; width: 110px; height: 30px; }
+.col-table{border:1px solid black; width: 30px; height: 30px; }
+</style>
+</head>
+<body>
+<div class="top" style="text-align:center ">
+   <table style="border-collapse: collapse;">
+	<tr>
+		<td rowspan="5" style="border:1px solid black; ">환<br/>자<br/>정<br/>보</td>
+		<td class="bottom-table">이름</td>
+        <td colspan="3" class="top-table"></td>
+        <td class="bottom-table">직업</td>
+        <td class="top-table"></td>
+	</tr>
+	<tr>
+		<td class="bottom-table">생년월일</td>
+        <td class="top-table"></td>
+        <td class="col-table">키</td>
+        <td class="top-table"></td>
+        <td class="bottom-table">직업</td>
+        <td class="top-table"></td>
+	</tr>
+	<tr>
+	   <td class="bottom-table">성별</td>
+        <td colspan="3" class="top-table"></td>
+        <td class="bottom-table">몸무게</td>
+        <td class="top-table"></td>
+    </tr>
+	<tr>
+		<td class="bottom-table">전화번호</td>
+        <td colspan="3" class="top-table"></td>
+        <td class="bottom-table">혈액형</td>
+        <td class="top-table"></td>
+	</tr>
+	<tr>
+		<td class="bottom-table">주소</td>
+        <td colspan="3" class="top-table"></td>
+        <td class="bottom-table">주치의</td>
+        <td class="top-table"></td>
+	</tr>
+</table>
 </div>
+<div class="center"> 
+    <div class="center-center">처방전
+        <br/>
+        <img src="C:/Users/hb2004/Desktop/who.JPG" style="width:200px; height:200px;">
+    </div>
+</div>
+<div class="bottom" style="text-align:center"> 
+    <table style="border-collapse: collapse;">
+	<tr>
+		<td class="bottom-table">순서</td>
+        <td class="bottom-table">진료일</td>
+        <td class="bottom-table">진료 NO</td>
+        <td class="bottom-table">담당의사</td>
+        <td class="bottom-table">직책</td>
+        <td class="bottom-table">진료과목</td>
+        <td class="bottom-table">병명</td>
+        <td class="bottom-table">처방내역</td>
+	</tr>
+	<tr>
+		<td class="bottom-table"></td>
+        <td class="bottom-table"></td>
+        <td class="bottom-table"></td>
+        <td class="bottom-table"></td>
+        <td class="bottom-table"></td>
+        <td class="bottom-table"></td>
+        <td class="bottom-table"></td>
+        <td class="bottom-table"></td>
+	</tr>
+	<tr>
+		<td class="bottom-table"></td>
+        <td class="bottom-table"></td>
+        <td class="bottom-table"></td>
+        <td class="bottom-table"></td>
+        <td class="bottom-table"></td>
+        <td class="bottom-table"></td>
+        <td class="bottom-table"></td>
+        <td class="bottom-table"></td>
+	</tr>
+</table>
+</div>
+</body>
+</html>

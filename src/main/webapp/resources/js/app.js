@@ -1,3 +1,18 @@
+/*
+ ========= app-meta ========
+ * app-algorithm
+ * app-oop
+ * app-component
+ * app-ui
+ * app-permission
+ * app-navi
+ * app-util
+ * app-person
+ * app-info
+ *
+ ===========================
+ */
+
 /* Application NameSpace */
 var app = app || {};
 
@@ -9,7 +24,12 @@ var app = app || {};
 		 * app.algorithm
 		 * app.oop
 		 ***********************/
-	// Context(META-INF)
+/*========= app-context =========
+	@AUTHOR : Junyoung Park
+	@CREATE DATE : 2017-04-19
+	@UPDATE DATE : 2017-04-19
+	@DESC : META-INF
+=================================*/
 app.context = (function(){
 	var init = function(context){ 
 		app.session.init(context);
@@ -31,8 +51,12 @@ app.context = (function(){
 		onCreate : onCreate
 	};
 })();
-
-	// Session
+/*========= app-session =========
+@AUTHOR : Junyoung Park
+@CREATE DATE : 2017-04-19
+@UPDATE DATE : 2017-04-19
+@DESC : Session
+=================================*/
 app.session = (function(){ 
 	var init = function(context) { 
 		sessionStorage.setItem('context',context);
@@ -52,12 +76,51 @@ app.session = (function(){
 		getImagePath : getImagePath
 	};
 })();
-	// Util
-app.util = (function(){
-	
-})();
-
-	// Algorithm Method
+		/************************
+		 * View
+		 * app.component
+		 * app.permission
+		 * app.navi
+		 * app.patient
+		 ***********************/
+/*========= app-algorithm =========
+@AUTHOR : Junyoung Park
+@CREATE DATE : 2017-04-19
+@UPDATE DATE : 2017-04-19
+@DESC : Algorithm Implementation and Testing
+app-algorithm-series
+	app-algorithm-aSeries
+	app-algorithm-swSeries
+	app-algorithm-dSeries
+	app-algorithm-factorial
+	app-algorithm-fibonacci
+app-algorithm-arr
+	app-algorithm-selectSort
+	app-algorithm-bubbleSort
+	app-algorithm-insertSort
+	app-algorithm-ranking
+	app-algorithm-binary
+	app-algorithm-merge
+	app-algorithm-stack
+	app-algorithm-randomGen
+app-algorithm-matrix
+	app-algorithm-basic
+	app-algorithm-zigzag
+	app-algorithm-diamond
+	app-algorithm-sandGlass
+	app-algorithm-snail
+	app-algorithm-magicSquare
+app-algorithm-math
+	app-algorithm-determineprime
+	app-algorithm-primeSum
+	app-algorithm-primeCount
+	app-algorithm-lcmGcm
+	app-algorithm-euclid
+	app-algorithm-factorization
+	app-algorithm-primefactor
+	app-algorithm-multiSum
+	app-algorithm-approx
+=================================*/
 app.algorithm = (function(){
 	/* 알고리즘수열 */
 	var init = function() {
@@ -184,16 +247,7 @@ app.algorithm = (function(){
 		}
 		return arr;
 	};
-	var horizontalTable = function(arr){
-		var table='';
-		table += '<table style="width:210px; height:280px; border-collapse: collapse; border: 1px solid black; margin: 0 auto"><tbody><tr><td>';
-		$.each(arr, function(i,j){
-			table += '<td>' + arr[i] + '</td>';
-		});
-		table += '</tr></tbody></table>';
-		$('#table td').css('border', '1px solid black');
-		return table;
-	};
+	
 		/* Algorithm Matrix function */
 	var basic = function(){
 		$('#basic').on('click', function() {
@@ -598,7 +652,7 @@ app.algorithm = (function(){
 		var wrapper = app.component.getWrapper();
 		$('#series').on('click', function() {
 			wrapper.empty();
-			wrapper.append(app.algorithm.TABLE);
+			wrapper.append(app.ui.table);
 			var arr = [{id:'aSeries', txt:'등차수열'},
 				{id:'swSeries', txt:'스위치수열'},
 				{id:'dSeries', txt:'계차수열'},
@@ -675,7 +729,7 @@ app.algorithm = (function(){
 		var wrapper = app.component.getWrapper();
 		$('#arr').on('click', function() {
 			wrapper.empty();
-			wrapper.append(app.algorithm.TABLE);
+			wrapper.append(app.ui.table);
 			var arr = [{id: 'selectSort', txt:'선택정렬'},
 				{id: 'bubbleSort', txt:'버블정렬'},
 				{id: 'insertSort', txt:'삽입정렬'},
@@ -730,7 +784,7 @@ app.algorithm = (function(){
 		var wrapper = app.component.getWrapper();
 		$('#matrix').on('click', function() {
 			wrapper.empty();
-			wrapper.append(app.algorithm.TABLE);
+			wrapper.append(app.ui.table);
 			var arr = [
 				{id:'basic', txt:'기본 5x5'},
 				{id:'zigzag', txt:'지그재그'},
@@ -761,7 +815,7 @@ app.algorithm = (function(){
 		var wrapper = app.component.getWrapper();
 		$('#math').on('click', function() {
 			wrapper.empty();
-			wrapper.append(app.algorithm.TABLE);var arr = [
+			wrapper.append(app.ui.table);var arr = [
 				{id:'determinePrime', txt:'소수 판별'},
 				{id:'primeSum', txt:'소수의 합'},
 				{id:'primeCount', txt:'소수의 개수'},
@@ -795,7 +849,7 @@ app.algorithm = (function(){
 		var wrapper = app.component.getWrapper();
 		$('#appl').on('click', function() {
 			wrapper.empty();
-			wrapper.append(app.algorithm.TABLE);
+			wrapper.append(app.ui.table);
 			var tableRight = $('#tableRight');
 			app.component.inputText('inputText').attr('placeholder','어플').appendTo(tableRight);
 			app.component.aButton('aButton','btn-primary').html('CLICK').appendTo(app.component.wrapper).on('click', function() {
@@ -826,7 +880,6 @@ app.algorithm = (function(){
 		merge : merge,
 		stack : stack,
 		randomGen : randomGen,
-		horizontalTable : horizontalTable,
 		/* Matrix */
 		matrix : matrix,
 		basic : basic,
@@ -850,7 +903,15 @@ app.algorithm = (function(){
 		appl : appl
 	};
 })();
-	/* OOP Method */
+/*========= app-oop =========
+@AUTHOR : Junyoung Park
+@CREATE DATE : 2017-04-19
+@UPDATE DATE : 2017-04-19
+@DESC : Object Oriented Programming Test
+app-oop-encap
+app-oop-inher
+app-oop-polym
+=================================*/
 app.oop = (function(){
 	var init = function() {
 		onCreate();
@@ -864,7 +925,7 @@ app.oop = (function(){
 		var wrapper = app.component.getWrapper();
 		$('#encap').on('click', function() {
 			wrapper.empty();
-			wrapper.append(app.algorithm.TABLE);
+			wrapper.append(app.ui.table);
 			var arr = [
 				{id: 'encap1', txt:'캡슐화'},
 				{id: 'inher1', txt:'상속성'},
@@ -894,7 +955,7 @@ app.oop = (function(){
 		});
 		$('#encap1').on('click', function() {
 			wrapper.empty();
-			wrapper.append(app.algorithm.TABLE);
+			wrapper.append(app.ui.table);
 			var tableLeft = $('#tableLeft');
 			tableLeft.empty();
 			var tableRight = $('#tableRight');
@@ -918,7 +979,7 @@ app.oop = (function(){
 		var wrapper = app.component.getWrapper();
 		$('#inher').on('click', function() {
 			wrapper.empty();
-			wrapper.append(app.algorithm.TABLE);
+			wrapper.append(app.ui.table);
 			var tableLeft = $('#tableLeft');
 			tableLeft.empty();
 			var tableRight = $('#tableRight');
@@ -926,7 +987,7 @@ app.oop = (function(){
 		});
 		$('#inher1').on('click', function() {
 			wrapper.empty();
-			wrapper.append(app.algorithm.TABLE);
+			wrapper.append(app.ui.table);
 			var tableLeft = $('#tableLeft');
 			tableLeft.empty();
 			var tableRight = $('#tableRight');
@@ -937,7 +998,7 @@ app.oop = (function(){
 		var wrapper = app.component.getWrapper();
 		$('#polym').on('click', function() {
 			wrapper.empty();
-			wrapper.append(app.algorithm.TABLE);
+			wrapper.append(app.ui.table);
 			var tableLeft = $('#tableLeft');
 			tableLeft.empty();
 			var tableRight = $('#tableRight');
@@ -945,7 +1006,7 @@ app.oop = (function(){
 		});
 		$('#polym1').on('click', function() {
 			wrapper.empty();
-			wrapper.append(app.algorithm.TABLE);
+			wrapper.append(app.ui.table);
 			var tableLeft = $('#tableLeft');
 			tableLeft.empty();
 			var tableRight = $('#tableRight');
@@ -961,15 +1022,30 @@ app.oop = (function(){
 		polym : polym
 	};
 })();
-		/************************
-		 * View
-		 * app.component
-		 * app.permission
-		 * app.navi
-		 * app.patient
-		 ***********************/
 
-	// Component
+/*========= app-component =========
+@AUTHOR : Junyoung Park
+@CREATE DATE : 2017-04-19
+@UPDATE DATE : 2017-04-19
+@DESC : Component for using Single Page Application 
+app-component-init
+app-component-getWrapper
+app-component-setWrapper
+app-component-getBody
+app-component-setBody
+app-component-div
+app-component-aButton
+app-component-bButton
+app-component-inputText
+app-component-divAlert
+app-component-horizontalTable
+app-component-horList
+app-component-panelTable
+app-component-radioButton
+app-component-registerInputtext
+app-component-registerSubmit
+app-component-patientGnb
+=================================*/
 app.component = (function(){
 	var _body, _wrapper;
 	var setBody = function(body) { this._body = body; }
@@ -1002,6 +1078,16 @@ app.component = (function(){
 		},
 		divAlert : function(type){
 			return $('<div class="alert '+type+'" role="alert">example</div>');
+		},
+		horizontalTable : function(arr){
+			var table='';
+			table += '<table style="width:210px; height:280px; border-collapse: collapse; border: 1px solid black; margin: 0 auto"><tbody><tr><td>';
+			$.each(arr, function(i,j){
+				table += '<td>' + arr[i] + '</td>';
+			});
+			table += '</tr></tbody></table>';
+			$('#table td').css('border', '1px solid black');
+			return table;
 		},
 		horList : function(arr, i) {
 			var type='';
@@ -1045,8 +1131,18 @@ app.component = (function(){
        registerSubmit: function(id){
     	   var btn = '<div class="form-group"><div class="row"><div class="col-sm-6 col-sm-offset-3"><input type="submit" name="register-submit" id="register-'+id+'" tabindex="4" class="form-control btn btn-register" value="Register Now"></div></div></div>';
     	   return btn;
-       },
-       patientGnb: function(){
+       }
+	};
+})();
+/*========= app-ui =========
+@AUTHOR : Junyoung Park
+@CREATE DATE : 2017-04-19
+@UPDATE DATE : 2017-04-19
+@DESC : UI for using JavaScript page at once
+app-component-patientDetail
+=================================*/
+app.ui={
+	patientGnb: function(){
     	   var gnb = '<div class="index_gnbtab wtac" style="position: relative;"><ul class="index_gnb">';
     	   var arr = ['home/홈으로','mypage/MY PAGE','treatlist/나의 진료기록','board/게시판','customer/고객참여마당','main/로그아웃'];
     	   for(var i=0; i<6; i++){
@@ -1055,42 +1151,124 @@ app.component = (function(){
 		   gnb += '</ul></div>';
     	   return gnb;
        },
-       patientDetail: function(){
+	patientDetail: function(){
     	   var ctx = app.session.getContextPath();
     	   var detail = '<div class="con_setting" style="position: relative; top: 20px; text-align:center; width:100%"><div class="wtac"><table class="pat_detail"><tr style="text-align: left;"><td colspan="5"><div><img src="'+ctx+'/resources/img/common/defaultimg.jpg"alt=""width="160px"/></div></td></tr><tr><td style="width: 60px"rowspan="5"><span style="font-size: 20px">내<br/>정<br/>보</span></td>'
     	   +'<td style="width: 100px; background-color: #bfcedd">이름</td><td id="name" style="width: 150px"></td>'
     	   +'<td style="width: 100px; background-color: #bfcedd">직업</td><td id="job" style="width: 150px"></td>'
-    	   +'</tr><tr><td style="background-color: #bfcedd;">생년월일</td><td id="birth"></td><td style="background-color: #bfcedd;">키</td><td>180cm</td></tr><tr><td style="background-color: #bfcedd;">성별</td><td id="gender"></td><td style="background-color: #bfcedd;">나이/몸무게</td><td id="age"> / 70kg</td></tr><tr><td style="background-color: #bfcedd;">전화번호</td><td id="phone"></td><td style="background-color: #bfcedd;">혈액형</td><td>B</td></tr><tr><td style="background-color: #bfcedd;">주소</td><td id="addr"></td><td style="background-color: #bfcedd;">주치의</td><td><a onclick="goDocDetail()">채워야댐</a></td></tr></table></div><div><a href="update"><input type="button"value="업데이트"/></a></div></div>';
+    	   +'</tr><tr><td style="background-color: #bfcedd;">생년월일</td><td id="birth"></td><td style="background-color: #bfcedd;">키</td><td>180cm</td></tr><tr><td style="background-color: #bfcedd;">성별</td><td id="gender"></td><td style="background-color: #bfcedd;">나이/몸무게</td><td id="age"> / 70kg</td></tr><tr><td style="background-color: #bfcedd;">전화번호</td><td id="phone"></td><td style="background-color: #bfcedd;">혈액형</td><td>B</td></tr><tr><td style="background-color: #bfcedd;">주소</td><td id="addr"></td><td style="background-color: #bfcedd;">주치의</td><td><a onclick="goDocDetail()">채워야댐</a></td></tr></table></div>'
+    	   +'<div style="margin-top: 10px"><a href="update"><input id="btn-default" type="button" value="차트보기"/></a></div></div>';
     	   return detail;
-       }
-	};
-})();
+       },
+    table : function(){
+    	var table = '<div style="width:100%"><table style="margin: 0 auto; width:500px; height:300px; border-collapse: collapse; border: 1px solid black;"><tr><td id="tableLeft" style="width:50%; border: 1px solid black;"></td><td id="tableRight"></td></tr></table></div>';
+    	return table;
+    },
+    chart : function(){
+		var image = app.session.getImagePath();
+		$("<div></div>").attr('id','div-chart').appendTo('#wrapper');
+		$('#div-chart').css('width','80%').css('margin-top','50px').addClass('app-margin-center');
+		$("<div></div>").attr('id','app-chart-top').appendTo('#div-chart');
+		
+		var table=
+			'<table>'
+			+'<tr><td rowspan="5" style="width:100px">환<br/>자<br/>정<br/>보</td><td class="app-chart-table-elem">이름</td><td id="name" colspan="3" class="app-chart-top-table"></td><td class="app-chart-table-elem">직업</td><td id="job" class="app-chart-top-table"></td></tr>'
+			+'<tr><td class="app-chart-table-elem">생년월일</td><td id="birth" class="app-chart-top-table"></td><td class="app-chart-col-table">키</td><td id="height" class="app-chart-top-table"></td><td class="app-chart-table-elem">직업</td><td class="app-chart-top-table"></td></tr>'       
+			+'<tr><td class="app-chart-table-elem">성별</td><td id="gen" colspan="3" class="app-chart-top-table"></td><td class="app-chart-table-elem">몸무게</td><td id="weight" class="app-chart-top-table"></td></tr>'
+		    +'<tr><td class="app-chart-table-elem">전화번호</td><td id="phone" colspan="3" class="app-chart-top-table"></td><td class="app-chart-table-elem">혈액형</td><td id="bloodtype" class="app-chart-top-table"></td></tr>'
+		    +'<tr><td class="app-chart-table-elem">주소</td><td id="addr" colspan="3" class="app-chart-top-table"></td><td class="app-chart-table-elem">주치의</td><td id="doctorName" class="app-chart-top-table"></td></tr>'
+			+'</table>';			 
+		$(table).attr('id','app-chart-top-table').appendTo('#app-chart-top');
+		$('#app-chart-top-table').css('width','800px');
+		$('#app-chart-top').addClass('app-chart-top').css('text-align','center');
+		$("<div></div>").attr('id','app-chart-center').appendTo('#app-chart-top');
+		$('#app-chart-center').addClass('app-chart-center');
+		var fileUpload = '<form id="form-file-upload" name="upload" method="post" action="" enctype="multipart/form-data"><input type="file" id="file" name="file"/><input type="submit" id="btn-file-upload" value="파일업로드"/></form>';
+		$('#app-chart-center').html(
+			'<div class="app-chart-center-center">처방전'+
+		        '<br/>'+
+		        '<img src="'+image+'/common/defaultimg.jpg" style="width:200px; height:200px; float:left;"/>' +
+		    '</div>	'+fileUpload);
+		$('#form-file-upload').css('margin-top','20px');
+		$("<div></div>").attr('id','app-chart-bottom').appendTo('#app-chart-center');
+		$('<table><thead id="thead"></thead><tbody id="tbody"></tbody></table>').attr('id','app-chart-bottom-table').appendTo('#app-chart-bottom');
+		var row = '<tr>';
+		var arr=['순서','진료일','진료 NO','담당의사','직책','진료과목','병명','처방내역'];
+		for(var i=0;i<8;i++){
+			row+='<th>'+arr[i]+'</th>';
+		}
+		row+='</tr>';
+		$('#thead').html(row);
+		var row = '<tr>';
+		for(var i=0;i<8;i++){
+			row+='<td>'+'example'+'</td>';
+		}
+		row+='</tr>';
+		$('#tbody').html(row);
+		$('#thead th').addClass('app-chart-table-elem').addClass('app-text-center');
+		$('#tbody td').addClass('app-chart-table-elem').addClass('app-text-center');
+		$('#app-chart-bottom-table').css('margin-top','20px').addClass('app-chart-bottom-table');
+	
+	}
+};
+/*========= app-permission =========
+@AUTHOR : Junyoung Park
+@CREATE DATE : 2017-04-19
+@UPDATE DATE : 2017-04-19
+@DESC : Permission for login or register user
+app-permission-execute
+app-permission-emailCheck
+=================================*/
 app.permission=(function(){
 	var execute = function(){
 		var ctx = app.session.getContextPath();
 		$('#login-submit').on('click',function(e){
 			e.preventDefault();
+			var id = $('#username').val();
 			$.ajax({
 				  url: ctx + "/login",
 				  method: "POST",
 				  data: JSON.stringify({ 
-					  id : $('#username').val(), 
+					  id : id, 
 					  pw : $('#password').val() 
 				  }),
 				  dataType: "json",
 				  contentType : "application/json",
 				  success : function(data) {
 					  if(data.result==='success'){
+						  $('#boot-nav').remove();
 						  var wrapper = $('#wrapper');
-						  wrapper.html(app.component.patientGnb());
-						  wrapper.append(app.component.patientDetail());
-						  alert(data.user.name);
+						  wrapper.html(app.ui.patientGnb());
+						  wrapper.append(app.ui.patientDetail());
 						  $('#name').text(data.user.name);
 						  $('#job').text(data.user.job);
 						  $('#birth').text(data.user.jumin);
 						  $('#gender').text(data.user.gen);
 						  $('#phone').text(data.user.phone);
 						  $('#addr').text(data.user.addr);
+						  $('#btn-default').on('click',function(e){
+							  var wrapper = $('#wrapper');
+							  wrapper.html(app.ui.patientGnb());
+							  wrapper.append(app.ui.chart());
+							  e.preventDefault();
+							  $.ajax({
+								  url: ctx + '/get/chart',
+								  method: 'POST',
+								  data: JSON.stringify({
+									  id : id
+								  }),
+								  dataType: 'json',
+								  contentType: 'application/json',
+								  success: function(data){
+									  if(data.result === 'fail'){
+											alert('차트 없음');
+										} else {
+											alert('차트 존재');
+										}
+									 },
+								  error: function(x,s,m){alert(m);}
+							  });
+						  });
 					  } else {
 						  alert('Please confirm your ID/PW.');
 					  }
@@ -1131,13 +1309,14 @@ app.permission=(function(){
 				registerInfo.append(app.component.registerSubmit('patient'));
 			});
 			$('#radio_doctor').on('click',function(){
-				registerInfo.empty();
+				registerInfo.html('<div style="margin-top: 10px;"></div>');
 				registerInfo.append(app.component.registerInputtext('id','id','text','ID'));
 				registerInfo.append(app.component.registerInputtext('pass','pass','password','Password'));
 				registerInfo.append(app.component.registerInputtext('confirm-password','confirm-password','password','Confirm Password'));
 				registerInfo.append(app.component.registerInputtext('name','name','text','Username'));
 				registerInfo.append(app.component.radioButton('male','gen','M','남'));
 				registerInfo.append(app.component.radioButton('female','gen','F','여'));
+				registerInfo.append('<div style="margin-top: 10px;"></div>');
 				registerInfo.append(app.component.registerInputtext('phone','phone','text','Phone'));
 				registerInfo.append(app.component.registerInputtext('email','email','email','Email Address'));
 				registerInfo.append(app.component.registerInputtext('position','position','text','Position'));
@@ -1201,34 +1380,47 @@ app.permission=(function(){
 			});
 		});
 	};
-	var emailCheck = function(str){
-		var regExp = /[0-9a-zA-Z][_0-9a-zA-Z-]*@[_0-9a-zA-Z-]+(\.[0_9a-zA-Z-]+){1,3}$/;
-		if(str.length == 0) {
-			return false;
-		}
-		if(!str.match(regExp)){
-			return false;
-		}
-		return true;
+	return { execute : execute, 
+		emailCheck : function(str){
+			var regExp = /[0-9a-zA-Z][_0-9a-zA-Z-]*@[_0-9a-zA-Z-]+(\.[0_9a-zA-Z-]+){1,3}$/;
+			if(str.length == 0) {
+				return false;
+			}
+			if(!str.match(regExp)){
+				return false;
+			}
+			return true;
+		} 
 	};
-	return { execute : execute, emailCheck : emailCheck };
 })();
-	// Navigator
+/*========= app-navi =========
+@AUTHOR : Junyoung Park
+@CREATE DATE : 2017-04-19
+@UPDATE DATE : 2017-04-19
+@DESC : Navigation in JSP Pages
+=================================*/
 app.navi=(function(){
 	
 })();
+/*========= app-util =========
+@AUTHOR : Junyoung Park
+@CREATE DATE : 2017-04-19
+@UPDATE DATE : 2017-04-19
+@DESC : Etc methods(ex: email check validation, ...)
+app-util-validation
+=================================*/
 app.util={
 	validation : function(x) {
 		return (x != "");
 	}	
 };
-	// Patient
-app.patient = (function(){
-	
-})();
-
-app.algorithm.TABLE = '<div style="width:100%"><table style="margin: 0 auto; width:500px; height:300px; border-collapse: collapse; border: 1px solid black;"><tr><td id="tableLeft" style="width:50%; border: 1px solid black;"></td><td id="tableRight"></td></tr></table></div>';
-app.algorithm.MATRIX_MENU = '<ul class="list-group"><li id="matrix1" class="list-group-item"><a href="#">직각 삼각형</a></li><li id="matrix2" class="list-group-item"><a href="#">직각삼각형(뒤로부터)</a></li><li id="matrix3" class="list-group-item"><a href="#">ㄹ자 채우기</a></li><li id="matrix4" class="list-group-item"><a href="#">◆</a></li><li id="matrix5" class="list-group-item"><a href="#">◇</a></li><li id="matrix6" class="list-group-item"><a href="#">모래시계</a></li><li id="matrix7" class="list-group-item"><a href="#">■-◀</a></li><li id="matrix8" class="list-group-item"><a href="#">◀</a></li><li id="matrix9" class="list-group-item"><a href="#">90도 회전</a></li><li id="matrix10" class="list-group-item"><a href="#">달팽이</a></li><li id="matrix11" class="list-group-item"><a href="#">대각선 채우기(▨)</a></li><li id="matrix12" class="list-group-item"><a href="#">대각선 채우기(▧)</a></li><li id="matrix13" class="list-group-item"><a href="#">마방진</a></li></ul>';
+/*========= app-person =========
+@AUTHOR : Junyoung Park
+@CREATE DATE : 2017-04-19
+@UPDATE DATE : 2017-04-19
+@DESC : Using person in OOP
+app-person-init
+=================================*/
 app.person = (function(){
 	var wrapper, ctx, img, js, css;
 	var init = function(){
@@ -1247,7 +1439,12 @@ app.person = (function(){
 	};
 })();
 
-/* OOP Practice */
+/*========= app-info =========
+@AUTHOR : Junyoung Park
+@CREATE DATE : 2017-04-19
+@UPDATE DATE : 2017-04-19
+@DESC : Practice for OOP
+=================================*/
 app.info = (function() { // var를 쓴 것과 같음
 	var _name, _age, _gender, _job;
 	return {

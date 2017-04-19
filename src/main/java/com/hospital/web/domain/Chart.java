@@ -6,5 +6,5 @@ import lombok.*;
 
 @Component @Data @Lazy
 public class Chart {
-	private String chartID, treatID, docID, nurID, patID, chartContent;
+	private String patientId, nurseId, doctorId, name, pass, gen, jumin, addr, phone, email, job, chartId, treatmentId, chartContents, doctorMajor, doctorName, doctorPosition, nurseName, nursePosition, treatContents, treatDate;
 }

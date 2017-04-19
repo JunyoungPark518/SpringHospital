@@ -63,6 +63,9 @@
 	<select id="findNurse" resultMap="Nurse" parameterType="hashMap">
 		SELECT * FROM ${group} WHERE ${idType} = #{id}
 	</select>
+	<select id="findChart" resultType="com.hospital.web.domain.Chart" parameterType="hashMap">
+		SELECT * FROM ChartView WHERE patientId = #{id}
+	</select>
 	<select id="findPatients" resultMap="Patient" parameterType="hashMap">
 		SELECT * FROM ${group} 
 		WHERE
