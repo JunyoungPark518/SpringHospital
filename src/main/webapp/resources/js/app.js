@@ -44,6 +44,7 @@ app.context = (function(){
 		app.algorithm.init();
 		app.oop.init();
 		app.person.init();
+		app.util.datetime();
 	};
 	return {
 		init : init,
@@ -83,44 +84,46 @@ app.session = (function(){
 		 * app.navi
 		 * app.patient
 		 ***********************/
+
+
 /*========= app-algorithm =========
 @AUTHOR : Junyoung Park
 @CREATE DATE : 2017-04-19
 @UPDATE DATE : 2017-04-19
 @DESC : Algorithm Implementation and Testing
-app-algorithm-series
-	app-algorithm-aSeries
-	app-algorithm-swSeries
-	app-algorithm-dSeries
-	app-algorithm-factorial
-	app-algorithm-fibonacci
-app-algorithm-arr
-	app-algorithm-selectSort
-	app-algorithm-bubbleSort
-	app-algorithm-insertSort
-	app-algorithm-ranking
-	app-algorithm-binary
-	app-algorithm-merge
-	app-algorithm-stack
-	app-algorithm-randomGen
-app-algorithm-matrix
-	app-algorithm-basic
-	app-algorithm-zigzag
-	app-algorithm-diamond
-	app-algorithm-sandGlass
-	app-algorithm-snail
-	app-algorithm-magicSquare
-app-algorithm-math
-	app-algorithm-determineprime
-	app-algorithm-primeSum
-	app-algorithm-primeCount
-	app-algorithm-lcmGcm
-	app-algorithm-euclid
-	app-algorithm-factorization
-	app-algorithm-primefactor
-	app-algorithm-multiSum
-	app-algorithm-approx
-=================================*/
+	app-algorithm-series
+		app-algorithm-aSeries
+		app-algorithm-swSeries
+		app-algorithm-dSeries
+		app-algorithm-factorial
+		app-algorithm-fibonacci
+	app-algorithm-arr
+		app-algorithm-selectSort
+		app-algorithm-bubbleSort
+		app-algorithm-insertSort
+		app-algorithm-ranking
+		app-algorithm-binary
+		app-algorithm-merge
+		app-algorithm-stack
+		app-algorithm-randomGen
+	app-algorithm-matrix
+		app-algorithm-basic
+		app-algorithm-zigzag
+		app-algorithm-diamond
+		app-algorithm-sandGlass
+		app-algorithm-snail
+		app-algorithm-magicSquare
+	app-algorithm-math
+		app-algorithm-determineprime
+		app-algorithm-primeSum
+		app-algorithm-primeCount
+		app-algorithm-lcmGcm
+		app-algorithm-euclid
+		app-algorithm-factorization
+		app-algorithm-primefactor
+		app-algorithm-multiSum
+		app-algorithm-approx
+ *==========================*/
 app.algorithm = (function(){
 	/* 알고리즘수열 */
 	var init = function() {
@@ -1139,14 +1142,17 @@ app.component = (function(){
 @CREATE DATE : 2017-04-19
 @UPDATE DATE : 2017-04-19
 @DESC : UI for using JavaScript page at once
+app-component-patientGnb
 app-component-patientDetail
+app-component-table
+app-component-chart
 =================================*/
 app.ui={
 	patientGnb: function(){
     	   var gnb = '<div class="index_gnbtab wtac" style="position: relative;"><ul class="index_gnb">';
-    	   var arr = ['home/홈으로','mypage/MY PAGE','treatlist/나의 진료기록','board/게시판','customer/고객참여마당','main/로그아웃'];
-    	   for(var i=0; i<6; i++){
-    		   gnb+='<li><a class="index_gnb_index" href="'+arr[i].split("/")[0]+'">'+arr[i].split("/")[1]+'</a></li>'   
+	   var arr = ['home/홈으로','mypage/MY PAGE','treatlist/나의 진료기록','board/게시판','customer/고객참여마당','main/로그아웃'];
+	   for(var i=0; i<6; i++){
+		   gnb+='<li><a class="index_gnb_index" href="'+arr[i].split("/")[0]+'">'+arr[i].split("/")[1]+'</a></li>'   
     	   }
 		   gnb += '</ul></div>';
     	   return gnb;
@@ -1154,62 +1160,37 @@ app.ui={
 	patientDetail: function(){
     	   var ctx = app.session.getContextPath();
     	   var detail = '<div class="con_setting" style="position: relative; top: 20px; text-align:center; width:100%"><div class="wtac"><table class="pat_detail"><tr style="text-align: left;"><td colspan="5"><div><img src="'+ctx+'/resources/img/common/defaultimg.jpg"alt=""width="160px"/></div></td></tr><tr><td style="width: 60px"rowspan="5"><span style="font-size: 20px">내<br/>정<br/>보</span></td>'
-    	   +'<td style="width: 100px; background-color: #bfcedd">이름</td><td id="name" style="width: 150px"></td>'
-    	   +'<td style="width: 100px; background-color: #bfcedd">직업</td><td id="job" style="width: 150px"></td>'
-    	   +'</tr><tr><td style="background-color: #bfcedd;">생년월일</td><td id="birth"></td><td style="background-color: #bfcedd;">키</td><td>180cm</td></tr><tr><td style="background-color: #bfcedd;">성별</td><td id="gender"></td><td style="background-color: #bfcedd;">나이/몸무게</td><td id="age"> / 70kg</td></tr><tr><td style="background-color: #bfcedd;">전화번호</td><td id="phone"></td><td style="background-color: #bfcedd;">혈액형</td><td>B</td></tr><tr><td style="background-color: #bfcedd;">주소</td><td id="addr"></td><td style="background-color: #bfcedd;">주치의</td><td><a onclick="goDocDetail()">채워야댐</a></td></tr></table></div>'
-    	   +'<div style="margin-top: 10px"><a href="update"><input id="btn-default" type="button" value="차트보기"/></a></div></div>';
-    	   return detail;
-       },
-    table : function(){
-    	var table = '<div style="width:100%"><table style="margin: 0 auto; width:500px; height:300px; border-collapse: collapse; border: 1px solid black;"><tr><td id="tableLeft" style="width:50%; border: 1px solid black;"></td><td id="tableRight"></td></tr></table></div>';
-    	return table;
-    },
-    chart : function(){
-		var image = app.session.getImagePath();
-		$("<div></div>").attr('id','div-chart').appendTo('#wrapper');
-		$('#div-chart').css('width','80%').css('margin-top','50px').addClass('app-margin-center');
-		$("<div></div>").attr('id','app-chart-top').appendTo('#div-chart');
-		
-		var table=
-			'<table>'
-			+'<tr><td rowspan="5" style="width:100px">환<br/>자<br/>정<br/>보</td><td class="app-chart-table-elem">이름</td><td id="name" colspan="3" class="app-chart-top-table"></td><td class="app-chart-table-elem">직업</td><td id="job" class="app-chart-top-table"></td></tr>'
-			+'<tr><td class="app-chart-table-elem">생년월일</td><td id="birth" class="app-chart-top-table"></td><td class="app-chart-col-table">키</td><td id="height" class="app-chart-top-table"></td><td class="app-chart-table-elem">직업</td><td class="app-chart-top-table"></td></tr>'       
-			+'<tr><td class="app-chart-table-elem">성별</td><td id="gen" colspan="3" class="app-chart-top-table"></td><td class="app-chart-table-elem">몸무게</td><td id="weight" class="app-chart-top-table"></td></tr>'
-		    +'<tr><td class="app-chart-table-elem">전화번호</td><td id="phone" colspan="3" class="app-chart-top-table"></td><td class="app-chart-table-elem">혈액형</td><td id="bloodtype" class="app-chart-top-table"></td></tr>'
-		    +'<tr><td class="app-chart-table-elem">주소</td><td id="addr" colspan="3" class="app-chart-top-table"></td><td class="app-chart-table-elem">주치의</td><td id="doctorName" class="app-chart-top-table"></td></tr>'
-			+'</table>';			 
-		$(table).attr('id','app-chart-top-table').appendTo('#app-chart-top');
-		$('#app-chart-top-table').css('width','800px');
-		$('#app-chart-top').addClass('app-chart-top').css('text-align','center');
-		$("<div></div>").attr('id','app-chart-center').appendTo('#app-chart-top');
-		$('#app-chart-center').addClass('app-chart-center');
-		var fileUpload = '<form id="form-file-upload" name="upload" method="post" action="" enctype="multipart/form-data"><input type="file" id="file" name="file"/><input type="submit" id="btn-file-upload" value="파일업로드"/></form>';
-		$('#app-chart-center').html(
-			'<div class="app-chart-center-center">처방전'+
-		        '<br/>'+
-		        '<img src="'+image+'/common/defaultimg.jpg" style="width:200px; height:200px; float:left;"/>' +
-		    '</div>	'+fileUpload);
-		$('#form-file-upload').css('margin-top','20px');
-		$("<div></div>").attr('id','app-chart-bottom').appendTo('#app-chart-center');
-		$('<table><thead id="thead"></thead><tbody id="tbody"></tbody></table>').attr('id','app-chart-bottom-table').appendTo('#app-chart-bottom');
-		var row = '<tr>';
-		var arr=['순서','진료일','진료 NO','담당의사','직책','진료과목','병명','처방내역'];
-		for(var i=0;i<8;i++){
-			row+='<th>'+arr[i]+'</th>';
-		}
-		row+='</tr>';
-		$('#thead').html(row);
-		var row = '<tr>';
-		for(var i=0;i<8;i++){
-			row+='<td>'+'example'+'</td>';
-		}
-		row+='</tr>';
-		$('#tbody').html(row);
-		$('#thead th').addClass('app-chart-table-elem').addClass('app-text-center');
-		$('#tbody td').addClass('app-chart-table-elem').addClass('app-text-center');
-		$('#app-chart-bottom-table').css('margin-top','20px').addClass('app-chart-bottom-table');
-	
-	}
+	   +'<td style="width: 100px; background-color: #bfcedd">이름</td><td id="name" style="width: 150px"></td>'
+	   +'<td style="width: 100px; background-color: #bfcedd">직업</td><td id="job" style="width: 150px"></td>'
+	   +'</tr><tr><td style="background-color: #bfcedd;">생년월일</td><td id="birth"></td><td style="background-color: #bfcedd;">키</td><td>180cm</td></tr><tr><td style="background-color: #bfcedd;">성별</td><td id="gender"></td><td style="background-color: #bfcedd;">나이/몸무게</td><td id="age"> / 70kg</td></tr><tr><td style="background-color: #bfcedd;">전화번호</td><td id="phone"></td><td style="background-color: #bfcedd;">혈액형</td><td>B</td></tr><tr><td style="background-color: #bfcedd;">주소</td><td id="addr"></td><td style="background-color: #bfcedd;">주치의</td><td><a onclick="goDocDetail()">채워야댐</a></td></tr></table></div>'
+	   +'<div style="margin-top: 10px"><a href="update"><input id="btn-default" type="button" value="차트보기"/></a></div></div>';
+	   return detail;
+   },
+   table : function(){
+	var table = '<div style="width:100%"><table style="margin: 0 auto; width:500px; height:300px; border-collapse: collapse; border: 1px solid black;"><tr><td id="tableLeft" style="width:50%; border: 1px solid black;"></td><td id="tableRight"></td></tr></table></div>';
+	return table;
+   },
+   chart : function(){
+       	var ctx = app.session.getContextPath();
+       	var image = app.session.getImagePath();
+       	$("<div></div>").attr('id','div-chart').appendTo('#wrapper');
+       	$('#div-chart').css('width','80%').css('margin-top','50px').addClass('app-margin-center');
+       	$("<div></div>").attr('id','app-chart-top').appendTo('#div-chart');
+       	var table= '<table><tr><td rowspan="5" style="width:100px">환<br/>자<br/>정<br/>보</td><td class="app-chart-table-elem">이름</td><td id="name" colspan="3" class="app-chart-top-table"></td><td class="app-chart-table-elem">나이</td><td id="age" class="app-chart-top-table"></td></tr>'
+       	    +'<tr><td class="app-chart-table-elem">생년월일</td><td id="birth" class="app-chart-top-table"></td><td class="app-chart-col-table">키</td><td id="height" class="app-chart-top-table">180cm</td><td class="app-chart-table-elem">직업</td><td id="job" class="app-chart-top-table"></td></tr>'       
+       	    +'<tr><td class="app-chart-table-elem">성별</td><td id="gender" colspan="3" class="app-chart-top-table"></td><td class="app-chart-table-elem">몸무게</td><td id="weight" class="app-chart-top-table">80kg</td></tr>'
+       	    +'<tr><td class="app-chart-table-elem">전화번호</td><td id="phone" colspan="3" class="app-chart-top-table"></td><td class="app-chart-table-elem">혈액형</td><td id="bloodtype" class="app-chart-top-table">B</td></tr>'
+       	    +'<tr><td class="app-chart-table-elem">주소</td><td id="addr" colspan="3" class="app-chart-top-table"></td><td class="app-chart-table-elem">주치의</td><td id="doctorName" class="app-chart-top-table"></td></tr>'
+       	    +'</table>';			 
+	$(table).attr('id','app-chart-top-table').appendTo('#app-chart-top');
+	$('#app-chart-top-table').css('width','800px');
+	$('#app-chart-top').addClass('app-chart-top').css('text-align','center');
+	$("<div></div>").attr('id','app-chart-center').appendTo('#app-chart-top');
+	$('#app-chart-center').addClass('app-chart-center');
+	var fileUpload = '<form id="form" name="form" method="post" action="'+ctx+'/post/chart/img" enctype="multipart/form-data"><input type="file" id="file" name="file"/><input type="submit" id="btn-file-upload" value="파일업로드"/></form>';
+	$('#app-chart-center').html('<div class="app-chart-center-center">처방전<br/><img src="'+image+'/common/defaultimg.jpg" style="width:200px; height:200px; float:left;"/></div>'+fileUpload);
+	$('#form-file-upload').css('margin-top','20px');
+   }
 };
 /*========= app-permission =========
 @AUTHOR : Junyoung Park
@@ -1218,66 +1199,13 @@ app.ui={
 @DESC : Permission for login or register user
 app-permission-execute
 app-permission-emailCheck
+app-permission-login
 =================================*/
 app.permission=(function(){
 	var execute = function(){
 		var ctx = app.session.getContextPath();
-		$('#login-submit').on('click',function(e){
-			e.preventDefault();
-			var id = $('#username').val();
-			$.ajax({
-				  url: ctx + "/login",
-				  method: "POST",
-				  data: JSON.stringify({ 
-					  id : id, 
-					  pw : $('#password').val() 
-				  }),
-				  dataType: "json",
-				  contentType : "application/json",
-				  success : function(data) {
-					  if(data.result==='success'){
-						  $('#boot-nav').remove();
-						  var wrapper = $('#wrapper');
-						  wrapper.html(app.ui.patientGnb());
-						  wrapper.append(app.ui.patientDetail());
-						  $('#name').text(data.user.name);
-						  $('#job').text(data.user.job);
-						  $('#birth').text(data.user.jumin);
-						  $('#gender').text(data.user.gen);
-						  $('#phone').text(data.user.phone);
-						  $('#addr').text(data.user.addr);
-						  $('#btn-default').on('click',function(e){
-							  var wrapper = $('#wrapper');
-							  wrapper.html(app.ui.patientGnb());
-							  wrapper.append(app.ui.chart());
-							  e.preventDefault();
-							  $.ajax({
-								  url: ctx + '/get/chart',
-								  method: 'POST',
-								  data: JSON.stringify({
-									  id : id
-								  }),
-								  dataType: 'json',
-								  contentType: 'application/json',
-								  success: function(data){
-									  if(data.result === 'fail'){
-											alert('차트 없음');
-										} else {
-											alert('차트 존재');
-										}
-									 },
-								  error: function(x,s,m){alert(m);}
-							  });
-						  });
-					  } else {
-						  alert('Please confirm your ID/PW.');
-					  }
-				  },
-				  error : function(xhr, status, msg) {
-					  alert('로그인 실패이유: ' + msg);
-				  }
-			});
-		});
+		login();
+		
 	    $('#login-form-link').on('click', function(e) {
 			$("#login-form").delay(100).fadeIn(100);
 	 		$("#register-form").fadeOut(100);
@@ -1380,6 +1308,156 @@ app.permission=(function(){
 			});
 		});
 	};
+	var login = function(){
+		console.log('login() entry');
+		var ctx = app.session.getContextPath();
+		var authId = $.cookie('authId');
+		if(authId != undefined) {
+			$('#username').val(authId);
+			$('#remember').prop("checked",true);
+		}
+		$('#login-submit').on('click',function(e){
+			if($.trim($("#username").val()) == "") {
+	            alert("아이디를 입력하세요");
+	            return;
+	        } else {
+	            //아이디저장 체크되어있으면 쿠키저장
+	        	var rememberId = $('#remember').prop("checked");
+	            if(rememberId) {
+	                $.cookie('authId', $("#username").val());
+	            //아이디저장 미체크면 쿠키에 정보가 있던간에 삭제
+	            } else {
+	                $.removeCookie("authId");
+	            }
+	            e.preventDefault();
+	            var id = rememberId ? $.cookie('authId') : $('#username').val();
+	            $.ajax({
+	        	url: ctx + "/login",
+			method: "POST",
+			data: JSON.stringify({ 
+			    id : id, 
+			    pw : $('#password').val() 
+			}),
+			dataType: "json",
+			contentType : "application/json",
+			success : function(data) {
+			if(data.result==='success'){
+			    $('#boot-nav').remove();
+			    var wrapper = $('#wrapper');
+				wrapper.html(app.ui.patientGnb());
+				wrapper.append(app.ui.patientDetail());
+				var profileArr = app.util.calcProfile(data.user.jumin);
+				var birth = profileArr[0], age = profileArr[1], gender = profileArr[2];
+				$('#name').text(data.user.name);
+				$('#job').text(data.user.job);
+				$('#phone').text(data.user.phone);
+				$('#addr').text(data.user.addr);
+				$('#birth').text(birth);
+				$('#age').text(age);
+				$('#gender').text(gender);
+				$('#btn-default').on('click',function(e){
+				    var wrapper = $('#wrapper');
+				    wrapper.html(app.ui.patientGnb());
+				    e.preventDefault();
+				    $.ajax({
+					url: ctx + '/get/chart',
+					method: 'POST',
+					data: JSON.stringify({
+					    id : id
+					}),
+					dataType: 'json',
+					contentType: 'application/json',
+					success: function(data){
+					    if(data.result === 'fail'){
+						console.log('차트가 존재하지 않음.');
+						$('<div><h1 id="msg"></h1></div>').attr('id','chart-free').appendTo('#wrapper');
+						$('#chart-free').css('width','80%').css('margin-top','50px').addClass('app-margin-center');
+						$('#msg').text('등록된 차트가 없습니다.');	
+					    } else {
+						var chartId = data.chart.chartId;
+						console.log('차트가 존재함. 차트 아이디:' + chartId);
+						wrapper.append(app.ui.chart());
+						$('#name').text(data.chart.name);
+						$('#job').text(data.chart.job);
+						$('#phone').text(data.chart.phone);
+						$('#addr').text(data.chart.addr);
+						$('#birth').text(birth);
+						$('#age').text(age);
+						$('#gender').text(gender);
+						$('#doctorName').text(data.chart.doctorName);
+						$("<div></div>").attr('id','app-chart-bottom').appendTo('#app-chart-center');
+						var chartList = '<table><thead id="thead">';
+						var row = '<tr>';
+						var arr=['순서','진료일','진료 NO','담당의사','직책','진료과목','병명','처방내역'];
+						for(var i=0;i<8;i++){
+						    row+='<th style="border:1px solid black; text-align: center;">'+arr[i]+'</th>';
+						}
+						row+='</tr></thead><tbody id="tbody">';
+						chartList+=row;
+						row='';
+						$.each(data.list,function(i,chart){
+						    row+='<tr>'
+							+ '<td style="border:1px solid black; text-align: center;">' + (i+1) + '</td>'
+							+ '<td style="border:1px solid black; text-align: center;">' + chart.treatmentId + '</td>'
+							+ '<td style="border:1px solid black; text-align: center;">' + chart.treatDate + '</td>'
+							+ '<td style="border:1px solid black; text-align: center;">' + chart.doctorName + '</td>'
+							+ '<td style="border:1px solid black; text-align: center;">' + chart.doctorPosition + '</td>'
+							+ '<td style="border:1px solid black; text-align: center;">' + chart.doctorMajor + '</td>'
+							+ '<td style="border:1px solid black; text-align: center;">' + chart.chartContents + '</td>'
+							+ '<td style="border:1px solid black; text-align: center;">' + chart.treatContents + '</td></tr>'
+						});
+						chartList+=row + '</tbody></table>';
+						$('.row').css('border','1px solid black').addClass('app-text-center');
+						$(chartList).attr('id','chart-list').css('margin-top','20px').addClass('app-chart-bottom-table').appendTo('#app-chart-bottom');
+						$('#btn-file-upload').on('click',function(e){
+						    e.preventDefault();
+						    console.log('파일업로드 버튼을 클릭했을 때 chartId:'+chartId);
+						    $.ajax({
+							url : ctx + '/post/chart/id',
+							method : 'POST',
+							data : JSON.stringify({
+							    id : chartId
+							}),
+							dataType : 'json',
+							contentType : 'application/json',
+							success : function(data) {
+							    alert('전송 완료!!');
+							},
+							error : function(x,s,m) {
+							    alert(m);
+							}
+						    });
+						    $('#form').ajaxForm({
+							url: $('#form').attr('action'),
+							dataType : 'text',
+							encType: 'multipart/form-data',
+							beforeSubmit : function(){
+							    alert('로딩화면!');
+							},
+							success : function(data){
+							    alert('등록완료!' + data.result);
+							}
+						    });
+						    $('#form').submit();
+						});
+					    }
+					},
+					error: function(x,s,m){
+					    alert(m);
+					}
+				    });
+				});
+    				} else {
+    				    alert('Please confirm your ID/PW.');
+    				}
+			},
+			error : function(xhr, status, msg) {
+			    alert('로그인 실패이유: ' + msg);
+			}
+	            });
+	        }
+		});
+	};
 	return { execute : execute, 
 		emailCheck : function(str){
 			var regExp = /[0-9a-zA-Z][_0-9a-zA-Z-]*@[_0-9a-zA-Z-]+(\.[0_9a-zA-Z-]+){1,3}$/;
@@ -1390,7 +1468,8 @@ app.permission=(function(){
 				return false;
 			}
 			return true;
-		} 
+		},
+		login : login
 	};
 })();
 /*========= app-navi =========
@@ -1406,13 +1485,35 @@ app.navi=(function(){
 @AUTHOR : Junyoung Park
 @CREATE DATE : 2017-04-19
 @UPDATE DATE : 2017-04-19
-@DESC : Etc methods(ex: email check validation, ...)
+@DESC : Etc methods(ex: email check validation, calculation profile, datetime check algorithm)
 app-util-validation
+app-util-calcProfile
+app-util-datetime
 =================================*/
 app.util={
 	validation : function(x) {
 		return (x != "");
-	}	
+	},
+	calcProfile : function(ssn) {
+		var arr = [];
+		var date = app.util.datetime();
+		var year = date.substring(0,4)*1, month = date.substring(4,6)*1, day = date.substring(6,8)*1;
+		var age = ssn.substring(0,2)*1;
+		var flag = ssn.charAt(7) == '3' || ssn.charAt(7) == '4';
+		arr.push(flag? '20'+ ssn.substring(0,2) +'년 ' + ssn.substring(2,4) + '월 '+ ssn.substring(4,6) + '일' : '19'+ssn.substring(0,2) + '년 ' + ssn.substring(2,4) + '월 ' + ssn.substring(4,6)+'일');
+		arr.push(flag? year-2000-age +'세': year-1900-age+'세');
+		arr.push(ssn.charAt(7)==='1' || ssn.charAt(7)==='3' ? '남자' : '여자');
+		return arr;
+	},
+	datetime : function(){	
+		var d = new Date();
+		var month = d.getMonth() +1;
+		var year = d.getYear()-100;
+		var calcstr = '20' + year + '0' + month +'' + d.getDate();
+		var showstr = '20' + year + '년 0' + month +'월 ' + d.getDate() +'일';
+		$('#date').html(showstr);
+		return calcstr;
+	}
 };
 /*========= app-person =========
 @AUTHOR : Junyoung Park

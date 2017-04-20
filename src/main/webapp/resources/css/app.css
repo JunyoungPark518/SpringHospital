@@ -65,7 +65,7 @@
 .app-table-bottom tr td{border-bottom:1px solid #585858;border-collapse: collapse;}
 .app-table-even tr:nth-child(even){background-color:#ffffb9}
 .app-table-odd tr:nth-child(odd){background-color:#ffffb9}
-.app-table-center{text-align: center;}
+.app-text-center{text-align: center;}
 .app-text-left{text-align: left;}
 .app-text-right{text-align: right;}
 .app-text-no-underline{text-decoration: none;}

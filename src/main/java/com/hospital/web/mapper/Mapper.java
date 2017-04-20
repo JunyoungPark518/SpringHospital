@@ -20,7 +20,8 @@ public interface Mapper {
 	public Doctor findDoctor(Map<?,?> person) throws Exception;
 	public Nurse findNurse(Map<?,?> person) throws Exception;
 	public Object findAdmin(Object object);
-	public List<Chart> findChart(Map<?,?> person) throws Exception;
+	public List<Chart> findChart(Map<?,?> chart) throws Exception;
+	public Chart find1Chart(Map<?,?> map) throws Exception;
 	public List<Patient> findPatients(Map<?,?> person) throws Exception;
 	public List<Doctor> findDoctors(Map<?,?> person) throws Exception;
 	public List<Nurse> findNurses(Map<?,?> person) throws Exception;
@@ -30,4 +31,5 @@ public interface Mapper {
 	public int delete(Map<?,?> person) throws Exception;
 	public int count();
 	public int exist(Map<?,?> person) throws Exception;
+	public int registerChartFile(Object chart) throws Exception;
 }

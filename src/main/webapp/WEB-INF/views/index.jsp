@@ -21,6 +21,8 @@ $(function() {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script src="${context}/resources/js/app.js"></script>
+<script src="${context}/resources/js/cookie.js"></script>
+<script src="${context}/resources/js/fileupload.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <link rel="stylesheet" href="${context}/resources/css/hanbit.css" type="text/css"/>
 <link rel="stylesheet" href="${context}/resources/css/app.css" type="text/css"/>
@@ -45,7 +47,7 @@ $(function() {
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="#">Hospital <span class="sr-only">(current)</span></a></li>
-					<li><a href="#">Link</a></li>
+					<li><a id="date" href="#"></a></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">OOP <span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a id="encap" href="#">Encapsulation</a></li>

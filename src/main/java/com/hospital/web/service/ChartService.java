@@ -24,4 +24,12 @@ public class ChartService {
 		logger.info("ChartService - getChart() list : {}", list);
 		return list;
 	}
+	public int registerChartFile(Chart c) throws Exception{
+		IPostService service = (o) -> mapper.registerChartFile(o);
+		return service.execute(c);
+	}
+	public Chart find1Chart(Map<?,?> map) throws Exception {
+		IGetService service = (o) -> mapper.find1Chart(o);
+		return (Chart) service.execute(map);
+	}
 }

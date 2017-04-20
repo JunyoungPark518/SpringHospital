@@ -49,6 +49,9 @@
 		INSERT INTO Nurse(nur_id, nur_pass, major_job, nur_name, nur_gen, nur_phone, nur_email, nur_position) 
 		             VALUES (#{id},  #{pass},  #{major},  #{name},  #{gen},  #{phone},  #{email},  #{position})
 	</insert>
+	<insert id="registerChartFile">
+		INSERT INTO Chart(chart_img) VALUES (#{imgsrc}) WHERE chard_id = ${chartId}
+	</insert>
 	<!-- R(select) -->
 	<!-- <select id="find" resultMap="hashMap" parameterType="hashMap">
 		SELECT * FROM ${group} WHERE ${key} = #{value}
@@ -64,7 +67,10 @@
 		SELECT * FROM ${group} WHERE ${idType} = #{id}
 	</select>
 	<select id="findChart" resultType="com.hospital.web.domain.Chart" parameterType="hashMap">
-		SELECT * FROM ChartView WHERE patientId = #{id}
+		SELECT * FROM ChartView WHERE patientId = #{id} AND chartId IS NOT NULL
+	</select>
+	<select id="find1Chart" resultType="com.hospital.web.domain.Chart" parameterType="hashMap">
+		SELECT * FROM Chart WHERE chart_id = #{id}
 	</select>
 	<select id="findPatients" resultMap="Patient" parameterType="hashMap">
 		SELECT * FROM ${group} 
