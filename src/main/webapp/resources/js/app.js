@@ -2,6 +2,7 @@
  ========= app-meta ========
  * app-algorithm
  * app-oop
+ * app-bbs
  * app-component
  * app-ui
  * app-permission
@@ -43,6 +44,7 @@ app.context = (function(){
 		app.component.init();
 		app.algorithm.init();
 		app.oop.init();
+		app.bbs.init();
 		app.person.init();
 		app.util.datetime();
 	};
@@ -1025,6 +1027,57 @@ app.oop = (function(){
 		polym : polym
 	};
 })();
+/*========= app-bbs =========
+@AUTHOR : Junyoung Park
+@CREATE DATE : 2017-04-19
+@UPDATE DATE : 2017-04-19
+@DESC : Component for using Single Page Application 
+app-component-init
+=================================*/
+app.bbs= (function(){
+    var init = function() {
+	onCreate();
+    };
+    var onCreate = function() {
+	main();
+    };
+    var main = function(){
+	var wrapper =  $('#wrapper');
+	var ctx = app.session.getContextPath();
+	$('#bbs').on('click',function(e){
+	   e.preventDefault();
+	   var table = app.ui.bbs();
+	   var row = '';
+	   $.getJSON(ctx + '/list/bbs/1',function(data){
+	       $.each(data.list,function(i,item){
+		   row += '<tr><td>'+(i+1)+'</td>'
+	                 +'<td><a href="">'+item.title+'</a></td>'
+	                 +'<td>'+item.writer_id+'</td>'
+	                 +'<td>'+item.reg_date+'</td>'
+	                 +'<td>'+item.read_count+'</td></tr>';
+	       });
+	       $('#count').html('총 게시글 수: '+data.count);
+	       table += row;
+	       table += '</tbody></table>';
+//	       var pagination ='<nav id="pagination" aria-label="Page navigation" align="center"><ul class="pagination"></ul></nav>';
+	       var tab = $('#bbs_table');
+	       tab.addClass('bbs_table');
+	       tab.find('tr:nth-child(1) th').attr('colspan','5');
+	       tab.find('tr:nth-child(2)').find('th:nth-child(1)').css('width','50px');
+	       tab.find('tr:nth-child(2)').find('th:nth-child(2)').css('width','200px');
+	       tab.find('tr:nth-child(2)').find('th:nth-child(3)').css('width','100px');
+	       tab.find('tr:nth-child(2)').find('th:nth-child(4)').css('width','100px');
+	       tab.find('tr:nth-child(2)').find('th:nth-child(5)').css('width','50px');
+	       wrapper.html(table); 
+	   });
+	});
+    };
+    return {
+	init : init,
+	onCreate : onCreate,
+	main : main
+    };
+})();
 
 /*========= app-component =========
 @AUTHOR : Junyoung Park
@@ -1118,23 +1171,23 @@ app.component = (function(){
 	          });
 	          table+='</tbody></table>';
 	          return table;
-       },
-       radioButton: function(id,name,value,html){
-    	   var btn = '<label class="radio-inline">'+
+		},
+		radioButton: function(id,name,value,html){
+		    var btn = '<label class="radio-inline">'+
 				'<input type="radio" id="'+ id +'" name="'+name+'" value="'+value+'">'+html
 				'</label>';
-    	   return btn;
-       },
-       registerInputtext: function(id,name,type,placeholder){
-    	   var input = '<div class="form-group">'+
+		    return btn;
+		},
+		registerInputtext: function(id,name,type,placeholder){
+		    var input = '<div class="form-group">'+
 				'<input type="'+type+'" name="'+name+'" id="'+id+'" tabindex="2" class="form-control" placeholder="'+placeholder+'">'+
 				'</div>';
-    	   return input;
-       },
-       registerSubmit: function(id){
-    	   var btn = '<div class="form-group"><div class="row"><div class="col-sm-6 col-sm-offset-3"><input type="submit" name="register-submit" id="register-'+id+'" tabindex="4" class="form-control btn btn-register" value="Register Now"></div></div></div>';
-    	   return btn;
-       }
+		    return input;
+		},
+		registerSubmit: function(id){
+		    var btn = '<div class="form-group"><div class="row"><div class="col-sm-6 col-sm-offset-3"><input type="submit" name="register-submit" id="register-'+id+'" tabindex="4" class="form-control btn btn-register" value="Register Now"></div></div></div>';
+		    return btn;
+		}
 	};
 })();
 /*========= app-ui =========
@@ -1142,10 +1195,11 @@ app.component = (function(){
 @CREATE DATE : 2017-04-19
 @UPDATE DATE : 2017-04-19
 @DESC : UI for using JavaScript page at once
-app-component-patientGnb
-app-component-patientDetail
-app-component-table
-app-component-chart
+app-ui-patientGnb
+app-ui-patientDetail
+app-ui-table
+app-ui-chart
+app-ui-bbs
 =================================*/
 app.ui={
 	patientGnb: function(){
@@ -1165,32 +1219,81 @@ app.ui={
 	   +'</tr><tr><td style="background-color: #bfcedd;">생년월일</td><td id="birth"></td><td style="background-color: #bfcedd;">키</td><td>180cm</td></tr><tr><td style="background-color: #bfcedd;">성별</td><td id="gender"></td><td style="background-color: #bfcedd;">나이/몸무게</td><td id="age"> / 70kg</td></tr><tr><td style="background-color: #bfcedd;">전화번호</td><td id="phone"></td><td style="background-color: #bfcedd;">혈액형</td><td>B</td></tr><tr><td style="background-color: #bfcedd;">주소</td><td id="addr"></td><td style="background-color: #bfcedd;">주치의</td><td><a onclick="goDocDetail()">채워야댐</a></td></tr></table></div>'
 	   +'<div style="margin-top: 10px"><a href="update"><input id="btn-default" type="button" value="차트보기"/></a></div></div>';
 	   return detail;
-   },
-   table : function(){
-	var table = '<div style="width:100%"><table style="margin: 0 auto; width:500px; height:300px; border-collapse: collapse; border: 1px solid black;"><tr><td id="tableLeft" style="width:50%; border: 1px solid black;"></td><td id="tableRight"></td></tr></table></div>';
-	return table;
-   },
-   chart : function(){
-       	var ctx = app.session.getContextPath();
-       	var image = app.session.getImagePath();
-       	$("<div></div>").attr('id','div-chart').appendTo('#wrapper');
-       	$('#div-chart').css('width','80%').css('margin-top','50px').addClass('app-margin-center');
-       	$("<div></div>").attr('id','app-chart-top').appendTo('#div-chart');
-       	var table= '<table><tr><td rowspan="5" style="width:100px">환<br/>자<br/>정<br/>보</td><td class="app-chart-table-elem">이름</td><td id="name" colspan="3" class="app-chart-top-table"></td><td class="app-chart-table-elem">나이</td><td id="age" class="app-chart-top-table"></td></tr>'
-       	    +'<tr><td class="app-chart-table-elem">생년월일</td><td id="birth" class="app-chart-top-table"></td><td class="app-chart-col-table">키</td><td id="height" class="app-chart-top-table">180cm</td><td class="app-chart-table-elem">직업</td><td id="job" class="app-chart-top-table"></td></tr>'       
-       	    +'<tr><td class="app-chart-table-elem">성별</td><td id="gender" colspan="3" class="app-chart-top-table"></td><td class="app-chart-table-elem">몸무게</td><td id="weight" class="app-chart-top-table">80kg</td></tr>'
-       	    +'<tr><td class="app-chart-table-elem">전화번호</td><td id="phone" colspan="3" class="app-chart-top-table"></td><td class="app-chart-table-elem">혈액형</td><td id="bloodtype" class="app-chart-top-table">B</td></tr>'
-       	    +'<tr><td class="app-chart-table-elem">주소</td><td id="addr" colspan="3" class="app-chart-top-table"></td><td class="app-chart-table-elem">주치의</td><td id="doctorName" class="app-chart-top-table"></td></tr>'
-       	    +'</table>';			 
-	$(table).attr('id','app-chart-top-table').appendTo('#app-chart-top');
-	$('#app-chart-top-table').css('width','800px');
-	$('#app-chart-top').addClass('app-chart-top').css('text-align','center');
-	$("<div></div>").attr('id','app-chart-center').appendTo('#app-chart-top');
-	$('#app-chart-center').addClass('app-chart-center');
-	var fileUpload = '<form id="form" name="form" method="post" action="'+ctx+'/post/chart/img" enctype="multipart/form-data"><input type="file" id="file" name="file"/><input type="submit" id="btn-file-upload" value="파일업로드"/></form>';
-	$('#app-chart-center').html('<div class="app-chart-center-center">처방전<br/><img src="'+image+'/common/defaultimg.jpg" style="width:200px; height:200px; float:left;"/></div>'+fileUpload);
-	$('#form-file-upload').css('margin-top','20px');
-   }
+	},
+	table : function(){
+	    var table = '<div style="width:100%"><table style="margin: 0 auto; width:500px; height:300px; border-collapse: collapse; border: 1px solid black;"><tr><td id="tableLeft" style="width:50%; border: 1px solid black;"></td><td id="tableRight"></td></tr></table></div>';
+	    return table;
+	},
+	chart : function(){
+	    var ctx = app.session.getContextPath();
+	    var image = app.session.getImagePath();
+	    $("<div></div>").attr('id','div-chart').appendTo('#wrapper');
+       		$('#div-chart').css('width','80%').css('margin-top','50px').addClass('app-margin-center');
+       		$("<div></div>").attr('id','app-chart-top').appendTo('#div-chart');
+       		var table= '<table><tr><td rowspan="5" style="width:100px">환<br/>자<br/>정<br/>보</td><td class="app-chart-table-elem">이름</td><td id="name" colspan="3" class="app-chart-top-table"></td><td class="app-chart-table-elem">나이</td><td id="age" class="app-chart-top-table"></td></tr>'
+       		    +'<tr><td class="app-chart-table-elem">생년월일</td><td id="birth" class="app-chart-top-table"></td><td class="app-chart-col-table">키</td><td id="height" class="app-chart-top-table">180cm</td><td class="app-chart-table-elem">직업</td><td id="job" class="app-chart-top-table"></td></tr>'       
+           	    +'<tr><td class="app-chart-table-elem">성별</td><td id="gender" colspan="3" class="app-chart-top-table"></td><td class="app-chart-table-elem">몸무게</td><td id="weight" class="app-chart-top-table">80kg</td></tr>'
+           	    +'<tr><td class="app-chart-table-elem">전화번호</td><td id="phone" colspan="3" class="app-chart-top-table"></td><td class="app-chart-table-elem">혈액형</td><td id="bloodtype" class="app-chart-top-table">B</td></tr>'
+               	    +'<tr><td class="app-chart-table-elem">주소</td><td id="addr" colspan="3" class="app-chart-top-table"></td><td class="app-chart-table-elem">주치의</td><td id="doctorName" class="app-chart-top-table"></td></tr>'
+               	    +'</table>';			 
+        	$(table).attr('id','app-chart-top-table').appendTo('#app-chart-top');
+        	$('#app-chart-top-table').css('width','800px');
+        	$('#app-chart-top').addClass('app-chart-top').css('text-align','center');
+        	$("<div></div>").attr('id','app-chart-center').appendTo('#app-chart-top');
+        	$('#app-chart-center').addClass('app-chart-center');
+        	var fileUpload = '<form id="form" name="form" method="post" action="'+ctx+'/post/chart/img" enctype="multipart/form-data"><input type="file" id="file" name="file"/><input type="submit" id="btn-file-upload" value="파일업로드"/></form>';
+        	$('#app-chart-center').html('<div class="app-chart-center-center">처방전<br/><img src="'+image+'/common/defaultimg.jpg" style="width:200px; height:200px; float:left;"/></div>'+fileUpload);
+        	$('#form-file-upload').css('margin-top','20px');
+	},
+	bbs : function(){
+	    var table = '<div id="bbs_container" style="margin: 0 auto;">'
+            +'<div>'
+            +'<select name="property" name="property">'
+            +'<option value="id">작성자</option>'
+            +'<option value="title">제목</option>'
+            +'</select>'
+            +'<input type="text" name="searchKeyword"/>'
+            +'<input type="button" value="검색"/>'
+            +'<table id="bbs_table"><thead>'
+            +'<tr>'
+            +'<td id="count">총게시글수: </td>'
+            +'</tr>'
+            +'<tr>'
+            +'<th>번호</th>'
+            +'<th>제목</th>'
+            +'<th>작성자</th>'
+            +'<th>날짜</th>'
+            +'<th>조회수</th>'
+            +'</tr></thead><tbody>';
+//	            //if문
+//	            +'<c:if test="${requestScope.prevBlock gt 0}">'
+//	               +'<a href="${context}/board.do?action=list&page=articleList&pageNO=${requestScope.prevBlock}">◀prev</a>'
+//	            +'</c:if>'
+//	            //for문
+//	            +'<c:forEach begin="${requestScope.blockStart}" end="${requestScope.blockEnd}" step="1" varStatus="i">'
+//	               +'<li>'
+//	               +'<c:choose>'
+//	                  +'<c:when test="${i.index eq pageNO}">'
+//	                     +'<a href="#"><font>${i.index}</font></a>'
+//	                  +'</c:when>'
+//	                  +'<c:otherwise>'
+//	                     +'<a href="${context}/board.do?action=list&page=articleList&pageNO=${i.index}">${i.index}</a>'
+//	                  +'</c:otherwise>'
+//	               +'</c:choose>'
+//	               +'</li>'
+//	            +'</c:forEach>'
+//	            //if문
+//	            +'<c:if test="${requestScope.nextBlock le pageCount}">'
+//	               +'<a href="${context}/board.do?action=list&page=articleList&pageNO=${requestScope.nextBlock}">next▶</a>'
+//	            +'</c:if>'
+//	            +'</ul>'
+//	            +'</nav>'
+//	            +'</div>'
+//	            +'</div>';
+	   
+	    
+	    return table;
+	}
 };
 /*========= app-permission =========
 @AUTHOR : Junyoung Park

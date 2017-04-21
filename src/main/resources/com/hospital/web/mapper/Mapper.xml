@@ -72,6 +72,12 @@
 	<select id="find1Chart" resultType="com.hospital.web.domain.Chart" parameterType="hashMap">
 		SELECT * FROM Chart WHERE chart_id = #{id}
 	</select>
+	<select id="boardList" resultType="com.hospital.web.domain.Article" parameterType="hashMap">
+		SELECT t2.* 
+			from (select @ROWNUM := @ROWNUM + 1 AS rownum, t.title, t.content, t.reg_date, t.art_seq, t.read_count, t.writer_id
+				  from Article t, (SELECT @ROWNUM := 0) R ORDER BY t.reg_date DESC) t2 
+			where t2.rownum between #{start} and #{end} order by t2.rownum asc;
+	</select>
 	<select id="findPatients" resultMap="Patient" parameterType="hashMap">
 		SELECT * FROM ${group} 
 		WHERE

@@ -85,117 +85,115 @@ CREATE TABLE Chart(
 
 -- doc_id, doc_pass, major_treat, doc_name, doc_gen, doc_phone, doc_email, doc_position
 -- SELECT * FROM Doctor;
-INSERT INTO Doctor(doc_id, doc_pass, major_treat, doc_name, doc_gen, doc_phone, doc_email, doc_position) VALUES ('dlee', '1', '¼Ò¾Æ°ú', 'ÀÌÅÂÁ¤', 'M', '010-333-1340', 'ltj@hanbh.com', '°úÀå');
-INSERT INTO Doctor(doc_id, doc_pass, major_treat, doc_name, doc_gen, doc_phone, doc_email, doc_position) VALUES ('dahn', '1', '³»°ú', '¾È¼º±â', 'M', '011-222-0987', 'ask@hanbh.com', '°úÀå');
-INSERT INTO Doctor(doc_id, doc_pass, major_treat, doc_name, doc_gen, doc_phone, doc_email, doc_position) VALUES ('dkim', '1', '¿Ü°ú', '±è¹ÎÁ¾', 'M', '010-333-8743', 'kmj@hanbh.com', '°úÀå');
-INSERT INTO Doctor(doc_id, doc_pass, major_treat, doc_name, doc_gen, doc_phone, doc_email, doc_position) VALUES ('dlee2', '1', 'ÇÇºÎ°ú', 'ÀÌÅÂ¼­', 'M', '019-777-3764', 'lts@hanbh.com', '°úÀå');
-INSERT INTO Doctor(doc_id, doc_pass, major_treat, doc_name, doc_gen, doc_phone, doc_email, doc_position) VALUES ('dkim2', '1', '¼Ò¾Æ°ú', '±è¿¬¾Æ', 'F', '010-555-3746', 'kya@hanbh.com', 'Àü¹®ÀÇ');
-INSERT INTO Doctor(doc_id, doc_pass, major_treat, doc_name, doc_gen, doc_phone, doc_email, doc_position) VALUES ('dcha', '1', '³»°ú', 'Â÷ÅÂÇö', 'M', '011-222-7643', 'cth@hanbh.com', 'Àü¹®ÀÇ');
-INSERT INTO Doctor(doc_id, doc_pass, major_treat, doc_name, doc_gen, doc_phone, doc_email, doc_position) VALUES ('djeon', '1', '¼Ò¾Æ°ú', 'ÀüÁöÇö', 'F', '010-999-1265', 'jjh@hanbh.com', 'Àü¹®ÀÇ');
-INSERT INTO Doctor(doc_id, doc_pass, major_treat, doc_name, doc_gen, doc_phone, doc_email, doc_position) VALUES ('dhong', '1', 'ÇÇºÎ°ú', 'È«±æµ¿', 'M', '016-333-7263', 'hgd@hanbh.com', 'Àü¹®ÀÇ');
-INSERT INTO Doctor(doc_id, doc_pass, major_treat, doc_name, doc_gen, doc_phone, doc_email, doc_position) VALUES ('dyou', '1', '¹æ»ç¼±°ú', 'À¯Àç¼®', 'M', '010-222-1263', 'yjs@hanbh.com', '°úÀå');
-INSERT INTO Doctor(doc_id, doc_pass, major_treat, doc_name, doc_gen, doc_phone, doc_email, doc_position) VALUES ('dkim3', '1', '¿Ü°ú', '±èº´¸¸', 'M', '010-555-3542', 'kbm@hanbh.com', 'Àü¹®ÀÇ');
+INSERT INTO Doctor(doc_id, doc_pass, major_treat, doc_name, doc_gen, doc_phone, doc_email, doc_position) VALUES ('dlee', '1', 'ï¿½Ò¾Æ°ï¿½', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'M', '010-333-1340', 'ltj@hanbh.com', 'ï¿½ï¿½ï¿½ï¿½');
+INSERT INTO Doctor(doc_id, doc_pass, major_treat, doc_name, doc_gen, doc_phone, doc_email, doc_position) VALUES ('dahn', '1', 'ï¿½ï¿½ï¿½ï¿½', 'ï¿½È¼ï¿½ï¿½ï¿½', 'M', '011-222-0987', 'ask@hanbh.com', 'ï¿½ï¿½ï¿½ï¿½');
+INSERT INTO Doctor(doc_id, doc_pass, major_treat, doc_name, doc_gen, doc_phone, doc_email, doc_position) VALUES ('dkim', '1', 'ï¿½Ü°ï¿½', 'ï¿½ï¿½ï¿½ï¿½ï¿½', 'M', '010-333-8743', 'kmj@hanbh.com', 'ï¿½ï¿½ï¿½ï¿½');
+INSERT INTO Doctor(doc_id, doc_pass, major_treat, doc_name, doc_gen, doc_phone, doc_email, doc_position) VALUES ('dlee2', '1', 'ï¿½ÇºÎ°ï¿½', 'ï¿½ï¿½ï¿½Â¼ï¿½', 'M', '019-777-3764', 'lts@hanbh.com', 'ï¿½ï¿½ï¿½ï¿½');
+INSERT INTO Doctor(doc_id, doc_pass, major_treat, doc_name, doc_gen, doc_phone, doc_email, doc_position) VALUES ('dkim2', '1', 'ï¿½Ò¾Æ°ï¿½', 'ï¿½è¿¬ï¿½ï¿½', 'F', '010-555-3746', 'kya@hanbh.com', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+INSERT INTO Doctor(doc_id, doc_pass, major_treat, doc_name, doc_gen, doc_phone, doc_email, doc_position) VALUES ('dcha', '1', 'ï¿½ï¿½ï¿½ï¿½', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'M', '011-222-7643', 'cth@hanbh.com', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+INSERT INTO Doctor(doc_id, doc_pass, major_treat, doc_name, doc_gen, doc_phone, doc_email, doc_position) VALUES ('djeon', '1', 'ï¿½Ò¾Æ°ï¿½', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'F', '010-999-1265', 'jjh@hanbh.com', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+INSERT INTO Doctor(doc_id, doc_pass, major_treat, doc_name, doc_gen, doc_phone, doc_email, doc_position) VALUES ('dhong', '1', 'ï¿½ÇºÎ°ï¿½', 'È«ï¿½æµ¿', 'M', '016-333-7263', 'hgd@hanbh.com', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+INSERT INTO Doctor(doc_id, doc_pass, major_treat, doc_name, doc_gen, doc_phone, doc_email, doc_position) VALUES ('dyou', '1', 'ï¿½ï¿½ç¼±ï¿½ï¿½', 'ï¿½ï¿½ï¿½ç¼®', 'M', '010-222-1263', 'yjs@hanbh.com', 'ï¿½ï¿½ï¿½ï¿½');
+INSERT INTO Doctor(doc_id, doc_pass, major_treat, doc_name, doc_gen, doc_phone, doc_email, doc_position) VALUES ('dkim3', '1', 'ï¿½Ü°ï¿½', 'ï¿½èº´ï¿½ï¿½', 'M', '010-555-3542', 'kbm@hanbh.com', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
 
 -- nur_id, nur_pass, major_job, nur_name, nur_gen, nur_phone, nur_email, nur_position
 -- SELECT * FROM  Nurse;
-INSERT INTO Nurse(nur_id, nur_pass, major_job, nur_name, nur_gen, nur_phone, nur_email, nur_position) VALUES ('nkim',  '1', '¼Ò¾Æ°ú', '±èÀº¿µ', 'F', '010-555-8751', 'key@hanbh.com', '¼ö°£È£»ç');
-INSERT INTO Nurse(nur_id, nur_pass, major_job, nur_name, nur_gen, nur_phone, nur_email, nur_position) VALUES ('nyoon', '1', '³»°ú', 'À±¼º¾Ö', 'F', '016-333-8745', 'ysa@hanbh.com', '¼ö°£È£»ç');
-INSERT INTO Nurse(nur_id, nur_pass, major_job, nur_name, nur_gen, nur_phone, nur_email, nur_position) VALUES ('nshin', '1', 'ÇÇºÎ°ú', '½ÅÁö¿ø', 'M', '010-666-7646', 'sjw@hanbh.com', 'ÁÖÀÓ');
-INSERT INTO Nurse(nur_id, nur_pass, major_job, nur_name, nur_gen, nur_phone, nur_email, nur_position) VALUES ('nyou',  '1', '¹æ»ç¼±°ú', 'À¯Á¤È­', 'F', '010-333-4588', 'yjh@hanbh.com', 'ÁÖÀÓ');
-INSERT INTO Nurse(nur_id, nur_pass, major_job, nur_name, nur_gen, nur_phone, nur_email, nur_position) VALUES ('nla',   '1', '³»°ú', '¶óÇÏ³ª', 'F', '010-222-1340', 'nhn@hanbh.com', 'ÁÖÀÓ');
-INSERT INTO Nurse(nur_id, nur_pass, major_job, nur_name, nur_gen, nur_phone, nur_email, nur_position) VALUES ('nkim2', '1', '¼Ò¾Æ°ú', '±èÈ­°æ', 'F', '019-888-4116', 'khk@hanbh.com', 'ÁÖÀÓ');
-INSERT INTO Nurse(nur_id, nur_pass, major_job, nur_name, nur_gen, nur_phone, nur_email, nur_position) VALUES ('nlee',  '1', '¼Ò¾Æ°ú', 'ÀÌ¼±¿ë', 'M', '010-777-1234', 'lsy@hanbh.com', '°£È£»ç');
-INSERT INTO Nurse(nur_id, nur_pass, major_job, nur_name, nur_gen, nur_phone, nur_email, nur_position) VALUES ('nkim3', '1', '¿Ü°ú', '±èÇö', 'M', '010-999-8520', 'kh@hanbh.com', '°£È£»ç');
-INSERT INTO Nurse(nur_id, nur_pass, major_job, nur_name, nur_gen, nur_phone, nur_email, nur_position) VALUES ('npark', '1', 'ÇÇºÎ°ú', '¹Ú¼º¿Ï', 'M', '010-777-4996', 'psw@hanbh.com', '°£È£»ç');
-INSERT INTO Nurse(nur_id, nur_pass, major_job, nur_name, nur_gen, nur_phone, nur_email, nur_position) VALUES ('nlee2', '1', '¿Ü°ú', 'ÀÌ¼­¿¬', 'F', '010-222-3214', 'lsy2@hanbh.com', '°£È£»ç');
+INSERT INTO Nurse(nur_id, nur_pass, major_job, nur_name, nur_gen, nur_phone, nur_email, nur_position) VALUES ('nkim',  '1', 'ï¿½Ò¾Æ°ï¿½', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'F', '010-555-8751', 'key@hanbh.com', 'ï¿½ï¿½ï¿½ï¿½È£ï¿½ï¿½');
+INSERT INTO Nurse(nur_id, nur_pass, major_job, nur_name, nur_gen, nur_phone, nur_email, nur_position) VALUES ('nyoon', '1', 'ï¿½ï¿½ï¿½ï¿½', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'F', '016-333-8745', 'ysa@hanbh.com', 'ï¿½ï¿½ï¿½ï¿½È£ï¿½ï¿½');
+INSERT INTO Nurse(nur_id, nur_pass, major_job, nur_name, nur_gen, nur_phone, nur_email, nur_position) VALUES ('nshin', '1', 'ï¿½ÇºÎ°ï¿½', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'M', '010-666-7646', 'sjw@hanbh.com', 'ï¿½ï¿½ï¿½ï¿½');
+INSERT INTO Nurse(nur_id, nur_pass, major_job, nur_name, nur_gen, nur_phone, nur_email, nur_position) VALUES ('nyou',  '1', 'ï¿½ï¿½ç¼±ï¿½ï¿½', 'ï¿½ï¿½ï¿½ï¿½È­', 'F', '010-333-4588', 'yjh@hanbh.com', 'ï¿½ï¿½ï¿½ï¿½');
+INSERT INTO Nurse(nur_id, nur_pass, major_job, nur_name, nur_gen, nur_phone, nur_email, nur_position) VALUES ('nla',   '1', 'ï¿½ï¿½ï¿½ï¿½', 'ï¿½ï¿½ï¿½Ï³ï¿½', 'F', '010-222-1340', 'nhn@hanbh.com', 'ï¿½ï¿½ï¿½ï¿½');
+INSERT INTO Nurse(nur_id, nur_pass, major_job, nur_name, nur_gen, nur_phone, nur_email, nur_position) VALUES ('nkim2', '1', 'ï¿½Ò¾Æ°ï¿½', 'ï¿½ï¿½È­ï¿½ï¿½', 'F', '019-888-4116', 'khk@hanbh.com', 'ï¿½ï¿½ï¿½ï¿½');
+INSERT INTO Nurse(nur_id, nur_pass, major_job, nur_name, nur_gen, nur_phone, nur_email, nur_position) VALUES ('nlee',  '1', 'ï¿½Ò¾Æ°ï¿½', 'ï¿½Ì¼ï¿½ï¿½ï¿½', 'M', '010-777-1234', 'lsy@hanbh.com', 'ï¿½ï¿½È£ï¿½ï¿½');
+INSERT INTO Nurse(nur_id, nur_pass, major_job, nur_name, nur_gen, nur_phone, nur_email, nur_position) VALUES ('nkim3', '1', 'ï¿½Ü°ï¿½', 'ï¿½ï¿½ï¿½ï¿½', 'M', '010-999-8520', 'kh@hanbh.com', 'ï¿½ï¿½È£ï¿½ï¿½');
+INSERT INTO Nurse(nur_id, nur_pass, major_job, nur_name, nur_gen, nur_phone, nur_email, nur_position) VALUES ('npark', '1', 'ï¿½ÇºÎ°ï¿½', 'ï¿½Ú¼ï¿½ï¿½ï¿½', 'M', '010-777-4996', 'psw@hanbh.com', 'ï¿½ï¿½È£ï¿½ï¿½');
+INSERT INTO Nurse(nur_id, nur_pass, major_job, nur_name, nur_gen, nur_phone, nur_email, nur_position) VALUES ('nlee2', '1', 'ï¿½Ü°ï¿½', 'ï¿½Ì¼ï¿½ï¿½ï¿½', 'F', '010-222-3214', 'lsy2@hanbh.com', 'ï¿½ï¿½È£ï¿½ï¿½');
 
 -- pat_id, nur_id, doc_id, pat_pass, pat_name, pat_gen, pat_jumin, pat_addr, pat_phone, pat_email, pat_job
 -- SELECT * FROM Patient;
-INSERT INTO Patient(pat_id, nur_id, doc_id, pat_pass, pat_name, pat_gen, pat_jumin, pat_addr, pat_phone, pat_email, pat_job) VALUES ('pahn',   'nkim',   'dlee',   '1', '¾È»ó°Ç', 'M', '232345', '¼­¿ï', '010-555-7845', 'ask@ab.com', 'È¸»ç¿ø');
-INSERT INTO Patient(pat_id, nur_id, doc_id, pat_pass, pat_name, pat_gen, pat_jumin, pat_addr, pat_phone, pat_email, pat_job) VALUES ('pkim',   'nyoon',  'dahn',   '1', '±è¼º·æ', 'M', '543545', '¼­¿ï', '010-333-7812', 'ksr@bb.com', 'ÀÚ¿µ¾÷');
-INSERT INTO Patient(pat_id, nur_id, doc_id, pat_pass, pat_name, pat_gen, pat_jumin, pat_addr, pat_phone, pat_email, pat_job) VALUES ('plee',   'nshin',  'dkim',   '1', 'ÀÌÁ¾Áø', 'M', '433424', 'ºÎ»ê', '019-888-4859', 'ljj@ab.com', 'È¸»ç¿ø');
-INSERT INTO Patient(pat_id, nur_id, doc_id, pat_pass, pat_name, pat_gen, pat_jumin, pat_addr, pat_phone, pat_email, pat_job) VALUES ('pchoi',  'nyou',   'dlee2',  '1', 'ÃÖ±¤¼®', 'M', '677675', '´çÁø', '010-222-4847', 'cks@cc.com', 'È¸»ç¿ø');
-INSERT INTO Patient(pat_id, nur_id, doc_id, pat_pass, pat_name, pat_gen, pat_jumin, pat_addr, pat_phone, pat_email, pat_job) VALUES ('pjeong', 'nla',    'dkim2',  '1', 'Á¤ÇÑ°æ', 'M', '744533', '°­¸ª', '010-777-9630', 'jhk@ab.com', '±³¼ö');
-INSERT INTO Patient(pat_id, nur_id, doc_id, pat_pass, pat_name, pat_gen, pat_jumin, pat_addr, pat_phone, pat_email, pat_job) VALUES ('pyou',   'nkim2',  'dcha',   '1', 'À¯¿øÇö', 'M', '765546', '´ë±¸', '016-777-0214', 'ywh@cc.com', 'ÀÚ¿µ¾÷');
-INSERT INTO Patient(pat_id, nur_id, doc_id, pat_pass, pat_name, pat_gen, pat_jumin, pat_addr, pat_phone, pat_email, pat_job) VALUES ('pchoi2', 'nlee',   'djeon',  '1', 'ÃÖÀçÁ¤', 'M', '454543', 'ºÎ»ê', '010-555-4187', 'cjj@bb.com', 'È¸»ç¿ø');
-INSERT INTO Patient(pat_id, nur_id, doc_id, pat_pass, pat_name, pat_gen, pat_jumin, pat_addr, pat_phone, pat_email, pat_job) VALUES ('plee2',  'nkim3',  'dhong',  '1', 'ÀÌÁøÈñ', 'F', '119768', '¼­¿ï', '010-888-3675', 'ljh@ab.com', '±³¼ö');
-INSERT INTO Patient(pat_id, nur_id, doc_id, pat_pass, pat_name, pat_gen, pat_jumin, pat_addr, pat_phone, pat_email, pat_job) VALUES ('poh',    'npark',  'dyou',   '1', '¿À³ª¹Ì', 'F', '234234', '¼ÓÃÊ', '010-999-6541', 'onm@cc.com', 'ÇÐ»ý');
-INSERT INTO Patient(pat_id, nur_id, doc_id, pat_pass, pat_name, pat_gen, pat_jumin, pat_addr, pat_phone, pat_email, pat_job) VALUES ('psong',  'nlee2',  'dkim3',  '1', '¼Û¼º¹¬', 'M', '987643', '¼­¿ï', '010-222-5874', 'ssm@bb.com', 'ÇÐ»ý');
+INSERT INTO Patient(pat_id, nur_id, doc_id, pat_pass, pat_name, pat_gen, pat_jumin, pat_addr, pat_phone, pat_email, pat_job) VALUES ('pahn',   'nkim',   'dlee',   '1', 'ï¿½È»ï¿½ï¿½', 'M', '232345', 'ï¿½ï¿½ï¿½ï¿½', '010-555-7845', 'ask@ab.com', 'È¸ï¿½ï¿½ï¿½');
+INSERT INTO Patient(pat_id, nur_id, doc_id, pat_pass, pat_name, pat_gen, pat_jumin, pat_addr, pat_phone, pat_email, pat_job) VALUES ('pkim',   'nyoon',  'dahn',   '1', 'ï¿½è¼ºï¿½ï¿½', 'M', '543545', 'ï¿½ï¿½ï¿½ï¿½', '010-333-7812', 'ksr@bb.com', 'ï¿½Ú¿ï¿½ï¿½ï¿½');
+INSERT INTO Patient(pat_id, nur_id, doc_id, pat_pass, pat_name, pat_gen, pat_jumin, pat_addr, pat_phone, pat_email, pat_job) VALUES ('plee',   'nshin',  'dkim',   '1', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'M', '433424', 'ï¿½Î»ï¿½', '019-888-4859', 'ljj@ab.com', 'È¸ï¿½ï¿½ï¿½');
+INSERT INTO Patient(pat_id, nur_id, doc_id, pat_pass, pat_name, pat_gen, pat_jumin, pat_addr, pat_phone, pat_email, pat_job) VALUES ('pchoi',  'nyou',   'dlee2',  '1', 'ï¿½Ö±ï¿½ï¿½ï¿½', 'M', '677675', 'ï¿½ï¿½ï¿½ï¿½', '010-222-4847', 'cks@cc.com', 'È¸ï¿½ï¿½ï¿½');
+INSERT INTO Patient(pat_id, nur_id, doc_id, pat_pass, pat_name, pat_gen, pat_jumin, pat_addr, pat_phone, pat_email, pat_job) VALUES ('pjeong', 'nla',    'dkim2',  '1', 'ï¿½ï¿½ï¿½Ñ°ï¿½', 'M', '744533', 'ï¿½ï¿½ï¿½ï¿½', '010-777-9630', 'jhk@ab.com', 'ï¿½ï¿½ï¿½ï¿½');
+INSERT INTO Patient(pat_id, nur_id, doc_id, pat_pass, pat_name, pat_gen, pat_jumin, pat_addr, pat_phone, pat_email, pat_job) VALUES ('pyou',   'nkim2',  'dcha',   '1', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'M', '765546', 'ï¿½ë±¸', '016-777-0214', 'ywh@cc.com', 'ï¿½Ú¿ï¿½ï¿½ï¿½');
+INSERT INTO Patient(pat_id, nur_id, doc_id, pat_pass, pat_name, pat_gen, pat_jumin, pat_addr, pat_phone, pat_email, pat_job) VALUES ('pchoi2', 'nlee',   'djeon',  '1', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'M', '454543', 'ï¿½Î»ï¿½', '010-555-4187', 'cjj@bb.com', 'È¸ï¿½ï¿½ï¿½');
+INSERT INTO Patient(pat_id, nur_id, doc_id, pat_pass, pat_name, pat_gen, pat_jumin, pat_addr, pat_phone, pat_email, pat_job) VALUES ('plee2',  'nkim3',  'dhong',  '1', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'F', '119768', 'ï¿½ï¿½ï¿½ï¿½', '010-888-3675', 'ljh@ab.com', 'ï¿½ï¿½ï¿½ï¿½');
+INSERT INTO Patient(pat_id, nur_id, doc_id, pat_pass, pat_name, pat_gen, pat_jumin, pat_addr, pat_phone, pat_email, pat_job) VALUES ('poh',    'npark',  'dyou',   '1', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'F', '234234', 'ï¿½ï¿½ï¿½ï¿½', '010-999-6541', 'onm@cc.com', 'ï¿½Ð»ï¿½');
+INSERT INTO Patient(pat_id, nur_id, doc_id, pat_pass, pat_name, pat_gen, pat_jumin, pat_addr, pat_phone, pat_email, pat_job) VALUES ('psong',  'nlee2',  'dkim3',  '1', 'ï¿½Û¼ï¿½ï¿½ï¿½', 'M', '987643', 'ï¿½ï¿½ï¿½ï¿½', '010-222-5874', 'ssm@bb.com', 'ï¿½Ð»ï¿½');
 
 -- treat_id, pat_id, doc_id, treat_contents, treat_date
 -- SELECT * FROM Treatment;
-INSERT INTO Treatment(treat_id, pat_id, doc_id, treat_contents, treat_date) VALUES ('130516023', 'pahn',  'dlee',  '°¨±â, ¸ö»ì', '2013-05-16');
-INSERT INTO Treatment(treat_id, pat_id, doc_id, treat_contents, treat_date) VALUES ('130628100', 'pkim',  'dahn',  'ÇÇºÎ Æ®·¯ºí Ä¡·á', '2013-06-28');
-INSERT INTO Treatment(treat_id, pat_id, doc_id, treat_contents, treat_date) VALUES ('131205056', 'plee',  'dkim',  '¸ñ µð½ºÅ©·Î MRI ÃÔ¿µ', '2013-12-05');
-INSERT INTO Treatment(treat_id, pat_id, doc_id, treat_contents, treat_date) VALUES ('131218024', 'pchoi', 'dlee2', 'ÁßÀÌ¿°', '2013-12-18');
-INSERT INTO Treatment(treat_id, pat_id, doc_id, treat_contents, treat_date) VALUES ('131224012', 'pjeong','dkim2', 'Àå¿°', '2013-12-24');
-INSERT INTO Treatment(treat_id, pat_id, doc_id, treat_contents, treat_date) VALUES ('140103001', 'pyou',  'dcha',  '¿©µå¸§ Ä¡·á', '2014-01-03');
-INSERT INTO Treatment(treat_id, pat_id, doc_id, treat_contents, treat_date) VALUES ('140109026', 'pchoi2','djeon', 'À§¿°', '2014-01-09');
-INSERT INTO Treatment(treat_id, pat_id, doc_id, treat_contents, treat_date) VALUES ('140226102', 'plee2', 'dhong', 'È­»óÄ¡·á', '2014-02-26');
-INSERT INTO Treatment(treat_id, pat_id, doc_id, treat_contents, treat_date) VALUES ('140303003', 'poh',   'dyou',  '±³Åë»ç°í ¿Ü»óÄ¡·á', '2014-03-03');
-INSERT INTO Treatment(treat_id, pat_id, doc_id, treat_contents, treat_date) VALUES ('140308087', 'psong', 'dkim3', 'Àå¿°', '2014-03-08');
+INSERT INTO Treatment(treat_id, pat_id, doc_id, treat_contents, treat_date) VALUES ('130516023', 'pahn',  'dlee',  'ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½', '2013-05-16');
+INSERT INTO Treatment(treat_id, pat_id, doc_id, treat_contents, treat_date) VALUES ('130628100', 'pkim',  'dahn',  'ï¿½Çºï¿½ Æ®ï¿½ï¿½ï¿½ï¿½ Ä¡ï¿½ï¿½', '2013-06-28');
+INSERT INTO Treatment(treat_id, pat_id, doc_id, treat_contents, treat_date) VALUES ('131205056', 'plee',  'dkim',  'ï¿½ï¿½ ï¿½ï¿½Å©ï¿½ï¿½ MRI ï¿½Ô¿ï¿½', '2013-12-05');
+INSERT INTO Treatment(treat_id, pat_id, doc_id, treat_contents, treat_date) VALUES ('131218024', 'pchoi', 'dlee2', 'ï¿½ï¿½ï¿½Ì¿ï¿½', '2013-12-18');
+INSERT INTO Treatment(treat_id, pat_id, doc_id, treat_contents, treat_date) VALUES ('131224012', 'pjeong','dkim2', 'ï¿½å¿°', '2013-12-24');
+INSERT INTO Treatment(treat_id, pat_id, doc_id, treat_contents, treat_date) VALUES ('140103001', 'pyou',  'dcha',  'ï¿½ï¿½ï¿½å¸§ Ä¡ï¿½ï¿½', '2014-01-03');
+INSERT INTO Treatment(treat_id, pat_id, doc_id, treat_contents, treat_date) VALUES ('140109026', 'pchoi2','djeon', 'ï¿½ï¿½ï¿½ï¿½', '2014-01-09');
+INSERT INTO Treatment(treat_id, pat_id, doc_id, treat_contents, treat_date) VALUES ('140226102', 'plee2', 'dhong', 'È­ï¿½ï¿½Ä¡ï¿½ï¿½', '2014-02-26');
+INSERT INTO Treatment(treat_id, pat_id, doc_id, treat_contents, treat_date) VALUES ('140303003', 'poh',   'dyou',  'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ü»ï¿½Ä¡ï¿½ï¿½', '2014-03-03');
+INSERT INTO Treatment(treat_id, pat_id, doc_id, treat_contents, treat_date) VALUES ('140308087', 'psong', 'dkim3', 'ï¿½å¿°', '2014-03-08');
 
 -- chart_id, treat_id, doc_id, nur_id, pat_id, chartContent
 -- SELECT * FROM Chart;
-INSERT INTO Chart(chart_id, treat_id, doc_id, nur_id, pat_id, chart_contents) VALUES ('p_130516023', '130516023', 'dlee', 'nkim',  'pahn',  '°¨±â ÁÖ»ç ¹× ¾à Ã³¹æ' );
-INSERT INTO Chart(chart_id, treat_id, doc_id, nur_id, pat_id, chart_contents) VALUES ('d_130628100', '130628100', 'dahn',  'nyoon',  'pkim',   'ÇÇºÎ °¨¿° ¹æÁö ÁÖ»ç' );
-INSERT INTO Chart(chart_id, treat_id, doc_id, nur_id, pat_id, chart_contents) VALUES ('r_131205056', '131205056', 'dkim',  'nshin',  'plee',   'ÁÖ»ç Ã³¹æ' );
-INSERT INTO Chart(chart_id, treat_id, doc_id, nur_id, pat_id, chart_contents) VALUES ('p_131218024', '131218024', 'dlee2', 'nyou',   'pchoi',  '±Ó¼ÓÃ»¼Ò ¹× ¾à Ã³¹æ' );
-INSERT INTO Chart(chart_id, treat_id, doc_id, nur_id, pat_id, chart_contents) VALUES ('i_131224012', '131224012', 'dkim2', 'nla',    'pjeong', 'Àå¿° ÀÔ¿øÄ¡·á' );
-INSERT INTO Chart(chart_id, treat_id, doc_id, nur_id, pat_id, chart_contents) VALUES ('d_140103001', '140103001', 'dcha',  'nkim2',  'pyou',   '¿©µå¸² Ä¡·á¾à Ã³¹æ' );
-INSERT INTO Chart(chart_id, treat_id, doc_id, nur_id, pat_id, chart_contents) VALUES ('i_140109026', '140109026', 'djeon', 'nlee',   'pchoi2', 'À§³»½Ã°æ' );
-INSERT INTO Chart(chart_id, treat_id, doc_id, nur_id, pat_id, chart_contents) VALUES ('s_140226102', '140226102', 'dhong', 'nkim3',  'plee2',  'È­»ó Å©¸²¾à Ã³¹æ' );
-INSERT INTO Chart(chart_id, treat_id, doc_id, nur_id, pat_id, chart_contents) VALUES ('s_140303003', '140303003', 'dyou',  'npark',  'poh',    'ÀÔ¿øÄ¡·á' );
-INSERT INTO Chart(chart_id, treat_id, doc_id, nur_id, pat_id, chart_contents) VALUES ('p_140308087', '140308087', 'dkim3', 'nlee2',  'psong',  'Àå¿° ÀÔ¿øÄ¡·á' );
+INSERT INTO Chart(chart_id, treat_id, doc_id, nur_id, pat_id, chart_contents) VALUES ('p_130516023', '130516023', 'dlee', 'nkim',  'pahn',  'ï¿½ï¿½ï¿½ï¿½ ï¿½Ö»ï¿½ ï¿½ï¿½ ï¿½ï¿½ Ã³ï¿½ï¿½' );
+INSERT INTO Chart(chart_id, treat_id, doc_id, nur_id, pat_id, chart_contents) VALUES ('d_130628100', '130628100', 'dahn',  'nyoon',  'pkim',   'ï¿½Çºï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ö»ï¿½' );
+INSERT INTO Chart(chart_id, treat_id, doc_id, nur_id, pat_id, chart_contents) VALUES ('r_131205056', '131205056', 'dkim',  'nshin',  'plee',   'ï¿½Ö»ï¿½ Ã³ï¿½ï¿½' );
+INSERT INTO Chart(chart_id, treat_id, doc_id, nur_id, pat_id, chart_contents) VALUES ('p_131218024', '131218024', 'dlee2', 'nyou',   'pchoi',  'ï¿½Ó¼ï¿½Ã»ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ Ã³ï¿½ï¿½' );
+INSERT INTO Chart(chart_id, treat_id, doc_id, nur_id, pat_id, chart_contents) VALUES ('i_131224012', '131224012', 'dkim2', 'nla',    'pjeong', 'ï¿½å¿° ï¿½Ô¿ï¿½Ä¡ï¿½ï¿½' );
+INSERT INTO Chart(chart_id, treat_id, doc_id, nur_id, pat_id, chart_contents) VALUES ('d_140103001', '140103001', 'dcha',  'nkim2',  'pyou',   'ï¿½ï¿½ï¿½å¸² Ä¡ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½' );
+INSERT INTO Chart(chart_id, treat_id, doc_id, nur_id, pat_id, chart_contents) VALUES ('i_140109026', '140109026', 'djeon', 'nlee',   'pchoi2', 'ï¿½ï¿½ï¿½ï¿½ï¿½Ã°ï¿½' );
+INSERT INTO Chart(chart_id, treat_id, doc_id, nur_id, pat_id, chart_contents) VALUES ('s_140226102', '140226102', 'dhong', 'nkim3',  'plee2',  'È­ï¿½ï¿½ Å©ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½' );
+INSERT INTO Chart(chart_id, treat_id, doc_id, nur_id, pat_id, chart_contents) VALUES ('s_140303003', '140303003', 'dyou',  'npark',  'poh',    'ï¿½Ô¿ï¿½Ä¡ï¿½ï¿½' );
+INSERT INTO Chart(chart_id, treat_id, doc_id, nur_id, pat_id, chart_contents) VALUES ('p_140308087', '140308087', 'dkim3', 'nlee2',  'psong',  'ï¿½å¿° ï¿½Ô¿ï¿½Ä¡ï¿½ï¿½' );
                                                               
 UPDATE Member SET password='3', name='parkjy' WHERE id='admin';
 
--- seq, pat_id, title, content, regdate, read_count
-DROP TABLE Article;
-DROP SEQUENCE art_seq;
-
--- CREATE SEQUENCE art_seq
-CREATE SEQUENCE art_seq
-START WITH 1
-INCREMENT BY 1
-NOCACHE NOCYCLE;
-
 -- CREATE
 CREATE TABLE Article (
-	art_seq DECIMAL NOT NULL,
-	pat_id VARCHAR2(10) NOT NULL,
-	title VARCHAR2(30) NOT NULL,
-	content VARCHAR2(100) NOT NULL,
-	regdate VARCHAR2(30) NOT NULL,
-	read_count VARCHAR2(5) NOT NULL,
-	PRIMARY KEY(art_seq),
-    FOREIGN KEY(pat_id) REFERENCES Patient(pat_id)
+	art_seq int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	writer_id VARCHAR(10) NOT NULL,
+	name VARCHAR(10) NOT NULL,
+	title VARCHAR(30) NOT NULL,
+	content VARCHAR(100) NOT NULL,
+	reg_date VARCHAR(30) NOT NULL,
+	read_count INT NOT NULL
 );
 -- INSERT 
-INSERT INTO Article(art_seq, pat_id, title, content, regdate, read_count) VALUES (art_seq.nextval, 'pahn',   'Hi','Hello my friends','2017-02-15 10:00:00','3');
-INSERT INTO Article(art_seq, pat_id, title, content, regdate, read_count) VALUES (art_seq.nextval, 'pkim',   'Second','MY SECOND ARTICLE','2017-02-15 12:00:00','5');
-INSERT INTO Article(art_seq, pat_id, title, content, regdate, read_count) VALUES (art_seq.nextval, 'plee',   'Third','MY THIRD ARTICLE','2017-02-16 01:00:00','7');
-INSERT INTO Article(art_seq, pat_id, title, content, regdate, read_count) VALUES (art_seq.nextval, 'pchoi',  'Forth','MY FOUTH ARTICLE','2017-02-17 02:00:00','4');
-INSERT INTO Article(art_seq, pat_id, title, content, regdate, read_count) VALUES (art_seq.nextval, 'pjeong', 'Fifth','MY FIFTH ARTICLE','2017-02-19 03:00:00','2');
-INSERT INTO Article(art_seq, pat_id, title, content, regdate, read_count) VALUES (art_seq.nextval, 'pyou',   'Hi2','Hello my friends2','2017-02-15 10:00:00','3');
-INSERT INTO Article(art_seq, pat_id, title, content, regdate, read_count) VALUES (art_seq.nextval, 'pchoi2', 'Second2','MY SECOND ARTICLE2','2017-02-15 12:00:00','5');
-INSERT INTO Article(art_seq, pat_id, title, content, regdate, read_count) VALUES (art_seq.nextval, 'plee2',  'Third2','MY THIRD ARTICLE2','2017-02-16 01:00:00','7');
-INSERT INTO Article(art_seq, pat_id, title, content, regdate, read_count) VALUES (art_seq.nextval, 'poh',    'Forth2','MY FOUTH ARTICLE2','2017-02-17 02:00:00','4');
-INSERT INTO Article(art_seq, pat_id, title, content, regdate, read_count) VALUES (art_seq.nextval, 'psong',  'Fifth2','MY FIFTH ARTICLE2','2017-02-19 03:00:00','2');
+INSERT INTO Article(writer_id, name, title, content, reg_date, read_count) VALUES ('pahn',  'a', 'Hi','Hello my friends','2017-02-15 10:00:00',3);
+INSERT INTO Article(writer_id, name, title, content, reg_date, read_count) VALUES ('pkim',  'a', 'Second','MY SECOND ARTICLE','2017-02-15 12:00:00',5);
+INSERT INTO Article(writer_id, name, title, content, reg_date, read_count) VALUES ('plee',  'a', 'Third','MY THIRD ARTICLE','2017-02-16 01:00:00',7);
+INSERT INTO Article(writer_id, name, title, content, reg_date, read_count) VALUES ('pchoi', 'a', 'Forth','MY FOUTH ARTICLE','2017-02-17 02:00:00',4);
+INSERT INTO Article(writer_id, name, title, content, reg_date, read_count) VALUES ('pjeong','a', 'Fifth','MY FIFTH ARTICLE','2017-02-19 03:00:00',2);
+INSERT INTO Article(writer_id, name, title, content, reg_date, read_count) VALUES ('pyou',  'a', 'Hi2','Hello my friends2','2017-02-15 10:00:00',3);
+INSERT INTO Article(writer_id, name, title, content, reg_date, read_count) VALUES ('pchoi2','a', 'Second2','MY SECOND ARTICLE2','2017-02-15 12:00:00',5);
+INSERT INTO Article(writer_id, name, title, content, reg_date, read_count) VALUES ('plee2', 'a', 'Third2','MY THIRD ARTICLE2','2017-02-16 01:00:00',7);
+INSERT INTO Article(writer_id, name, title, content, reg_date, read_count) VALUES ('poh',   'a', 'Forth2','MY FOUTH ARTICLE2','2017-02-17 02:00:00',4);
+INSERT INTO Article(writer_id, name, title, content, reg_date, read_count) VALUES ('psong', 'a', 'Fifth2','MY FIFTH ARTICLE2','2017-02-19 03:00:00',2);
 
-INSERT INTO Article(art_seq, pat_id, title, content, regdate, read_count) VALUES (art_seq.nextval, 'pahn',   'Hi','Hello my friends','2017-02-15 10:00:00','3');
-INSERT INTO Article(art_seq, pat_id, title, content, regdate, read_count) VALUES (art_seq.nextval, 'pkim',   'Second','MY SECOND ARTICLE','2017-02-15 12:00:00','5');
-INSERT INTO Article(art_seq, pat_id, title, content, regdate, read_count) VALUES (art_seq.nextval, 'plee',   'Third','MY THIRD ARTICLE','2017-02-16 01:00:00','7');
-INSERT INTO Article(art_seq, pat_id, title, content, regdate, read_count) VALUES (art_seq.nextval, 'pchoi',  'Forth','MY FOUTH ARTICLE','2017-02-17 02:00:00','4');
-INSERT INTO Article(art_seq, pat_id, title, content, regdate, read_count) VALUES (art_seq.nextval, 'pjeong', 'Fifth','MY FIFTH ARTICLE','2017-02-19 03:00:00','2');
-INSERT INTO Article(art_seq, pat_id, title, content, regdate, read_count) VALUES (art_seq.nextval, 'pyou',   'Hi2','Hello my friends2','2017-02-15 10:00:00','3');
-INSERT INTO Article(art_seq, pat_id, title, content, regdate, read_count) VALUES (art_seq.nextval, 'pchoi2', 'Second2','MY SECOND ARTICLE2','2017-02-15 12:00:00','5');
-INSERT INTO Article(art_seq, pat_id, title, content, regdate, read_count) VALUES (art_seq.nextval, 'plee2',  'Third2','MY THIRD ARTICLE2','2017-02-16 01:00:00','7');
-INSERT INTO Article(art_seq, pat_id, title, content, regdate, read_count) VALUES (art_seq.nextval, 'poh',    'Forth2','MY FOUTH ARTICLE2','2017-02-17 02:00:00','4');
-INSERT INTO Article(art_seq, pat_id, title, content, regdate, read_count) VALUES (art_seq.nextval, 'psong',  'Fifth2','MY FIFTH ARTICLE2','2017-02-19 03:00:00','2');
+INSERT INTO Article(writer_id, name, title, content, reg_date, read_count) VALUES ('pahn',  'a', 'Hi','Hello my friends','2017-02-15 10:00:00',3);
+INSERT INTO Article(writer_id, name, title, content, reg_date, read_count) VALUES ('pkim',  'a', 'Second','MY SECOND ARTICLE','2017-02-15 12:00:00',5);
+INSERT INTO Article(writer_id, name, title, content, reg_date, read_count) VALUES ('plee',  'a', 'Third','MY THIRD ARTICLE','2017-02-16 01:00:00',7);
+INSERT INTO Article(writer_id, name, title, content, reg_date, read_count) VALUES ('pchoi', 'a', 'Forth','MY FOUTH ARTICLE','2017-02-17 02:00:00',4);
+INSERT INTO Article(writer_id, name, title, content, reg_date, read_count) VALUES ('pjeong','a', 'Fifth','MY FIFTH ARTICLE','2017-02-19 03:00:00',2);
+INSERT INTO Article(writer_id, name, title, content, reg_date, read_count) VALUES ('pyou',  'a', 'Hi2','Hello my friends2','2017-02-15 10:00:00',3);
+INSERT INTO Article(writer_id, name, title, content, reg_date, read_count) VALUES ('pchoi2','a', 'Second2','MY SECOND ARTICLE2','2017-02-15 12:00:00',5);
+INSERT INTO Article(writer_id, name, title, content, reg_date, read_count) VALUES ('plee2', 'a', 'Third2','MY THIRD ARTICLE2','2017-02-16 01:00:00',7);
+INSERT INTO Article(writer_id, name, title, content, reg_date, read_count) VALUES ('poh',   'a', 'Forth2','MY FOUTH ARTICLE2','2017-02-17 02:00:00',4);
+INSERT INTO Article(writer_id, name, title, content, reg_date, read_count) VALUES ('psong', 'a', 'Fifth2','MY FIFTH ARTICLE2','2017-02-19 03:00:00',2);
 
-
--- READ ALL
+<!-- ì•„ì´ë”” ê²€ìƒ‰ -->
+SELECT t2.* 
+from (select @ROWNUM := @ROWNUM + 1 AS rownum, t.title, t.content, t.reg_date, t.art_seq 
+	  from Article t, (SELECT @ROWNUM := 0) R WHERE t.writer_id = 'hong' AND t.title LIKE '%ì•ˆ%' ORDER BY t.reg_date DESC) t2 
+where t2.rownum between 1 and 10 order by t2.rownum asc;
+<!-- ì „ì²´ê¸€ ì¡°íšŒ -->
+SELECT t2.* 
+from (select @ROWNUM := @ROWNUM + 1 AS rownum, t.title, t.content, t.reg_date, t.art_seq 
+	  from Article t, (SELECT @ROWNUM := 0) R ORDER BY t.reg_date DESC) t2 
+where t2.rownum between 1 and 10 order by t2.rownum asc;
+	  -- READ ALL
 SELECT * FROM Article;
 
 SELECT t2.* FROM (SELECT ROWNUM seq,t.* FROM (SELECT * FROM Article ORDER BY art_seq DESC) t) t2 WHERE t2.seq BETWEEN 6 AND 10;

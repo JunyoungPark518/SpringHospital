@@ -15,6 +15,7 @@ $(function() {
  --%>
  
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
 <title>Hello</title>
@@ -23,8 +24,8 @@ $(function() {
 <script src="${context}/resources/js/app.js"></script>
 <script src="${context}/resources/js/cookie.js"></script>
 <script src="${context}/resources/js/fileupload.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <link rel="stylesheet" href="${context}/resources/css/hanbit.css" type="text/css"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <link rel="stylesheet" href="${context}/resources/css/app.css" type="text/css"/>
 </head>
 <body>
@@ -48,6 +49,7 @@ $(function() {
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="#">Hospital <span class="sr-only">(current)</span></a></li>
 					<li><a id="date" href="#"></a></li>
+					<li><a id="bbs" href="#">BBS</a></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">OOP <span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a id="encap" href="#">Encapsulation</a></li>
